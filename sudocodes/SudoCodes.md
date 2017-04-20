@@ -3,77 +3,94 @@
 ### Admin
 
 #### Variable:
-*  String userName derizsy
-*  String password javaproj2017
+*  String userName
+*  String password
+*  adminStatus admstatus
 
 
 #### Method
-constructor(Stirng userName, String password)
+constructor(String userName, String password)
 >set userName, password;
 
-setCurrent(int time)
->set the time
-*Require a variable in the main function* : Time;
 
 adminLogin(void)
 	if userName = userName|| password=password
-		lgoin
+		login
 	else
 		reinput
 
-createFlight (String flightId, int departureTime.int  arrivalTime,String  startCity, enum flightStatus,String  airlineCompany,String  arrivalCity,int  price,String  planeType,String  stopByCity)
-	set information of a flight;
+createFlight
+	>set information of a flight;
 
-> Require a set method in the Flight class
 
 updateFlight
-	if UNPUBLISHED
+	>if UNPUBLISHED
 		set information of a Flight
 	else if PUBLISHED
 		set planeType and price for the plane;
 	call a reNew method of Flight to refresh
 
-> Unsure  
 
 deleteFlight
->delete a Flight Variable
+	>set flightEx to DELETED
 
 superQuery
->Unsure
+	>Unsure
 
 ***
-###Plane
+### Plane
 
-####Variable
+#### Variable
 * int seatCapacity
 * int firstClassCap
 * int normalClassCap
 
 #### Method
 constructor(int sC, int fC, int nC)
->set all three variables
+	>set all three variables
 
 ***
 ### Flight
 
 #### Variable
 * String flightID
-* departureTime
-* arrivalTime
-* startCity
+* Date departureTime
+* Date arrivalTime
+	>Use Date Class, for more information, check setTime.java in the complement tools.
+The time format should be "yyyy-MM-dd HH:mm"
+for example: 2017-04-25 11:30
+
+* String startCity
 * flightStatus
-> enum{UNPUBLISHED, AVAILABLE,FULL, TERMINATE}
+	> enum{UNPUBLISHED, AVAILABLE,FULL, TERMINATE}
 
 * String airlineCompany
 * String arrivalCity
 * int price
 * currentPassengers
 * planeType
+
+* String stopByCity
+	>default: null, 2 city names are needed
+
+* enum FlightExistting flightEX
+	> to tell if the flight exists.
+
 * passengerIDList
-* stopByCity
->default: null, 2 city names are needed
 
 #### Method
 constructor()
 
 update()
+	> get Year, Month, Date, Hour, for departureTime and currenTime;
+if currenTime.Hour <= departureTime.Hour+2
+	status = TERMINATE;
+
+set_Flight()
+> set the information of the flight
+
+### Main function
+
+#### Variable
+* ArrayList flightIDs
+	>An arraylist that contains all the flight IDs, use item.add()  to add item to the arraylist.
