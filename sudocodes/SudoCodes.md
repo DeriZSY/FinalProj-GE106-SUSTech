@@ -95,3 +95,7 @@ set_Flight()
 #### Variable
 * ArrayList flightIDs
 	>An arraylist that contains all the flight IDs, use item.add()  to add item to the arraylist.
+
+* ArrayList depatureCities
+* ArrayList arrivalCities
+    >Create ArrayList, which can be used to do the superQuery Work
