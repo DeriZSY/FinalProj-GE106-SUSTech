@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 import java.util.Date;
-/**
- * Created by DeriZsy on 4/21/17.
- */
 public class Main {
+    /************ Variables ********/
+
     //for superQuery
     public static ArrayList<String> flightIDs = new ArrayList<String>();
     public static ArrayList<String> startCitys = new ArrayList<String>();
@@ -20,6 +19,8 @@ public class Main {
     // Initialize Planes
     public static Plane Airbus251 = new Plane(100,20,80);
     public static Plane Mig_MniJet = new Plane(3,1,2);
+
+    /*********** Method ***********/
     public static void main(String[] args) {
         //Create Plane
         Plane Airbus251 = new Plane(100,20,80);

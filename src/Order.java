@@ -1,7 +1,5 @@
-/**
- * Created by DeriZsy on 4/22/17.
- */
 public class Order {
+    /************ Variables ********/
     private String pass_name;
     private String pass_IDs;
     private String seatNum;
@@ -11,6 +9,8 @@ public class Order {
     public  enum orderstates{PAID, UNPAID,CANCLED};
     orderstates orderstatus;
 
+    /*********** Method ***********/
+
     public Order( String name, String IDs, String seat_num,
                   String flight_num, String create_date, String special_demand){
         pass_name     =     name;
@@ -19,7 +19,7 @@ public class Order {
         flightNum     =     flight_num;
         createDate    =     create_date;
         specialDemand =     special_demand;
-        orderstatus = orderstates.UNPAID;
+        orderstatus   = orderstates.UNPAID;
 
         //Add to Array List;
         Main.pass_Names.add(name);

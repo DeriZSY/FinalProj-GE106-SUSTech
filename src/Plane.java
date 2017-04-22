@@ -1,8 +1,10 @@
 public class Plane {
-    //Variable
+    /************ Variables ********/
     int seatCapacity;
     int firstClassCap;
     int normalClassCap;
+
+    /*********** Method ***********/
 
     public Plane(int setCap, int firstCCap, int normCCap){
         seatCapacity = setCap;

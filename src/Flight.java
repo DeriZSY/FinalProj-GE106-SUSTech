@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 public class Flight {
+    /************ Variables ********/
     public String flightID;
     public Date departureTime;
     public Date arrivalTime;
@@ -26,6 +27,7 @@ public class Flight {
 //    public static ArrayList<String> allIDs = new ArrayList<String>();
 
     public int price;
+    /*********** Method ***********/
 
     //Constructor
     public  Flight(String fliID, Date dptTime, Date arrivTime, String stCity,

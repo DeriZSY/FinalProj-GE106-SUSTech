@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Admin {
-    //Variables
+    /************ Variables ********/
     public static  String userName;
     public static  String passWord;
     //Method
@@ -12,7 +12,7 @@ public class Admin {
     }
 
     public static adminStatus admstatus = adminStatus.UNLOG ;
-
+    /*********** Method ***********/
     //Constructor
     public Admin(String usrName, String psWord) {
         userName = usrName;
