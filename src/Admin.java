@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
 public class Admin {
     //Variables
     public static  String userName;
@@ -17,6 +19,9 @@ public class Admin {
         passWord = psWord;
     }
 
+//    public static int xx1= 2;
+
+
 
     //adminLogin
     public static void adminLogin() {
@@ -33,7 +38,7 @@ public class Admin {
                 System.out.printf("Login Success");
                 break;
             } else {
-                System.out.printf("Login Failed, Please try again!")
+                System.out.printf("Login Failed, Please try again!");
             }
         }
     }//end of adminLogin
@@ -43,7 +48,7 @@ public class Admin {
     //delete flight used in flight.//Not yet finished
 
     //superQuery
-    public void superQuery{
+    public void superQuery(){
         Scanner input = new Scanner(System.in);
         if(admstatus == adminStatus.LGOIN ){
             System.out.printf("What do you want to search?\n");
@@ -52,27 +57,43 @@ public class Admin {
             System.out.printf("Input 3 to get the list of all flight\n");
             System.out.printf(">>");
             int factor = input.nextInt();
+            // 3 cases of superQuery
             switch(factor){
                 case 1:
                 case 2:
                     System.out.printf("Input 1 to search with departure city, and 2 to search with arriving city");
                     int factor2 = input.nextInt();
                     switch(factor2) {
+                        //Case 1 Search with the starting Cities
                         case 1:
                             System.out.printf("Please Input the name of departure city");
                             String dpc = input.nextLine();
+                            int index1;
+                            //get the index of flight
                             for(String startingcity:Main.startCitys){
-                                if(startingcity == dpc)
+                                if(startingcity.compareTo(dpc) == 0){
+                                    index1 = Main.startCitys.indexOf(startingcity);
+                                    break;
+                                }
+                                System.out.printf("");
                                     /*************** Not yet finished **************/
+
                             }
+                         //Case2   Search with the arriving Cities
                         case 2:
                             System.out.printf("Please Input the name of arrival city");
                             String arvc = input.nextLine();
+                            int index2;
                             for(String arrivingcity:Main.arrivalCitys){
-                                if( arrivingcity == arvc)
+                                if( arrivingcity == arvc){
+                                    index2 = Main.arrivalCitys.indexOf(arrivingcity);
+                                    break;
+                                }
+                                System.out.printf("");
                                     /********************* Not yet finished **************/
                             }
                     }
+                        //Case 3 : display all the flight IDs
                         case 3:
                             System.out.print(Main.flightIDs);
                             break;
