@@ -20,11 +20,7 @@ public class Flight {
     private ArrayList<String> all_Passenger_Names = new ArrayList<String>();
     private ArrayList<String> all_Passenger_IDs = new ArrayList<String>();
 
-    // ArrayLIst used for superQuery
 
-//    public static ArrayList<String> flightStates = new ArrayList<String>();
-//    public static ArrayList<String> allNames = new ArrayList<String>();
-//    public static ArrayList<String> allIDs = new ArrayList<String>();
 
     public int price;
     /*********** Method ***********/
@@ -42,11 +38,6 @@ public class Flight {
         flightEx = flightExistting.EXIST;
         planeType = plType;
 
-
-        //Add inform to ArrayList
-        Main.flightIDs.add(fliID);
-        Main.startCitys.add(stCity);
-        Main.arrivalCitys.add(arrivCity);
     }
     public Flight(String fliID, Date dptTime, Date arrivTime,
                   String stCity,String arrivCity, String alCompany, String plType){
@@ -98,6 +89,7 @@ public class Flight {
             stopByCity = stpCity;
             arrivalCity = arrivCity;
             airlineCompany = alCompany;
+
         }
         else
             System.out.printf("The flight has been deleted");
@@ -108,7 +100,7 @@ public class Flight {
 //                                    String stpCity, String arrivCity, String alCompany, String plType) {
 //        if (Admin.admstatus == Admin.adminStatus.LGOIN) {
 //            /**************** Undone ***************/
-//            Flight(String fliID; Date dptTime, Date arrivTime,
+//            Flight(String fliID, Date dptTime, Date arrivTime,
 //                    String stCity,String arrivCity, String alCompany, String plType);
 //
 //
@@ -120,7 +112,7 @@ public class Flight {
 
     //for admin to create the Flight
     public void deleteFlight(){
-        if(Admin.admstatus == Admin.adminStatus.LGOIN){
+        if(DataBase.admstatus == DataBase.adminStatus.LGOIN){
             Scanner input = new Scanner(System.in);
             System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)");
             String choice = input.nextLine();
