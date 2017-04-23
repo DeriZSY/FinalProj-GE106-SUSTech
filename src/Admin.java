@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Admin {
     /************ Variables ********/
+	//in
     public static  String userName;
     public static  String passWord;
     //Method
