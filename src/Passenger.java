@@ -44,7 +44,7 @@ public class Passenger {
 		case 2: passengerStatus = passengerStat.nonVIP;break;
 			
 		}
-			// 还缺少对VIP功能的描述以及如何处理VIP的会费问题
+         ////// ??????? VIP ?????/////
 		/****not yet finished ****/
 		
 		}
