@@ -4,8 +4,9 @@ import java.util.Scanner;
 public class Flight {
     /************ Variables ********/
     public String flightID;
-    public Date departureTime;
-    public Date arrivalTime;
+    public String flightDate;
+    public String departureTime;
+    public String arrivalTime;
     public String startCity;
     public String stopByCity;
     public String arrivalCity;
@@ -17,8 +18,7 @@ public class Flight {
     flightStatusENU flightStatus = flightStatusENU.UNPUBLISHED;
     flightExistting flightEx = flightExistting.DELETED;
     //ArrayList for information of the plane
-    private ArrayList<String> all_Passenger_Names = new ArrayList<String>();
-    private ArrayList<String> all_Passenger_IDs = new ArrayList<String>();
+    private ArrayList<Passenger> all_Passenger = new ArrayList<Passenger>();
 
 
 
@@ -26,11 +26,12 @@ public class Flight {
     /*********** Method ***********/
 
     //Constructor
-    public  Flight(String fliID, Date dptTime, Date arrivTime, String stCity,
+    public  Flight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
                   String stpCity, String arrivCity, String alCompany, String plType){
         flightID = fliID;
         departureTime = dptTime;
         arrivalTime = arrivTime;
+        flightDate = fliDate;
         startCity = stCity;
         stopByCity = stpCity;
         arrivalCity = arrivCity;
@@ -39,10 +40,11 @@ public class Flight {
         planeType = plType;
 
     }
-    public Flight(String fliID, Date dptTime, Date arrivTime,
+    public Flight(String fliID, String dptTime,String fliDate, String arrivTime,
                   String stCity,String arrivCity, String alCompany, String plType){
         flightID = fliID;
         departureTime = dptTime;
+        flightDate = fliDate;
         arrivalTime = arrivTime;
         startCity = stCity;
         arrivalCity = arrivCity;
@@ -80,10 +82,11 @@ public class Flight {
 
     /***********  For Admin's Usage **********/
     //For administer to reset inform;
-    public void set_Flight(String fliID, Date dptTime, Date arrivTime, String stCity, String stpCity, String arrivCity, String alCompany){
+    public void set_Flight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity, String stpCity, String arrivCity, String alCompany){
         if(flightEx == flightExistting.EXIST) {
             flightID = fliID;
             departureTime = dptTime;
+            flightDate = fliDate;
             arrivalTime = arrivTime;
             startCity = stCity;
             stopByCity = stpCity;
@@ -111,19 +114,28 @@ public class Flight {
 //    }
 
     //for admin to create the Flight
-    public void deleteFlight(){
-        if(DataBase.admstatus == DataBase.adminStatus.LGOIN){
-            Scanner input = new Scanner(System.in);
-            System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)");
-            String choice = input.nextLine();
-            if(choice.compareTo("Y")==0)
-                flightEx = flightExistting.DELETED;
-            else
-                System.out.printf("Deleting canceled.");
-        }else{
-            System.out.printf("You have not log in, please log in first.");
-            Admin.adminLogin();
+//    public void deleteFlight(){
+//        if(/**************************************/){
+//            Scanner input = new Scanner(System.in);
+//            System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)");
+//            String choice = input.nextLine();
+//            if(choice.compareTo("Y")==0)
+//                flightEx = flightExistting.DELETED;
+//            else
+//                System.out.printf("Deleting canceled.");
+//        }else{
+//            System.out.printf("You have not log in, please log in first.");
+//            adminLogin();
+//        }
+//    }
+
+    public void dis_full_inform(){
+        System.out.printf("The list of passengers:");
+        System.out.printf("Name\tID\tBook Time\tOrder Status");
+        for(Passenger pasger:all_Passenger){
+            System.out.printf("%s\t%s",pasger.realName,pasger.realID);
         }
+
     }
 }
 

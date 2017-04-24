@@ -6,8 +6,10 @@ public class Order {
     private String flightNum;
     private String createDate;
     private String specialDemand;
+    private String orderID;
     public  enum orderstates{PAID, UNPAID,CANCLED};
     orderstates orderstatus;
+
 
     /*********** Method ***********/
 
@@ -19,8 +21,11 @@ public class Order {
         flightNum     =     flight_num;
         createDate    =     create_date;
         specialDemand =     special_demand;
-        orderstatus   = orderstates.UNPAID;
+        orderstatus   = orderstates.UNPAID;}
 
+    public void order_disp(){
+        System.out.printf("%s",orderID);
+    }
         //Add to Array List;
 //        Main.pass_Names.add(name);
 //        Main.pass_IDs.add(IDs);
@@ -30,5 +35,5 @@ public class Order {
     }
 
 
-}
+
 

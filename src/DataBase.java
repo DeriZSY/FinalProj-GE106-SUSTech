@@ -6,11 +6,7 @@ import java.util.ArrayList;
 public class DataBase {
 
     //Method
-    enum adminStatus {
-        LGOIN, UNLOG
-    }
 
-    public static adminStatus admstatus = adminStatus.UNLOG ;
 
 
     // Initialize Planes
@@ -19,6 +15,7 @@ public class DataBase {
     public static ArrayList<Flight> flight_list = new ArrayList<Flight>();
     public static ArrayList<Order> order_list = new ArrayList<Order>();
 
+    //Method
 
 
 }
