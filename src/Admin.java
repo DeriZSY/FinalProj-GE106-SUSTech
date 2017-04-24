@@ -12,33 +12,32 @@ public class Admin {
         adminUserName = usrName;
         adminPassWord = psWord;
     }
-       enum adminStatus {
-        LGOIN, UNLOG
-    }
+       enum adminStatus {LGOIN, UNLOG}
+       adminStatus adminstatus;
 
-    private adminStatus admstatus = adminStatus.UNLOG ;
+    public adminStatus admstatus = adminStatus.UNLOG ;
 //    public static int xx1= 2;
 
 
     //adminLogin
-    public void adminLogin() {
-        Scanner input = new Scanner(System.in);
-        while (true) {
-            //input username
-            System.out.printf("Please input your user name:\nuserName: ");
-            String usrName = input.nextLine();
-            //input password
-            System.out.printf("Please input your password:\npassword: ");
-            String psWord = input.nextLine();
-            if (adminUserName.compareTo(usrName) == 0 || adminPassWord.compareTo(psWord) == 0) {
-                admstatus = adminStatus.LGOIN;
-                System.out.printf("Login Success");
-                break;
-            } else {
-                System.out.printf("Login Failed, Please try again!");
-            }
-        }
-    }
+//    public void adminLogin() {
+//        Scanner input = new Scanner(System.in);
+//        while (true) {
+//            //input username
+//            System.out.printf("Please input your user name:\nuserName: ");
+//            String usrName = input.nextLine();
+//            //input password
+//            System.out.printf("Please input your password:\npassword: ");
+//            String psWord = input.nextLine();
+//            if (adminUserName.compareTo(usrName) == 0 || adminPassWord.compareTo(psWord) == 0) {
+//                admstatus = adminStatus.LGOIN;
+//                System.out.printf("Login Success");
+//                break;
+//            } else {
+//                System.out.printf("Login Failed, Please try again!");
+//            }
+//        }
+//    }
 
     //Judge if it's Log in
     public boolean is_log_in(){
@@ -107,7 +106,7 @@ public class Admin {
             }
         }else{
                 System.out.printf("You have not log in, please log in first.");
-                adminLogin();
+                DataBase.adminLogin();
             }
 
         }
@@ -199,7 +198,7 @@ public class Admin {
             DataBase.flight_list.add(new_flight);
         } else {
             System.out.printf("Please Log in First!");
-            adminLogin();
+            DataBase.adminLogin();
         }
     }//create Flight end
 
@@ -240,11 +239,17 @@ public class Admin {
             }// orperation end
         }else{
             System.out.printf("You have not log in, please log in first.");
-            adminLogin();
+            DataBase.adminLogin();
         }
     }// delete Flight End
 
-
+    public void create_newAdmin(){
+        Scanner input = new Scanner(System.in);
+        System.out.printf("Please the username and password for a new Administer, split each part of information with \";\"");
+        String origin_inform = input.nextLine();
+        String []inform_list = origin_inform.split(";");
+        Admin new_admin = new Admin(inform_list[0],inform_list[1]);
+    }
 }
 
 

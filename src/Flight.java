@@ -98,36 +98,7 @@ public class Flight {
             System.out.printf("The flight has been deleted");
     }
 
-    //for admin to create the Flight
-//    public static void createFlight(String fliID, Date dptTime, Date arrivTime, String stCity,
-//                                    String stpCity, String arrivCity, String alCompany, String plType) {
-//        if (Admin.admstatus == Admin.adminStatus.LGOIN) {
-//            /**************** Undone ***************/
-//            Flight(String fliID, Date dptTime, Date arrivTime,
-//                    String stCity,String arrivCity, String alCompany, String plType);
-//
-//
-//        } else {
-//            System.out.printf("You have not log in, please log in first.");
-//            Admin.adminLogin();
-//        }
-//    }
 
-    //for admin to create the Flight
-//    public void deleteFlight(){
-//        if(/**************************************/){
-//            Scanner input = new Scanner(System.in);
-//            System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)");
-//            String choice = input.nextLine();
-//            if(choice.compareTo("Y")==0)
-//                flightEx = flightExistting.DELETED;
-//            else
-//                System.out.printf("Deleting canceled.");
-//        }else{
-//            System.out.printf("You have not log in, please log in first.");
-//            adminLogin();
-//        }
-//    }
 
     public void dis_full_inform(){
         System.out.printf("The list of passengers:");
