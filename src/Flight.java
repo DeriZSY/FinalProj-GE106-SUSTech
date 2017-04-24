@@ -13,8 +13,8 @@ public class Flight {
     public String airlineCompany;
     public String planeType;
     //enum
-    enum flightStatusENU{UNPUBLISHED, AVAILABLE, FULL, TERMINATE};
-    enum flightExistting{EXIST, DELETED}
+    public enum flightStatusENU{UNPUBLISHED, AVAILABLE, FULL, TERMINATE};
+    public enum flightExistting{EXIST, DELETED}
     flightStatusENU flightStatus = flightStatusENU.UNPUBLISHED;
     flightExistting flightEx = flightExistting.DELETED;
     //ArrayList for information of the plane
