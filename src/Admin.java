@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Admin {
     //Variable for Admin
-    public static  String adminUserName;
-    public static  String adminPassWord;
+    public   String adminUserName;
+    public   String adminPassWord;
 //    //Constructor
     public Admin(String usrName, String psWord) {
         adminUserName = usrName;
@@ -94,9 +94,9 @@ public class Admin {
                         } else {
                             continue;
                         }
-                    }break;
+                    }break;//case 1 break;
                 case 2:
-                    break;
+                    break;//case 2 break;
                 case 3:
                     System.out.printf("What's your choice for departure city\n City name:");
                     String dpCity = input.nextLine();

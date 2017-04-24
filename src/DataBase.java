@@ -17,12 +17,12 @@ public class DataBase {
     public static ArrayList<Admin> admin_list = new ArrayList<Admin>();
     public static ArrayList<Passenger> passengers_lilst = new ArrayList<Passenger>();
 
-
 /************  Administer 登陆 *************/
     //Method
     public static void adminLogin() {
         Scanner input = new Scanner(System.in);
-        while (true) {
+        boolean  is_ture = true;
+        while (is_ture) {
             //input username
             System.out.printf("Please input your user name:\nuserName: ");
             String usrName = input.nextLine();
@@ -32,10 +32,13 @@ public class DataBase {
             for (Admin everyAdmin : admin_list) {
                 if (everyAdmin.adminUserName.compareTo(usrName) == 0 || everyAdmin.adminPassWord.compareTo(psWord) == 0) {
                     everyAdmin.admstatus = Admin.adminStatus.LGOIN;
-                    System.out.printf("Login Success");
+                    System.out.printf("Login Success! ");
+                    System.out.printf("Welcome back to the system, %s!", everyAdmin.adminUserName);
+                    is_ture = false;
                     break;
                 } else {
                     System.out.printf("Login Failed, Please try again!");
+
                 }
             }
         }
@@ -43,7 +46,8 @@ public class DataBase {
 
 /*************** Passenger 登陆 *****************/
     public static void passengerLogIn() {
-        while (true) {
+        boolean is_ture = true;
+        while (is_ture) {
             Scanner input = new Scanner(System.in);
             System.out.printf("Please Input your User Name: \n username:");
             String uName = input.nextLine();
@@ -53,15 +57,16 @@ public class DataBase {
                 if (uName.compareTo(everyPassenger.passengerID) == 0 || pword.compareTo(everyPassenger.passengerPassword) == 0) {
                     System.out.printf("Log In Success !");
                     everyPassenger.loginStates = Passenger.logingSatus.LGOING;
+                    is_ture = false;
                     break;
                 } else {
                     System.out.printf("Log In Error.(Input \"1\" for try again and \"2\" for go to register");
                     int choice = input.nextInt();
                     if (choice == 1)
                         continue;
-                    else
-//                        register();
+                    else{
                         System.out.printf("Now you will come to register");
+                        register();}
                 }
             }
         }
