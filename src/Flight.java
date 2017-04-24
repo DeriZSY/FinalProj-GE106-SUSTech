@@ -56,9 +56,15 @@ public class Flight {
 
 
     /********* For Other's Usage **************/
+/************************  显示乘坐次航班的所有乘客 的名字和ID ******************************/
+    public void dis_full_inform(){
+        System.out.printf("The list of passengers:");
+        System.out.printf("Name\tID\tBook Time\tOrder Status");
+        for(Passenger pasger:all_Passenger){
+            System.out.printf("%s\t%s",pasger.realName,pasger.realID);
+        }
 
-
-    //display the information of a plane;
+    }
 
 
     /*
@@ -100,13 +106,4 @@ public class Flight {
 
 
 
-    public void dis_full_inform(){
-        System.out.printf("The list of passengers:");
-        System.out.printf("Name\tID\tBook Time\tOrder Status");
-        for(Passenger pasger:all_Passenger){
-            System.out.printf("%s\t%s",pasger.realName,pasger.realID);
-        }
-
-    }
 }
-

@@ -95,14 +95,14 @@ public class Passenger {
 //            }
 //        }
 
-
+/****************************** 判断是否登陆  ***********************************/
     //Judge if it's login
     public boolean is_log_in() {
         if (loginStates == logingSatus.LGOING)
             return true;
         return false;
     }
-
+/******************************  再次输入密码以确认   ***********************************/
     //Confirm passWord
     public void confirmPasword() {
         System.out.printf("Please Input your password to confirm :\n password:");
@@ -111,7 +111,7 @@ public class Passenger {
             System.out.printf("Success !");
         }
     }
-
+/******************************* 乘客功能 ： 查询航班   **********************************/
     // queryFlight
     public void queryFlight() {
         if (is_log_in()) {

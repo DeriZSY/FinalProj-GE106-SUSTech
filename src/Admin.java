@@ -17,8 +17,26 @@ public class Admin {
 
     public adminStatus admstatus = adminStatus.UNLOG ;
 //    public static int xx1= 2;
+/************************************************** 方法 **************************************************/
+    /********* 判断是否登陆 ******/
+    //Judge if it's Log in
+    public boolean is_log_in(){
+        if( admstatus == adminStatus.LGOIN)
+            return true;
+        return false;
+    }
 
 
+
+    /*************** 管理员功能 ： 创建新管理员  ************************/
+    public void create_newAdmin(){
+        Scanner input = new Scanner(System.in);
+        System.out.printf("Please the username and password for a new Administer, split each part of information with \";\"");
+        String origin_inform = input.nextLine();
+        String []inform_list = origin_inform.split(";");
+        Admin new_admin = new Admin(inform_list[0],inform_list[1]);
+    }
+/*****************************************************************/
     //adminLogin
 //    public void adminLogin() {
 //        Scanner input = new Scanner(System.in);
@@ -39,23 +57,19 @@ public class Admin {
 //        }
 //    }
 
-    //Judge if it's Log in
-    public boolean is_log_in(){
-        if( admstatus == adminStatus.LGOIN)
-            return true;
-        return false;
-    }
-
-    //Create Flight
-    public static void createFlight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
-                                        String stpCity, String arrivCity, String alCompany, String plType ){
-        Flight newFlight = new Flight(fliID, dptTime,fliDate, arrivTime, stCity, stpCity, arrivCity, alCompany, plType);
-        DataBase.flight_list.add(newFlight);
-
-    }
 
 
+//     /***************管理员功能： 创建航班  ************************/
+//    //Create Flight
+//    public static void createFlight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
+//                                        String stpCity, String arrivCity, String alCompany, String plType ){
+//        Flight newFlight = new Flight(fliID, dptTime,fliDate, arrivTime, stCity, stpCity, arrivCity, alCompany, plType);
+//        DataBase.flight_list.add(newFlight);
+//
+//    }
 
+
+     /*************** 管理员功能 ： 超级查找 ************************/
     //超级查找功能 superQuery
     public void superQuery() {
         Scanner input = new Scanner(System.in);
@@ -108,8 +122,10 @@ public class Admin {
                 System.out.printf("You have not log in, please log in first.");
                 DataBase.adminLogin();
             }
+     }
+     /*****************************************************************/
 
-        }
+
 /*** 基础查询功能, 因为此部分功能已经整合到超级查询中，故注释 ********************************/
 //public void queryFlight() {
 //    Scanner input = new Scanner(System.in);
@@ -177,7 +193,7 @@ public class Admin {
 //            Admin.adminLogin();
 //        }
 //    }
-
+ /***************管理员功能： 创建航班  ************************/
     public void createFlight() {
         if (is_log_in()) {
             Scanner input = new Scanner(System.in);
@@ -201,7 +217,12 @@ public class Admin {
             DataBase.adminLogin();
         }
     }//create Flight end
+    /*****************************************************************/
 
+
+
+
+    /**************** 管理员功能 ： 删除航班   *********************/
     public void deleteFlight() {
         if (is_log_in()) {
             while (true) {
@@ -242,14 +263,8 @@ public class Admin {
             DataBase.adminLogin();
         }
     }// delete Flight End
+    /*****************************************************************/
 
-    public void create_newAdmin(){
-        Scanner input = new Scanner(System.in);
-        System.out.printf("Please the username and password for a new Administer, split each part of information with \";\"");
-        String origin_inform = input.nextLine();
-        String []inform_list = origin_inform.split(";");
-        Admin new_admin = new Admin(inform_list[0],inform_list[1]);
-    }
 }
 
 
