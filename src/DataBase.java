@@ -25,11 +25,12 @@ public class DataBase {
         while (is_ture) {
             //input username
             System.out.printf("Please input your user name:\nuserName: ");
-            String usrName = input.nextLine();
+            String usrName = input.next();
             //input password
             System.out.printf("Please input your password:\npassword: ");
-            String psWord = input.nextLine();
+            String psWord = input.next();
             for (Admin everyAdmin : admin_list) {
+//                System.out.printf("on");
                 if (everyAdmin.adminUserName.compareTo(usrName) == 0 || everyAdmin.adminPassWord.compareTo(psWord) == 0) {
                     everyAdmin.admstatus = Admin.adminStatus.LGOIN;
                     System.out.printf("Login Success! ");
@@ -40,6 +41,7 @@ public class DataBase {
                     System.out.printf("Login Failed, Please try again!");
 
                 }
+
             }
         }
     }

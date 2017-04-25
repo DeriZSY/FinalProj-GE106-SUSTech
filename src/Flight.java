@@ -59,7 +59,7 @@ public class Flight {
 /************************  显示乘坐次航班的所有乘客 的名字和ID ******************************/
     public void dis_full_inform(){
         System.out.printf("The list of passengers:");
-        System.out.printf("Name\tID\tBook Time\tOrder Status");
+        System.out.printf("Name\t\tID\t\tBook Time\t\tOrder Status");
         for(Passenger pasger:all_Passenger){
             System.out.printf("%s\t%s",pasger.realName,pasger.realID);
         }

@@ -29,25 +29,30 @@ public class Passenger {
 
 
 /****************************** 判断是否登陆  ***********************************/
-    //Judge if it's login
-    public boolean is_log_in() {
-        if (loginStates == logingSatus.LGOING)
-            return true;
-        return false;
-    }
+//    //Judge if it's login
+//    public boolean is_log_in() {
+//        if (loginStates == logingSatus.LGOING)
+//            return true;
+//        return false;
+//    }
 /******************************  再次输入密码以确认   ***********************************/
     //Confirm passWord
-    public void confirmPasword() {
+    public static void confirmPasword() {
+
+        Scanner input = new Scanner(System.in);
         System.out.printf("Please Input your password to confirm :\n password:");
         String pWord = input.nextLine();
-        if (pWord.compareTo(passengerPassword) == 0) {
-            System.out.printf("Success !");
+        for(Passenger everypassenger : DataBase.passengers_lilst) {
+            if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
+                System.out.printf("Success !");
+            }
         }
     }
 /******************************* 乘客功能 ： 查询航班   **********************************/
     // queryFlight
-    public void queryFlight() {
-        if (is_log_in()) {
+    public static void queryFlight() {
+//        if (is_log_in()) {
+        Scanner input = new Scanner(System.in);
             System.out.printf("Do you want to check by detailed information or by flightID?" +
                     "(Input \"1\" for check by detailed information and \"2\" for check by flightID)" +"Input \"3\" to check "
                     +"the whole order list"+"\nInput:");
@@ -98,8 +103,8 @@ public class Passenger {
                         order.order_disp();
                     }
             }
-       }else
-            DataBase.passengerLogIn();
-    //end register and methods involved
+//       }else
+//            DataBase.passengerLogIn();
+//    //end register and methods involved
     }
 }
