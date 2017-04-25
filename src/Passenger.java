@@ -26,74 +26,7 @@ public class Passenger {
 		realName = name;
 		realID = ID;
 	}
-//
 
-    //register and methods in register
-//    public void register() {
-//        //input passengerID
-//        System.out.print("Enter your ID used for Log in");
-//        passengerID = input.nextLine();
-//        //input password , confirm twice
-//        System.out.print("Enter your password please");
-//        String password1 = input.nextLine();
-//        System.out.print("Enter your password again please");
-//        String password2 = input.nextLine();
-//        while (decidePassword(password1, password2) == false) {
-//            System.out.print("Different password,please try again");
-//            System.out.print("Enter your password please");
-//            password1 = input.nextLine();
-//            System.out.print("Enter your password again please");
-//            password2 = input.nextLine();
-//        }
-//        System.out.println("You have succeeded in setting your password");
-//        passengerPassword = password1;
-//        // input passenger's status
-//        System.out.println("Willing to become a VIP? (100$ per year)");
-//        System.out.println("Type 1 for yes, Type 2 for no");
-//        int decide = input.nextInt();
-//        switch (decide) {
-//            case 1:
-//                passengerStatus = passengerStat.VIP;
-//                break;
-//            case 2:
-//                passengerStatus = passengerStat.nonVIP;
-//                break;
-//
-//        }
-//        ////// ??????? VIP ?????/////
-//        /****not yet finished ****/
-//    }
-//
-//    //decidePassword is used in register for determining the 2 passwords are the same or not
-//    public boolean decidePassword(String passwordA, String passwordB) {
-//        boolean a = false;
-//        if (passwordA == passwordB) {
-//            a = true;
-//        }
-//        return a;
-//    }
-
-    //Log in
-//    public void passengerLogIn() {
-//        while (true) {
-//            System.out.printf("Please Input your User Name: \n username:");
-//            String uName = input.nextLine();
-//            System.out.printf("Pelase Input your Pass Word:\n password:");
-//            String pword = input.nextLine();
-//            if (uName.compareTo(passengerID) == 0 || pword.compareTo(passengerPassword) == 0) {
-//                System.out.printf("Log In Success !");
-//                loginStates = logingSatus.LGOING;
-//                break;
-//            } else {
-//                System.out.printf("Log In Error.(Input \"1\" for try again and \"2\" for go to register");
-//                int choice = input.nextInt();
-//                if(choice == 1)
-//                    continue;
-//                else
-//                    register();
-//                }
-//            }
-//        }
 
 /****************************** 判断是否登陆  ***********************************/
     //Judge if it's login

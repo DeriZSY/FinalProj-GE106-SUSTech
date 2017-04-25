@@ -26,12 +26,7 @@ public class Order {
     public void order_disp(){
         System.out.printf("%s",orderID);
     }
-        //Add to Array List;
-//        Main.pass_Names.add(name);
-//        Main.pass_IDs.add(IDs);
-//        Main.pass_seats.add(seat_num);
-//        Main.pass_bookTime.add(create_date);
-//        Main.pass_orderStatus.add(orderstatus);
+
     }
 
 

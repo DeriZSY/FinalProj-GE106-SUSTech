@@ -67,25 +67,6 @@ public class Flight {
     }
 
 
-    /*
-    public void dispinform() {
-        System.out.printf("Flight ID: %s\nAirline Company:%s\nDeparture Time:%s\nArrival Time:%s\nStarting City:%s\nArrival City:%s\nStop By City:%s\n Plane Type:%s\n",
-                flightID, airlineCompany, departureTime, arrivalTime, startCity, arrivalCity, stopByCity, planeType);
-        System.out.printf("The Names of passengers of the plane is :");
-//        for (String pasName : all_Passenger_Names) {
-//            System.out.println(pasName);
-//        }
-//        System.out.printf("The IDs of passengers of the plane is :");
-//
-//        for (String IDs : all_Passenger_IDs) {
-//            System.out.println(IDs);
-        System.out.printf("Name\tID\t");
-        for(int i=0; i < all_Passenger_Names.size(); i++)
-            System.out.printf("%s\t%s\n",all_Passenger_Names.get(i), all_Passenger_IDs.get(i));
-
-    }
-*/
-
     /***********  For Admin's Usage **********/
     //For administer to reset inform;
     public void set_Flight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity, String stpCity, String arrivCity, String alCompany){

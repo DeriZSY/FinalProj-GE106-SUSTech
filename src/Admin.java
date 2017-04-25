@@ -37,36 +37,7 @@ public class Admin {
         Admin new_admin = new Admin(inform_list[0],inform_list[1]);
     }
 /*****************************************************************/
-    //adminLogin
-//    public void adminLogin() {
-//        Scanner input = new Scanner(System.in);
-//        while (true) {
-//            //input username
-//            System.out.printf("Please input your user name:\nuserName: ");
-//            String usrName = input.nextLine();
-//            //input password
-//            System.out.printf("Please input your password:\npassword: ");
-//            String psWord = input.nextLine();
-//            if (adminUserName.compareTo(usrName) == 0 || adminPassWord.compareTo(psWord) == 0) {
-//                admstatus = adminStatus.LGOIN;
-//                System.out.printf("Login Success");
-//                break;
-//            } else {
-//                System.out.printf("Login Failed, Please try again!");
-//            }
-//        }
-//    }
 
-
-
-//     /***************管理员功能： 创建航班  ************************/
-//    //Create Flight
-//    public static void createFlight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
-//                                        String stpCity, String arrivCity, String alCompany, String plType ){
-//        Flight newFlight = new Flight(fliID, dptTime,fliDate, arrivTime, stCity, stpCity, arrivCity, alCompany, plType);
-//        DataBase.flight_list.add(newFlight);
-//
-//    }
 
 
      /*************** 管理员功能 ： 超级查找 ************************/
