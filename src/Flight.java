@@ -22,12 +22,12 @@ public class Flight {
 
 
 
-    public int price;
+    public String price;
     /*********** Method ***********/
 
     //Constructor
     public  Flight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
-                  String stpCity, String arrivCity, String alCompany, String plType){
+                  String stpCity, String arrivCity, String alCompany,String pri, String plType){
         flightID = fliID;
         departureTime = dptTime;
         arrivalTime = arrivTime;
@@ -37,11 +37,12 @@ public class Flight {
         arrivalCity = arrivCity;
         airlineCompany = alCompany;
         flightEx = flightExistting.EXIST;
+        price = pri;
         planeType = plType;
 
     }
     public Flight(String fliID, String dptTime,String fliDate, String arrivTime,
-                  String stCity,String arrivCity, String alCompany, String plType){
+                  String stCity,String arrivCity, String alCompany,String pri, String plType){
         flightID = fliID;
         departureTime = dptTime;
         flightDate = fliDate;
@@ -50,6 +51,7 @@ public class Flight {
         arrivalCity = arrivCity;
         airlineCompany = alCompany;
         flightEx = flightExistting.EXIST;
+        price = pri;
         planeType = plType;
     }
 

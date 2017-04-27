@@ -17,7 +17,8 @@ public class Testing {
 //        DataBase.adminLogin();
         Flight k = new Flight("11111","D","d","a","a","a","5","3","v");
         DataBase.flight_list.add(k);
-//        Admin.superQuery();
+
+         Admin.superQuery();
 //        Flight k = new Flight("11111","D","d","a","a","a","5","3","v");
 
 

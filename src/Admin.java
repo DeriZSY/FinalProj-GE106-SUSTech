@@ -62,11 +62,17 @@ public class Admin {
             case 1:
                 System.out.printf("Please Input the flightID \n Flight Id:");
                 String fID = input.nextLine();
+//                input.nextLine();
+                System.out.printf("The Flight you are checking is: %s\n",fID);
                 for (Flight everyFlight : DataBase.flight_list) {
-                    if (everyFlight.flightID == fID) {
-                        System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check");
+//                    System.out.printf("0");
+                    if (everyFlight.flightID.compareTo(fID) == 0) {
+//                        System.out.printf("1\n");
+                        System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
                         String choice = input.nextLine();
+//                        input.nextLine();
                         if (choice.compareTo("Y") == 0) {
+//                            System.out.printf("2\n");
                             everyFlight.dis_full_inform();
                         }
                     } else {
@@ -85,15 +91,31 @@ public class Admin {
                 String startDate = input.nextLine();
 
                 for (Flight everyFlight : DataBase.flight_list) {
-                    if (everyFlight.startCity == dpCity && everyFlight.arrivalCity == arvCity && everyFlight.flightDate == startDate) {
-                        System.out.printf("The flight you are looking for is" + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is" + everyFlight.flightStatus);
+                    if (everyFlight.startCity.compareTo(dpCity) == 0 && everyFlight.arrivalCity.compareTo(arvCity) == 0 && everyFlight.flightDate.compareTo(startDate) == 0) {
+                        System.out.printf("1");
+                        System.out.printf("The flight you are looking for is %s \n the price of the flight %s \n The Current State of the flight is %s", everyFlight.flightID, everyFlight.price, everyFlight.flightStatus);
+                        System.out.println();
                         System.out.printf("Input 'Y' to finish, and Input 'N' to continue your check");
                         String choice = input.nextLine();
                         if (choice.compareTo("Y") == 0) {
-                            break;
-                        }
-                    } else {
-                        continue;
+                            System.out.printf("Do you want to delete it or Change its States?(input \"D\" for deleting and \"C\"for changing)");
+                            String Choice = input.nextLine();
+                            if (Choice.compareTo("D") == 0) {
+                                System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
+                                String choicek = input.nextLine();
+                                if (choicek.compareTo("Y") == 0)
+                                    everyFlight.flightEx = Flight.flightExistting.DELETED;
+                                else
+                                    System.out.printf("Deleting canceled.");
+                            }//extended deleted end
+                            else if(Choice.compareTo("C")==0){
+                                System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
+                                String choicek = input.nextLine();
+                                System.out.printf("Changing,end");
+                            }//changing end
+                        }// extended function ended
+                        else {
+                        continue;}
                     }
                 }
                 break;
@@ -179,7 +201,7 @@ public class Admin {
 //        if (is_log_in()) {
         Scanner input = new Scanner(System.in);
             /*依次输入航班信息， 用 ； 分隔开*/
-        String[] inform_list = new String[9];
+        String[] inform_list = new String[10];
         System.out.printf("Please Input \nflightID\n");
         inform_list[0] = input.nextLine();
         System.out.printf("departure Time(e.g. 18:00)\n");
@@ -196,10 +218,12 @@ public class Admin {
         inform_list[6] = input.nextLine();
         System.out.printf("airline company,\n ");
         inform_list[7] = input.nextLine();
-        System.out.printf("plane type\n");
+        System.out.printf("Ticket price:");
         inform_list[8] = input.nextLine();
+        System.out.printf("plane type\n");
+        inform_list[9] = input.nextLine();
 //        String original_Input = input.nextLine();
-        Flight new_flight = new Flight(inform_list[0], inform_list[1], inform_list[2], inform_list[3], inform_list[4], inform_list[5], inform_list[6], inform_list[7], inform_list[8]);
+        Flight new_flight = new Flight(inform_list[0], inform_list[1], inform_list[2], inform_list[3], inform_list[4], inform_list[5], inform_list[6], inform_list[7], inform_list[8],inform_list[9]);
         DataBase.flight_list.add(new_flight);
 //        } else {
 //            System.out.printf("Please Log in First!");
@@ -215,15 +239,17 @@ public class Admin {
         while (true) {
             Scanner input = new Scanner(System.in);
             System.out.printf("The list of the planes are:\n");
-            System.out.printf("FlightID\tFlightStatus\tFlight Existence\tDeparture City\tArrival City\fFlight Date\n");
+            System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
                 /* 显示航班信息*/
             for (Flight everyflight : DataBase.flight_list) {
                 if (everyflight.flightEx == Flight.flightExistting.EXIST)
-                    System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
+                    System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
                             everyflight.startCity, everyflight.arrivalCity, everyflight.flightDate);
+
+                Graphing.sepreate__Line_sharp_50();
             }// inform displaying end
                 /*选择所要删除的航班*/
-            System.out.printf("Input the flight ID for the flight you want to delete");
+            System.out.printf("Input the flight ID for the flight you want to delete\nFlightID:");
             String deleting_ID = input.nextLine();
             for (Flight everyflight : DataBase.flight_list) {
                 if (everyflight.flightID.compareTo(deleting_ID) == 0 && everyflight.flightEx == Flight.flightExistting.EXIST) {
@@ -233,9 +259,11 @@ public class Admin {
                         everyflight.flightEx = Flight.flightExistting.DELETED;
                     else
                         System.out.printf("Deleting canceled.");
-                } else
-                    System.out.printf("The Flight you chose does not Exist");
-                System.out.printf("###############################################################################\n\n");
+                }
+//                else
+//                    System.out.printf("The Flight you chose does not Exist");
+//                Graphing.sepreate__Line_sharp_50();
+                Graphing.a_Empty_Line();
             }//deleting process end
                 /*是否继续删除作业？*/
             System.out.printf("Do you want to continue to delete flights ?(Input \"Y\" for Yes, and \"N\" for no)");
@@ -243,7 +271,8 @@ public class Admin {
             if (choice.compareTo("Y") == 0)
                 continue;
             else
-                System.out.printf("################################################################################\n\n");
+            Graphing.sepreate__Line_sharp_50();
+            Graphing.a_Empty_Line();
                 break;
 //            }// orperation end
 //        }else{
