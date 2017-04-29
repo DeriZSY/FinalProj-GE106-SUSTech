@@ -1,3 +1,4 @@
+import javax.xml.crypto.Data;
 import java.util.Scanner;
 
 public class Passenger {
@@ -54,9 +55,10 @@ public class Passenger {
 //        if (is_log_in()) {
         Scanner input = new Scanner(System.in);
             System.out.printf("Do you want to check by detailed information or by flightID?" +
-                    "(Input \"1\" for check by detailed information and \"2\" for check by flightID)" +"Input \"3\" to check "
-                    +"the whole order list"+"\nInput:");
+                    "\n(Input \"1\" for check by detailed information and \"2\" for check by flightID, Input \"3\" to check "
+                    +"the whole order list)"+"\nInput:");
             int choic = input.nextInt();
+            input.nextLine();
             switch (choic) {
                 case 1:
                     System.out.printf("What's your choice for departure city\n City name:");
@@ -81,23 +83,48 @@ public class Passenger {
                     }
                     break;
                 case 2:
-                    System.out.printf("Please Input the flightID \n Flight Id:");
+
+                    System.out.printf("Please Input the flightID\nFlight Id:");
                     String fID = input.nextLine();
+//
+                    char[] input_for_search = new char[fID.length()];
+                    for (int i = 0; i < fID.length(); i++) {
+                        input_for_search[i] = fID.charAt(i);
+                    }
+
+
                     for (Flight everyFlight : DataBase.flight_list) {
-                        if (everyFlight.flightID == fID) {
-                            System.out.printf("The flight you are looking for is" + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is" + everyFlight.flightStatus);
-                            System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check");
+                        int i = 0;
+                        int j = 0;
+                        boolean is_result = false;
+                        while (j < everyFlight.flightID.length() && i < fID.length()) {
+//                           System.out.printf("While running\n");
+                            if (input_for_search[i] == everyFlight.flightID.charAt(j)) {
+                                i++;
+//                                System.out.printf("if running\n");
+                            }
+                            j++;
+                            if (i == fID.length())
+                                is_result = true;
+                        }
+                        if (is_result) {
+                            System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is " + everyFlight.flightStatus);
+                            System.out.println();
+                            System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check\n");
                             String choice = input.nextLine();
                             if (choice.compareTo("Y") == 0) {
-                                confirmPasword();
-                                /**************** add an order **************/
-                                System.out.printf("Book Success!");
-                            }else{
+                                System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
+                                String choice2 = input.nextLine();
+                                if (choice2.compareTo("Y") == 0) {
+                                    everyFlight.dis_full_inform();
+                                }
+                            } else {
                                 continue;
                             }
                         }
-            }
-            break;
+                    }
+                    System.out.printf("Check Over, all available results have been shown");
+                    break;//case 1 break;
                 case 3:
                     for(Order order: DataBase.order_list){
                         order.order_disp();

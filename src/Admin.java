@@ -49,7 +49,7 @@ public class Admin {
 //            if (is_log_in()) {
                 /*选择查询种类： 1：通过航班ID 查询，2：通过订单ID查询 3，通过具体信息查询*/
         System.out.printf("Do you want to check flightID or OrderID or do normal query ?" +
-                "(Input \"1\" for check by flightID and \"2\" for check by OrderId " +
+                "\n(Input \"1\" for check by flightID and \"2\" for check by OrderId " +
                 "  \"3\" for normal query) " + "\nInput:");
         System.out.println();
         int factor = input.nextInt();
@@ -60,141 +60,99 @@ public class Admin {
 
         switch (factor) {
             case 1:
-                System.out.printf("Please Input the flightID \n Flight Id:");
+                System.out.printf("Please Input the flightID\nFlight Id:");
                 String fID = input.nextLine();
-//                input.nextLine();
-                System.out.printf("The Flight you are checking is: %s\n",fID);
-                for (Flight everyFlight : DataBase.flight_list) {
-//                    System.out.printf("0");
-                    if (everyFlight.flightID.compareTo(fID) == 0) {
-//                        System.out.printf("1\n");
-                        System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
-                        String choice = input.nextLine();
-//                        input.nextLine();
-                        if (choice.compareTo("Y") == 0) {
-//                            System.out.printf("2\n");
-                            everyFlight.dis_full_inform();
-                        }
-                    } else {
-                        continue;
-                    }
+//
+                char[] input_for_search = new char[fID.length()];
+                for (int i = 0; i < fID.length(); i++) {
+                    input_for_search[i] = fID.charAt(i);
                 }
-                break;//case 1 break;
-            case 2:
-                break;//case 2 break;
-            case 3:
-                System.out.printf("What's your choice for departure city\n City name:");
-                String dpCity = input.nextLine();
-                System.out.printf("What's your choice for arriving city\n City name:");
-                String arvCity = input.nextLine();
-                System.out.printf("What's your idea starting date ?(Input in the form of yyyy-MM-dd,for example: 2016-04-22)\nDate:");
-                String startDate = input.nextLine();
+
 
                 for (Flight everyFlight : DataBase.flight_list) {
-                    if (everyFlight.startCity.compareTo(dpCity) == 0 && everyFlight.arrivalCity.compareTo(arvCity) == 0 && everyFlight.flightDate.compareTo(startDate) == 0) {
-                        System.out.printf("1");
-                        System.out.printf("The flight you are looking for is %s \n the price of the flight %s \n The Current State of the flight is %s", everyFlight.flightID, everyFlight.price, everyFlight.flightStatus);
+                    int i = 0;
+                    int j = 0;
+                    boolean is_result = false;
+                    while (j < everyFlight.flightID.length() && i < fID.length()) {
+//                           System.out.printf("While running\n");
+                        if (input_for_search[i] == everyFlight.flightID.charAt(j)) {
+                            i++;
+//                                System.out.printf("if running\n");
+                        }
+                        j++;
+                        if (i == fID.length())
+                            is_result = true;
+                    }
+                    if (is_result) {
+                        System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is " + everyFlight.flightStatus);
                         System.out.println();
-                        System.out.printf("Input 'Y' to finish, and Input 'N' to continue your check");
+                        System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check\n");
                         String choice = input.nextLine();
                         if (choice.compareTo("Y") == 0) {
-                            System.out.printf("Do you want to delete it or Change its States?(input \"D\" for deleting and \"C\"for changing)");
-                            String Choice = input.nextLine();
-                            if (Choice.compareTo("D") == 0) {
-                                System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
-                                String choicek = input.nextLine();
-                                if (choicek.compareTo("Y") == 0)
-                                    everyFlight.flightEx = Flight.flightExistting.DELETED;
-                                else
-                                    System.out.printf("Deleting canceled.");
-                            }//extended deleted end
-                            else if(Choice.compareTo("C")==0){
-                                System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
-                                String choicek = input.nextLine();
-                                System.out.printf("Changing,end");
-                            }//changing end
-                        }// extended function ended
-                        else {
-                        continue;}
+                            System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
+                            String choice2 = input.nextLine();
+                            if (choice2.compareTo("Y") == 0) {
+                                everyFlight.dis_full_inform();
+                            }
+                        } else {
+                            continue;
+                        }
                     }
                 }
-                break;
+                System.out.printf("Check Over, all available results have been shown");
+                    break;//case 1 break;
+                    case 2:
+                        break;//case 2 break;
+
+                    //case 3 starts
+                    case 3:
+                        System.out.printf("What's your choice for departure city\n City name:");
+                        String dpCity = input.nextLine();
+                        System.out.printf("What's your choice for arriving city\n City name:");
+                        String arvCity = input.nextLine();
+                        System.out.printf("What's your idea starting date ?(Input in the form of yyyy-MM-dd,for example: 2016-04-22)\nDate:");
+                        String startDate = input.nextLine();
+
+                        for (Flight everyFlight : DataBase.flight_list) {
+                            if (everyFlight.startCity.compareTo(dpCity) == 0 && everyFlight.arrivalCity.compareTo(arvCity) == 0 && everyFlight.flightDate.compareTo(startDate) == 0) {
+                                System.out.printf("1");
+                                System.out.printf("The flight you are looking for is %s \n the price of the flight %s \n The Current State of the flight is %s", everyFlight.flightID, everyFlight.price, everyFlight.flightStatus);
+                                System.out.println();
+                                System.out.printf("Input 'Y' to finish, and Input 'N' to continue your check");
+                                String choice = input.nextLine();
+                                if (choice.compareTo("Y") == 0) {
+                                    System.out.printf("Do you want to delete it or Change its States?(input \"D\" for deleting and \"C\"for changing)");
+                                    String Choice = input.nextLine();
+                                    if (Choice.compareTo("D") == 0) {
+                                        System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
+                                        String choicek = input.nextLine();
+                                        if (choicek.compareTo("Y") == 0)
+                                            everyFlight.flightEx = Flight.flightExistting.DELETED;
+                                        else
+                                            System.out.printf("Deleting canceled.");
+                                    }//extended deleted end
+                                    else if (Choice.compareTo("C") == 0) {
+                                        System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
+                                        String choicek = input.nextLine();
+                                        System.out.printf("Changing,end");
+                                    }//changing end
+                                }// extended function ended
+                                else {
+                                    continue;
+                                }
+                            }
+                        }
+                        break;
+                    //case 3 breaks;
+
+                }
         }
-//        }else{
-//                System.out.printf("You have not log in, please log in first.");
-//                DataBase.adminLogin();
-//            }
-    }
+
+
+
+
     /*****************************************************************/
 
-
-/*** 基础查询功能, 因为此部分功能已经整合到超级查询中，故注释 ********************************/
-//public void queryFlight() {
-//    Scanner input = new Scanner(System.in);
-//    if (is_log_in()) {
-//            /*选择查询种类： 1：通过具体信息查询，2：通过航班ID查询*/
-//            System.out.printf("Do you want to check by detailed information or by flightID?" +
-//                    "(Input \"1\" for check by detailed information and \"2\" for check by flightID)"+"\nInput:");
-//            int choic = input.nextInt();
-//            switch (choic) {
-//                /*通过具体信息： 始发城市，到达城市，航班日期查询*/
-//                case 1:
-//                    System.out.printf("What's your choice for departure city\n City name:");
-//                    String dpCity = input.nextLine();
-//                    System.out.printf("What's your choice for arriving city\n City name:");
-//                    String arvCity = input.nextLine();
-//                    System.out.printf("What's your idea starting date ?(Input in the form of yyyy-MM-dd,for example: 2016-04-22)\n: Date:");
-//                    String startDate = input.nextLine();
-//                    for (Flight everyFlight : DataBase.flight_list) {
-//                        if (everyFlight.startCity == dpCity || everyFlight.arrivalCity == arvCity || everyFlight.flightDate == startDate) {
-//                            System.out.printf("The flight you are looking for is" + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is" + everyFlight.flightStatus);
-//                            System.out.printf("Input 'Y' to finish, and Input 'N' to continue your check");
-//                            String choice = input.nextLine();
-//                            if (choice.compareTo("Y") == 0) {
-//                                break;
-//                            }
-//                            } else {
-//                                continue;
-//                            }
-//                        }
-//                        break;
-//                /*通过航班号查询*/
-//                case 2:
-//                    System.out.printf("Please Input the flightID \n Flight Id:");
-//                    String fID = input.nextLine();
-//                    for (Flight everyFlight : DataBase.flight_list) {
-//                        if (everyFlight.flightID == fID) {
-//                            System.out.printf("The flight you are looking for is" + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is" + everyFlight.flightStatus);
-//                            System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check");
-//                            String choice = input.nextLine();
-//                            if (choice.compareTo("Y") == 0) {
-//                                break;
-//                            }
-//                        } else {
-//                            continue;
-//                        }
-//                    }
-//                    break;
-//
-//                    }//end switch
-//            }else{
-//            System.out.printf("Please Log in First!");
-//            adminLogin();
-//        }
-//       }
-//    public static void createFlight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
-//                                          String stpCity, String arrivCity, String alCompany, String plType) {
-//        if (Admin.admstatus == Admin.adminStatus.LGOIN) {
-//            /**************** Undone ***************/
-//            Flight(String fliID, Date dptTime, Date arrivTime,
-//                    String stCity,String arrivCity, String alCompany, String plType);
-//
-//
-//        } else {
-//            System.out.printf("You have not log in, please log in first.");
-//            Admin.adminLogin();
-//        }
-//    }
 
     /***************管理员功能： 创建航班  ************************/
     public static void createFlight() {
@@ -281,8 +239,9 @@ public class Admin {
 //        }
         }// delete Flight End
     }
-        /*****************************************************************/
 }
+        /*****************************************************************/
+
 
 
 
