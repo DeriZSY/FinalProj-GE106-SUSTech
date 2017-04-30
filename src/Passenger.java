@@ -10,9 +10,9 @@ public class Passenger {
     public String orderList;
 
     public enum passengerStat {VIP, nonVIP}
+    public passengerStat passengerStatus = passengerStat.nonVIP;
 
-    ;
-    passengerStat passengerStatus = passengerStat.nonVIP;
+    
     Scanner input = new Scanner(System.in);
 
     public enum logingSatus {LGOING, UNLOGIN}
@@ -23,9 +23,10 @@ public class Passenger {
     /***** methods *****/
 
     //constructor
-	public Passenger (String name, String ID){
-		realName = name;
-		realID = ID;
+	public Passenger (String realname, String realID){
+		this.realName = realname;
+		this.realID = realID;
+		
 	}
 
 

@@ -79,6 +79,10 @@ public class DataBase {
     public static void register() {
         //input passengerID
         Scanner input = new Scanner(System.in);
+        System.out.print("Enter your real name please");
+        String passenger_realName = input.nextLine();
+        System.out.print("Enter your real ID please");
+        String passenger_realID = input.nextLine();
         System.out.print("Enter your ID used for Log in");
         String passenger_ID = input.nextLine();
         //input password , confirm twice
@@ -87,7 +91,7 @@ public class DataBase {
         System.out.print("Enter your password again please");
         String password2 = input.nextLine();
         while (decidePassword(password1, password2) == false) {
-            System.out.print("Different password,please try again");
+            System.out.println("Different password,please try again");
             System.out.print("Enter your password please");
             password1 = input.nextLine();
             System.out.print("Enter your password again please");
@@ -95,8 +99,11 @@ public class DataBase {
         }
         System.out.println("You have succeeded in setting your password");
         String passenger_Password = password1;
-        // input passenger's status
-        Passenger new_passenger = new Passenger(passenger_ID,passenger_Password);
+        //create new passenger
+        Passenger new_passenger = new Passenger(passenger_realName,passenger_realID);
+        new_passenger.passengerID = passenger_ID;
+        new_passenger.passengerPassword = passenger_Password;
+     // input passenger's status
         passengers_lilst.add(new_passenger);
         System.out.println("Willing to become a VIP? (100$ per year)");
         System.out.println("Type 1 for yes, Type 2 for no");
@@ -104,20 +111,20 @@ public class DataBase {
         switch (decide) {
             case 1:
                 new_passenger.passengerStatus = Passenger.passengerStat.VIP;
+                System.out.printf("Dear %s, you have become a VIP in our company.\n",passenger_realName);
                 break;
             case 2:
                 new_passenger.passengerStatus = Passenger.passengerStat.nonVIP;
                 break;
 
         }
-        ////// ??????? VIP ?????/////
-        /****not yet finished ****/
+     
     }
 
     //decidePassword is used in register for determining the 2 passwords are the same or not
     public static boolean decidePassword(String passwordA, String passwordB) {
         boolean a = false;
-        if (passwordA == passwordB) {
+        if (passwordA .equals(passwordB) ) {
             a = true;
         }
         return a;

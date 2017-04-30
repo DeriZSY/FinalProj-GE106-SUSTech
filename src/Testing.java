@@ -8,6 +8,10 @@ public class Testing {
     public static void main(String []args){
 
         Scanner input = new Scanner(System.in);
+        
+    /******    passenger/ database test ******/
+        DataBase.register();
+        
 //        System.out.printf("username:\n ");
 //        String uName = input.nextLine();
 //        System.out.printf("password for:\n");
@@ -17,7 +21,8 @@ public class Testing {
 //
 //        Admin.create_newAdmin();
 //        DataBase.adminLogin();
-        Flight k = new Flight("11111","D","d","a","a","a","5","3","v");
+        
+   /*     Flight k = new Flight("11111","D","d","a","a","a","5","3","v");
         Flight a1 = new Flight("ZG001", "12:00", "2017-03-22", "13:22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", "Boying 777");
         Flight a2 = new Flight("ZG002", "14:00", "2017-03-23", "15:22", "Shenzhen",
@@ -27,7 +32,7 @@ public class Testing {
         DataBase.flight_list.add(k);
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
-        DataBase.flight_list.add(a3);
+        DataBase.flight_list.add(a3);*/
 //         Admin.superQuery();
 //        Flight k = new Flight("11111","D","d","a","a","a","5","3","v");
 
