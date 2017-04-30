@@ -71,25 +71,55 @@ public class Main {
                             admin_moode_on = false;
                     }//end Admin Function
                 }//end Admin Mood
-//            else if (status.compareTo("passenger") == 0) {
+           else if (status.compareTo("passenger") == 0) {
 //                //乘客模式
-//                boolean passenger_mode_on = true;
-//                while (passenger_mode_on) {
-//                    System.out.printf("Do you need to register first? (input \"Y\" for Yes and \"N\" for No)");
-//                    String choice = input.nextLine();
-//                    if (choice.compareTo("Y") == 0) {
-//                        DataBase.register();
-//                    } else {
-//                        System.out.printf("Now, you are logging in !");
-//                        DataBase.passengerLogIn();
-//                    }
+    /*         boolean passenger_mode_on = true;
+                while (passenger_mode_on) {
+                    System.out.printf("Do you need to register first? (input \"Y\" for Yes and \"N\" for No)");
+                   String choice = input.nextLine();
+                   if (choice.compareTo("Y") == 0) {
+                      DataBase.register();
+                    } else {
+                      System.out.printf("Now, you are logging in !");
+                       DataBase.passengerLogIn();
+                    }
+                   String origin_function = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
+                    String[] function_array = origin_function.split(";");
+                    System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 check out the flight's information\n#4 Log Out\n");
+                    Graphing.sepreate__Line_sharp_50();
+                    System.out.printf("Please input the number for function\n");
+                    int chocieNum = input.nextInt();
+                    System.out.println();
+                    System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
+                    System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
+                    String confirm = input.next();
 
-//                }
-//            }// end passenger mode;
-//        }//end system
+                    if (confirm.compareTo("N") == 0)
+                        continue;
+                    switch (chocieNum) {
+                        case 1:
+                           Passenger.reserveFlight();
+                            continue;
+                        case 2:
+                           Passenger.unsubscribedFlight();
+                            continue;
+                        case 3:
+                            Passenger.queryFlight();
+                            continue;
+                    }//end Switch
+                    System.out.printf("Are you sure to Log Out?");
+                    System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
+                    String confirm_out = input.nextLine();
+                    if (confirm_out.compareTo("Y") == 0)
+                    	passenger_mode_on  = false;
+                   
+
+               } */
+           }// end passenger mode;
+       }//end system
             }
         }
     }
-}
+
 
 
