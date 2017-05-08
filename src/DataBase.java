@@ -104,7 +104,6 @@ public class DataBase {
         new_passenger.passengerID = passenger_ID;
         new_passenger.passengerPassword = passenger_Password;
      // input passenger's status
-        passengers_lilst.add(new_passenger);
         System.out.println("Willing to become a VIP? (100$ per year)");
         System.out.println("Type 1 for yes, Type 2 for no");
         int decide = input.nextInt();
@@ -118,7 +117,7 @@ public class DataBase {
                 break;
 
         }
-     
+        passengers_lilst.add(new_passenger);// add the new passenger to the array list
     }
 
     //decidePassword is used in register for determining the 2 passwords are the same or not

@@ -239,9 +239,31 @@ public class Admin {
 //        }
         }// delete Flight End
     }
-}
-        /*****************************************************************/
 
+/**************** 管理员功能 ： 更新航班   *********************/
+public static void updateFlight(){
+	//input a flight 
+	Scanner input = new Scanner(System.in);
+	String validId;// 这个应该就是下面的inputStr
+	boolean is_true = true;
+	while (is_true){
+		System.out.println("Please enter the flight ID for the flight you want to update");
+	    String inputStr = input.nextLine() ;
+	for(Flight flight :DataBase.flight_list){
+		if (flight.flightID.compareTo(inputStr)==0){
+			System.out.println("Succeed in finding this flight");
+			is_true = false ;
+			break;
+		}else{
+			System.out.print("the flight is not found,please type the ID again");
+		}
+	}
+	}
+	
+     System.out.printf("1:check out the latest flight's information\t2:reset the flight status\t3:reset the plane type\t4:reset the prize ");
+     
+}
+}
 
 
 
