@@ -37,12 +37,11 @@ public class DataBase {
                     System.out.printf("Welcome back to the system, %s!", everyAdmin.adminUserName);
                     is_ture = false;
                     break;
-                } else {
-                    System.out.printf("Login Failed, Please try again!");
+                }  
+            } if(is_ture = true)
+        	{System.out.println("Login failed, pleas try again!");}
+            
 
-                }
-
-            }
         }
     }
 

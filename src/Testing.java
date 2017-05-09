@@ -10,7 +10,11 @@ public class Testing {
         Scanner input = new Scanner(System.in);
         
     /******    passenger/ database test ******/
-        DataBase.register();
+        Admin.create_newAdmin();
+        Admin.create_newAdmin();
+        Admin.create_newAdmin();
+        DataBase.adminLogin();
+       // DataBase.register();
         
 //        System.out.printf("username:\n ");
 //        String uName = input.nextLine();
