@@ -10,10 +10,21 @@ public class Testing {
         Scanner input = new Scanner(System.in);
         
     /******    passenger/ database test ******/
+      
+        
         Admin.create_newAdmin();
         Admin.create_newAdmin();
         Admin.create_newAdmin();
-        DataBase.adminLogin();
+       System.out.print(DataBase.admin_list.get(1).adminUserName);
+       
+        
+        /*for(Admin a :  DataBase.admin_list){
+        	System.out.println(a);}
+        	 Admin.create_newAdmin();
+        	 for(Admin a :  DataBase.admin_list){
+             	System.out.println(a);
+             	}
+       // DataBase.adminLogin();
        // DataBase.register();
         
 //        System.out.printf("username:\n ");
@@ -43,7 +54,7 @@ public class Testing {
 
 //        k.dis_full_inform();
 
-        Passenger.queryFlight();
+      //  Passenger.queryFlight();
 //        Admin.superQuery();
 //                    for (Flight everyFlight : DataBase.flight_list) {
 //                        if (everyFlight.flightID == fID) {

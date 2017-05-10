@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Flight {
     /************ Variables ********/
     public String flightID;
-    public String flightDate;
+	public String flightDate;
     public String departureTime;
     public String arrivalTime;
     public String startCity;
@@ -19,7 +19,8 @@ public class Flight {
     flightExistting flightEx = flightExistting.DELETED;
     //ArrayList for information of the plane
     private ArrayList<Passenger> all_Passenger = new ArrayList<Passenger>();
-
+    
+    /*************get method***************/
 
 
     public String price;

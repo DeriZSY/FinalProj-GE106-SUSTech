@@ -7,6 +7,8 @@ public class Admin {
     //Variable for Admin
     public String adminUserName;
     public String adminPassWord;
+    
+    
 
     //    //Constructor
     public Admin(String usrName, String psWord) {
@@ -245,19 +247,26 @@ public static void updateFlight(){
 	//input a flight 
 	Scanner input = new Scanner(System.in);
 	String validId="";
+	int num=0 ;//输入的这个航班在arraylist的位数，第一位num=0
 	boolean is_true = true;
 	while (is_true){
 		System.out.println("Please enter the flight ID for the flight you want to update");
 	    String inputStr = input.nextLine() ;
+	    int counter = 0 ;
 	for(Flight flight :DataBase.flight_list){
 		if (flight.flightID.compareTo(inputStr)==0){
 			System.out.printf("Succeed in finding the flight %s\n",inputStr);
 			is_true = false ;
 			validId = inputStr;
 			break;
-		}
-	}if(is_true = true)
+		}counter++;}
+	
+		if(is_true = true)
 		System.out.print("the flight is not found,please type the ID again");
+		else{
+			num = counter;
+		}
+			
 	}
 	
 	
@@ -265,24 +274,30 @@ public static void updateFlight(){
      int decide = input.nextInt();
      switch (decide){
      case 1: 
-    	 for (Flight flight :DataBase.flight_list){
- 		if (flight.flightID.compareTo(validId)==0){
- 			System.out.printf("price:%d\n",flight.price);
- 			System.out.println(flight.flightStatus);S
- 			System.out.printf("plane type:%ddepature time:%darrival time:%d", flight.planeType,flight.departureTime,flight.arrivalTime);
+    		System.out.printf("price:%d\n",DataBase.flight_list.get(num).price);
+ 			System.out.print("flight status:");
+ 			System.out.println(DataBase.flight_list.get(num).flightStatus);
+ 			System.out.printf("plane type:%d\ndepature time:%d\narrival time:%d\n", DataBase.flight_list.get(num).planeType,DataBase.flight_list.get(num).departureTime,DataBase.flight_list.get(num).arrivalTime);
  		    break;
- 		}
- 			}
-    	 break;
+ 			
      case 2:  System.out.println("1 for unpublished, 2 for avaliable,3 for full, 4 for terminate");
      int a = input.nextInt();
      switch (a){
+     case 1: DataBase.flight_list.get(num).flightStatus = Flight.flightStatusENU.UNPUBLISHED;
+    	 break;
+     case 2:DataBase.flight_list.get(num).flightStatus = Flight.flightStatusENU.AVAILABLE;
+    	 break;
+     case 3:DataBase.flight_list.get(num).flightStatus = Flight.flightStatusENU.FULL;
+     break;
+     case 4:DataBase.flight_list.get(num).flightStatus = Flight.flightStatusENU.TERMINATE;
      
      }
     	 break;
-     case 3:
+     case 3://DataBase.flight_list.get(num).planeType = plane type是类 待改
     	 break;
-     case 4:
+     case 4:System.out.println("enter the price you want to alter to");
+     String price = input.nextLine();
+     DataBase.flight_list.get(num).price = price;
     	 
      }
 }
