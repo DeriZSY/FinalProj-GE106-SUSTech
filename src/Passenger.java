@@ -1,5 +1,6 @@
 import javax.xml.crypto.Data;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Passenger {
     /****** variables ********/
@@ -7,7 +8,7 @@ public class Passenger {
     public String passengerPassword;
     public String realName;
     public String realID;//passenger's own ID.
-    public String orderList;
+    public ArrayList<Order> orderList;
 
     public enum passengerStat {VIP, nonVIP}
     public passengerStat passengerStatus = passengerStat.nonVIP;
@@ -134,5 +135,42 @@ public class Passenger {
 //       }else
 //            DataBase.passengerLogIn();
 //    //end register and methods involved
+    }
+/***********************************预定航班功能************************************/
+   public void reserveFlight(){
+	   Scanner input = new Scanner (System.in);
+	   int num=0;//用于调用user输入ID对应的航班
+    	// 查询各个flight的信息  显示除开unpublished的所有信息
+    	System.out.println("The flight information:");
+    	 for (Flight flight : DataBase.flight_list) {
+    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED){
+    			 System.out.printf("the flight ID:%d\nthe flight status:", flight.flightID);
+    			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
+    			 System.out.printf("start city:%d  stopbycity:%d  arrival city:%d\n", flight.startCity,flight.stopByCity,flight.arrivalCity);
+    			 System.out.printf("departure time:%d  arrival time:%d\n", flight.departureTime,flight.arrivalTime);
+    			 System.out.printf("original price:%d  (VIP will enjoy a 10% off)\n",flight.price);
+    			 System.out.printf("airline company:%d\n",flight.airlineCompany );
+    		 }
+             }
+  //预定航班
+    	 System.out.println("please enter the flight ID that you want to reserve.You can only reserve the available ones");
+    	String ID = input.nextLine();
+    	for (Flight flight : DataBase.flight_list){
+    		if (flight.flightID.compareTo(ID)==0){
+    			break;
+    		}
+    		num++;
+    	}// 用户选择的是num号飞机
+    	System.out.printf("Which seat do you want to take?\n"
+    			+ " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num).plane.seatCapacity);
+    	int seatNum = input.nextInt();
+    	System.out.println("Do you have any special demand? If any,please enter it.");
+    	String demand = input.nextLine();
+    	System.out.printf("You have successfully reserved the flight %s"
+    			,DataBase.flight_list.get(num).flightID);
+    	Order order = new Order (realName,passengerID,seatNum,ID,"做pre的那一天的日期",demand);
+    	order.orderstatus = Order.orderstates.PAID;
+    	DataBase.order_list.add(order);
+    
     }
 }

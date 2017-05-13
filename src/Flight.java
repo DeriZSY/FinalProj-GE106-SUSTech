@@ -11,7 +11,7 @@ public class Flight {
     public String stopByCity;
     public String arrivalCity;
     public String airlineCompany;
-    public String planeType;
+    public Plane plane;//  不区分plane 与planetype,将Plane的对象的名字作为planetype
     //enum
     public enum flightStatusENU{UNPUBLISHED, AVAILABLE, FULL, TERMINATE};
     public enum flightExistting{EXIST, DELETED}
@@ -28,7 +28,7 @@ public class Flight {
 
     //Constructor
     public  Flight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
-                  String stpCity, String arrivCity, String alCompany,String pri, String plType){
+                  String stpCity, String arrivCity, String alCompany,String pri, Plane plType){
         flightID = fliID;
         departureTime = dptTime;
         arrivalTime = arrivTime;
@@ -39,11 +39,11 @@ public class Flight {
         airlineCompany = alCompany;
         flightEx = flightExistting.EXIST;
         price = pri;
-        planeType = plType;
+        plane = plType;
 
     }
     public Flight(String fliID, String dptTime,String fliDate, String arrivTime,
-                  String stCity,String arrivCity, String alCompany,String pri, String plType){
+                  String stCity,String arrivCity, String alCompany,String pri, Plane plType){
         flightID = fliID;
         departureTime = dptTime;
         flightDate = fliDate;
@@ -53,7 +53,7 @@ public class Flight {
         airlineCompany = alCompany;
         flightEx = flightExistting.EXIST;
         price = pri;
-        planeType = plType;
+        plane = plType;
     }
 
 

@@ -161,7 +161,7 @@ public class Admin {
 //        if (is_log_in()) {
         Scanner input = new Scanner(System.in);
             /*依次输入航班信息， 用 ； 分隔开*/
-        String[] inform_list = new String[10];
+        String[] inform_list = new String[9];
         System.out.printf("Please Input \nflightID\n");
         inform_list[0] = input.nextLine();
         System.out.printf("departure Time(e.g. 18:00)\n");
@@ -180,10 +180,17 @@ public class Admin {
         inform_list[7] = input.nextLine();
         System.out.printf("Ticket price:");
         inform_list[8] = input.nextLine();
-        System.out.printf("plane type\n");
-        inform_list[9] = input.nextLine();
+        System.out.printf("plane type： 1.Airbus251  2.Mig_MniJet");
+//      为了方便起见，在DataBase中就new了两个plane，演示的时候用战斗机，选2.如果仍想输入名称的话，
+//        可以将plane放在arraylist里面通过对比字符串与计数调出所要的plane.
+        int decide = input.nextInt();
+        Plane plane0 =DataBase.Mig_MniJet;
+        switch(decide){
+        case 1: plane0 = DataBase.Airbus251;break;
+        case 2 :plane0 = DataBase.Mig_MniJet;
+        }
 //        String original_Input = input.nextLine();
-        Flight new_flight = new Flight(inform_list[0], inform_list[1], inform_list[2], inform_list[3], inform_list[4], inform_list[5], inform_list[6], inform_list[7], inform_list[8],inform_list[9]);
+        Flight new_flight = new Flight(inform_list[0], inform_list[1], inform_list[2], inform_list[3], inform_list[4], inform_list[5], inform_list[6], inform_list[7], inform_list[8],plane0);
         DataBase.flight_list.add(new_flight);
 //        } else {
 //            System.out.printf("Please Log in First!");
@@ -277,7 +284,7 @@ public static void updateFlight(){
     		System.out.printf("price:%d\n",DataBase.flight_list.get(num).price);
  			System.out.print("flight status:");
  			System.out.println(DataBase.flight_list.get(num).flightStatus);
- 			System.out.printf("plane type:%d\ndepature time:%d\narrival time:%d\n", DataBase.flight_list.get(num).planeType,DataBase.flight_list.get(num).departureTime,DataBase.flight_list.get(num).arrivalTime);
+ 			System.out.printf("plane type:%d\ndepature time:%d\narrival time:%d\n", DataBase.flight_list.get(num).plane,DataBase.flight_list.get(num).departureTime,DataBase.flight_list.get(num).arrivalTime);
  		    break;
  			
      case 2:  System.out.println("1 for unpublished, 2 for avaliable,3 for full, 4 for terminate");
