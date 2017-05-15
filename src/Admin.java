@@ -30,16 +30,14 @@ public class Admin {
         while (is_true) {
             System.out.printf("Please input the username for a new Administer (Input 'Q' to leave):\nUsername:>>");
             uName = input.nextLine();
-            input.nextLine();
-//            System.out.printf("Check3\n");
             for (Admin everyAdmin : DataBase.admin_list) {
-//                System.out.printf("Check3\n");
-                if (uName.compareTo(everyAdmin.adminUserName) == 0) {
+//                System.out.printf("on");
+                if (everyAdmin.adminUserName.compareTo(uName) == 0 ) {
 //                    System.out.printf("Check1\n");
                     System.out.printf("The name is already taken; please try a new one !\n");
                     input.nextLine();
                     break;
-                } else if (uName.compareTo(everyAdmin.adminUserName) != 0) {
+                } else if (everyAdmin.adminUserName.compareTo(uName) != 0) {
 //                    System.out.printf("Check2\n");
                     is_true = false;
                 }
@@ -73,10 +71,10 @@ public class Admin {
         while (is_ture) {
             //input username
             System.out.printf("Please input your user name:\nuserName: ");
-            String usrName = input.next();
+            String usrName = input.nextLine();
             //input password
             System.out.printf("Please input your password:\npassword: ");
-            String psWord = input.next();
+            String psWord = input.nextLine();
             // check if account exist
             for (Admin everyAdmin : DataBase.admin_list) {
                 if (everyAdmin.adminUserName.compareTo(usrName) == 0) { //check if username exist
@@ -84,7 +82,6 @@ public class Admin {
                         System.out.printf("Login Success! ");
                         boolean new_is_true = true;
                         String uName = "defaultName";
-
                         //输入用户名
                         while (new_is_true) {
                             System.out.printf("Please input your new username (Input 'Q' to leave):\nUsername:>>");

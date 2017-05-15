@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class Main {
     /************ Variables ********/
     public static void main(String[] args) {
+        Admin d1 = new Admin("deri","zhang");
+        DataBase.admin_list.add(d1);
         Admin.create_newAdmin();
         Admin.create_newAdmin();
         Admin.create_newAdmin();
@@ -61,6 +63,7 @@ public class Main {
                                     continue;
                                 case 2:
                                     Admin.modifyPersonalInform();
+                                    continue;
                                 case 3:
                                     Admin.createFlight();
                                     continue;
