@@ -24,16 +24,37 @@ public class Admin {
     /***** 管理员功能： 创建新管理员 *****/
     public static void create_newAdmin() {
         Scanner input = new Scanner(System.in);
-        System.out.printf("Please input the username for a new Administer (Input 'Q' to leave):\nUsername:>>");
-        String uName = input.nextLine();
-        if(uName.compareTo("Q") != 0) {
-            System.out.printf("Please input the password for a new Administer:\nPassword:>>");
-            String pWord = input.nextLine();
-//        String[] inform_list = origin_inform.split(";");
-            Admin new_admin = new Admin(uName, pWord);
-            DataBase.admin_list.add(new_admin);
+        boolean is_true = true;
+        String uName = "defaultName";
+        while(is_true) {
+            System.out.printf("Please input the username for a new Administer (Input 'Q' to leave):\nUsername:>>");
+            uName = input.nextLine();
+            for (Admin everyAdmin : DataBase.admin_list) {
+                if (uName.compareTo(everyAdmin.adminUserName) == 0) {
+                    System.out.printf("The name is already taken; please try a new one !\n");
+                    break;
+                }
+            }
+            is_true = false;
         }
-    }
+        is_true = true;
+            if (uName.compareTo("Q") != 0) {
+                while (is_true) {
+                    System.out.printf("Please input the password for a new Administer:\nPassword:>>");
+                    String pWord = input.nextLine();
+//        String[] inform_list = origin_inform.split(";");
+                    System.out.printf("Please input again to confirm:\nPassword:>>");
+                    String pWord2 = input.nextLine();
+                    if(pWord.compareTo(pWord2) == 0) {
+                        Admin new_admin = new Admin(uName, pWord);
+                        DataBase.admin_list.add(new_admin);
+                        is_true = false;
+                    }else{
+                        System.out.printf("The two password you input isn't the same, please try again");
+                    }
+                }
+            }
+        }
 
     /***** 管理员功能：超级查找 *****/
     public static void superQuery() {
