@@ -30,13 +30,21 @@ public class Admin {
         while (is_true) {
             System.out.printf("Please input the username for a new Administer (Input 'Q' to leave):\nUsername:>>");
             uName = input.nextLine();
+            input.nextLine();
+//            System.out.printf("Check3\n");
             for (Admin everyAdmin : DataBase.admin_list) {
+//                System.out.printf("Check3\n");
                 if (uName.compareTo(everyAdmin.adminUserName) == 0) {
+//                    System.out.printf("Check1\n");
                     System.out.printf("The name is already taken; please try a new one !\n");
+                    input.nextLine();
                     break;
+                } else if (uName.compareTo(everyAdmin.adminUserName) != 0) {
+//                    System.out.printf("Check2\n");
+                    is_true = false;
                 }
+//                System.out.printf("Check\n");
             }
-            is_true = false;
         }//while end
         is_true = true;
         if (uName.compareTo("Q") != 0) {
@@ -53,6 +61,75 @@ public class Admin {
                 } else {
                     System.out.printf("The two password you input isn't the same, please try again");
                 }
+            }
+        }
+    }
+
+    /***** 管理员功能： 更新个人信息*****/
+    public static void modifyPersonalInform() {
+        // 登录
+        Scanner input = new Scanner(System.in);
+        boolean is_ture = true;
+        while (is_ture) {
+            //input username
+            System.out.printf("Please input your user name:\nuserName: ");
+            String usrName = input.next();
+            //input password
+            System.out.printf("Please input your password:\npassword: ");
+            String psWord = input.next();
+            // check if account exist
+            for (Admin everyAdmin : DataBase.admin_list) {
+                if (everyAdmin.adminUserName.compareTo(usrName) == 0) { //check if username exist
+                    if (everyAdmin.adminPassWord.compareTo(psWord) == 0) { // check if it's the corresponding password
+                        System.out.printf("Login Success! ");
+                        boolean new_is_true = true;
+                        String uName = "defaultName";
+
+                        //输入用户名
+                        while (new_is_true) {
+                            System.out.printf("Please input your new username (Input 'Q' to leave):\nUsername:>>");
+                            uName = input.nextLine();
+                            //检查是否存在重名
+                            for (Admin newEveryAdmin : DataBase.admin_list) {
+                                if (uName.compareTo(newEveryAdmin.adminUserName) == 0) {
+                                    System.out.printf("The name is already taken; please try a new one !\n");
+                                    break;
+                                }//如果存在重名，继续输入，如果不存在重名
+                                new_is_true = false;//检查结束
+                            }
+                            //输入用户名结束
+                        }
+
+
+                        //输入密码并验证
+                        if (uName.compareTo("Q") != 0) {
+                            new_is_true = true;
+                            //输入密码
+                            while (new_is_true) {
+                                System.out.printf("Please input your new password:\nPassword:>>");
+                                String pWord = input.nextLine();
+                                System.out.printf("Please input again to confirm:\nPassword:>>");
+                                String pWord2 = input.nextLine();
+                                if (pWord.compareTo(pWord2) == 0) {//如果验证成功
+                                    everyAdmin.adminUserName = uName;
+                                    everyAdmin.adminPassWord = psWord;
+                                    new_is_true = false;
+                                }
+                                //如果密码验证失败：
+                                else {
+                                    System.out.printf("The two password you input isn't the same, please try again");
+                                }
+                            }
+                        }//密码输入结束
+
+                        is_ture = false;
+                        break;
+                    }//检查密码结束
+                }//检查用户名结束
+            }//登录结束
+            //如果登录失败：
+            if (is_ture) {
+                System.out.println("Login failed, pleas try again!");
             }
         }
     }

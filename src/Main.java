@@ -8,6 +8,8 @@ public class Main {
     /************ Variables ********/
     public static void main(String[] args) {
         Admin.create_newAdmin();
+        Admin.create_newAdmin();
+        Admin.create_newAdmin();
         //Login
         // Initialize Flights
         Flight a1 = new Flight("ZG001", "12:00", "2017-03-22", "13:22", "NewYork",
@@ -38,15 +40,15 @@ public class Main {
                     boolean admin_moode_on = true;
 
                     while (admin_moode_on) {
-                        String origin_function = ";create new Administer;create a new flight;delete flight;superQuery;Renew Flight inform and display;Modify Existing Flight;Log Out;";
+                        String origin_function = ";create new Administer;Modify Information of a Existing Administer;Create a new flight;delete flight;SuperQuery;Renew Flight inform and display;Modify Existing Flight;Log Out;";
                         String[] function_array = origin_function.split(";");
-                        System.out.printf("#1 Create A New Administer\n#2 Create A New Flight\n#3 Delete A Flight\n#4 SuperQuery\n"
-                                + "#5 Renew Flight inform and display\n#6 Modify Existing Flight\n#7 Log Out");
+                        System.out.printf("#1 Create A New Administer\n#2 Modify Information of a Existing Administer\n#3 Create A New Flight\n#4 Delete A Flight\n#5 SuperQuery\n"
+                                + "#6 Renew Flight inform and display\n#7 Modify Existing Flight\n#8 Log Out");
                         Graphing.sepreate__Line_sharp_50();
                         System.out.printf("Please input the number for function\nFunction Number:>>");
                         int chocieNum = input.nextInt();
                         System.out.println();
-                        if( chocieNum < 7) {
+                        if( chocieNum < 8) {
                             System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
                             System.out.printf("Input \"Y\" for YES and \"N\" for NO \nConfirm:>>");
                             String confirm = input.next();
@@ -58,18 +60,20 @@ public class Main {
                                     Admin.create_newAdmin();
                                     continue;
                                 case 2:
+                                    Admin.modifyPersonalInform();
+                                case 3:
                                     Admin.createFlight();
                                     continue;
-                                case 3:
+                                case 4:
                                     Admin.deleteFlight();
                                     continue;
-                                case 4:
+                                case 5:
                                     Admin.superQuery();
                                     continue;
-                                case 5:
+                                case 6:
                                     Admin.updateFlight();
                                     continue;
-                                case 6:
+                                case 7:
                                     Admin.showAndReset();
                                     continue;
                             }//end Switch

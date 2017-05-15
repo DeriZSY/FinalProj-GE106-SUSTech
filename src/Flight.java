@@ -74,7 +74,7 @@ public class Flight {
 ////            System.out.printf("The flight has been deleted");
 //    }
     /***** 辅助功能： 时间处理 *****/
-    private int time_modification(String origin_time;)
+    private int time_modification(String origin_time)
     {
         int tot_time = 0;
         int tot_hour = 0;
