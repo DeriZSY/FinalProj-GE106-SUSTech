@@ -38,15 +38,15 @@ public class Main {
                     boolean admin_moode_on = true;
 
                     while (admin_moode_on) {
-                        String origin_function = ";create new Administer;create a new flight;delete flight;superQuery;Renew Flight inform and display;Log Out;";
+                        String origin_function = ";create new Administer;create a new flight;delete flight;superQuery;Renew Flight inform and display;Modify Existing Flight;Log Out;";
                         String[] function_array = origin_function.split(";");
                         System.out.printf("#1 Create A New Administer\n#2 Create A New Flight\n#3 Delete A Flight\n#4 SuperQuery\n"
-                                + "#5 Renew Flight inform and display\n#6 Log Out\n");
+                                + "#5 Renew Flight inform and display\n#6 Modify Existing Flight\n#7 Log Out");
                         Graphing.sepreate__Line_sharp_50();
                         System.out.printf("Please input the number for function\nFunction Number:>>");
                         int chocieNum = input.nextInt();
                         System.out.println();
-                        if( chocieNum < 6) {
+                        if( chocieNum < 7) {
                             System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
                             System.out.printf("Input \"Y\" for YES and \"N\" for NO \nConfirm:>>");
                             String confirm = input.next();
@@ -68,9 +68,13 @@ public class Main {
                                     continue;
                                 case 5:
                                     Admin.updateFlight();
+                                    continue;
+                                case 6:
+                                    Admin.showAndReset();
+                                    continue;
                             }//end Switch
                         }
-                        else if (chocieNum == 6) {
+                        else if (chocieNum == 7) {
                             System.out.printf("Are you sure to Log Out?");
                             System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
                             String confirm_out = input.nextLine();
