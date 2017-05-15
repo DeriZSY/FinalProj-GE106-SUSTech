@@ -37,7 +37,7 @@ public class Admin {
                 }
             }
             is_true = false;
-        }
+        }//while end
         is_true = true;
         if (uName.compareTo("Q") != 0) {
             while (is_true) {
@@ -75,6 +75,7 @@ public class Admin {
             switch (factor) {
                 //管理员查询，模式1：按照航班号码查询，结束后可查看信息，或者修改信息；支持模糊查询功能；
                 case 1:
+                    Admin.flightAutoCheck();
                     System.out.printf("Please Input the flightID\nFlight Id:");
                     String fID = input.nextLine();
 //
@@ -124,10 +125,12 @@ public class Admin {
                     System.out.printf("Check Over, all available results have been shown");
                     break;//case 1 break;
                 case 2:
+                    Admin.flightAutoCheck();
                     break;//case 2 break;
 
                 //case 3 starts
                 case 3:
+                    Admin.flightAutoCheck();
                     System.out.printf("What's your choice for departure city\n City name:");
                     String dpCity = input.nextLine();
                     System.out.printf("What's your choice for arriving city\n City name:");
@@ -242,6 +245,7 @@ public class Admin {
     public static void deleteFlight() {
 //        if (is_log_in()) {
         while (true) {
+            flightAutoCheck();
             Scanner input = new Scanner(System.in);
             System.out.printf("The list of the planes are:\n");
             System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
@@ -284,6 +288,7 @@ public class Admin {
     /***** 管理员功能： 更新航班信息 *****/
     public static void updateFlight() {
         //显示所有航班信息
+        flightAutoCheck();
         System.out.printf("The list of the planes are:\n");
         System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
                 /* 显示航班信息*/
@@ -363,6 +368,7 @@ public class Admin {
 
     /***** 管理员功能： 修改航班信息 *****/
     public static void reset_Flight(Flight selectedFlight) {
+        flightAutoCheck();
         Scanner input = new Scanner(System.in);
         while (true) {
             System.out.printf("Choose the inform you want to reset:\n");
@@ -421,48 +427,54 @@ public class Admin {
         }
     }
 
-        public static void showAndReset(){
-            while (true) {
-                    Scanner input = new Scanner(System.in);
-                    System.out.printf("The list of the planes are:\n");
-                    System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
+    public static void showAndReset() {
+        while (true) {
+            Scanner input = new Scanner(System.in);
+            System.out.printf("The list of the planes are:\n");
+            System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
                 /* 显示航班信息*/
-                    for (Flight everyflight : DataBase.flight_list) {
-                        if (everyflight.flightEx == Flight.flightExistting.EXIST)
-                            System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
-                                    everyflight.startCity, everyflight.arrivalCity, everyflight.flightDate);
+            for (Flight everyflight : DataBase.flight_list) {
+                if (everyflight.flightEx == Flight.flightExistting.EXIST)
+                    System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
+                            everyflight.startCity, everyflight.arrivalCity, everyflight.flightDate);
 
-                        Graphing.sepreate__Line_sharp_50();
-                        System.out.println();
-                    }// inform displaying end
+                Graphing.sepreate__Line_sharp_50();
+                System.out.println();
+            }// inform displaying end
                 /*选择所要修改的航班*/
-                    System.out.printf("Input the flight ID for the flight you want to modify (Input 'Q' to quit)\nFlightID:");
-                    String deleting_ID = input.nextLine();
-                    if (deleting_ID.compareTo("Q") != 0) {
-                        for (Flight everyflight : DataBase.flight_list) {
-                            if (everyflight.flightID.compareTo(deleting_ID) == 0 && everyflight.flightEx == Flight.flightExistting.EXIST) {
-                                System.out.printf("Are you sure to modify this flight?(input \"Y\" for yes and \"N\" for No)\n");
-                                String choice = input.nextLine();
-                                if (choice.compareTo("Y") == 0)
-                                    reset_Flight(everyflight);
-                                else
-                                    System.out.printf("Modify Canceled.");
-                            }
-                        }
-                    }//modify process end
+            System.out.printf("Input the flight ID for the flight you want to modify (Input 'Q' to quit)\nFlightID:");
+            String deleting_ID = input.nextLine();
+            if (deleting_ID.compareTo("Q") != 0) {
+                for (Flight everyflight : DataBase.flight_list) {
+                    if (everyflight.flightID.compareTo(deleting_ID) == 0 && everyflight.flightEx == Flight.flightExistting.EXIST) {
+                        System.out.printf("Are you sure to modify this flight?(input \"Y\" for yes and \"N\" for No)\n");
+                        String choice = input.nextLine();
+                        if (choice.compareTo("Y") == 0)
+                            reset_Flight(everyflight);
+                        else
+                            System.out.printf("Modify Canceled.");
+                    }
+                }
+            }//modify process end
                 /*是否继续修改作业？*/
-                    System.out.printf("Do you want to continue to delete flights ?(Input \"Y\" for Yes, and \"N\" for no)\n");
-                    String choice = input.nextLine();
-                    if (choice.compareTo("Y") == 0)
-                        continue;
-                    else
-                        Graphing.sepreate__Line_sharp_50();
-                    Graphing.a_Empty_Line();
-                    break;
-                }// Modify Flight End
-            }
+            System.out.printf("Do you want to continue to delete flights ?(Input \"Y\" for Yes, and \"N\" for no)\n");
+            String choice = input.nextLine();
+            if (choice.compareTo("Y") == 0)
+                continue;
+            else
+                Graphing.sepreate__Line_sharp_50();
+            Graphing.a_Empty_Line();
+            break;
+        }// Modify Flight End
     }
 
+
+    public static void flightAutoCheck() {
+        for(Flight everyFlight : DataBase.flight_list){
+            everyFlight.check_and_change();
+        }
+    }
+}
 
 
 

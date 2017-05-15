@@ -14,6 +14,7 @@ public class Flight {
     public Plane plane;//  不区分plane 与planetype,将Plane的对象的名字作为planetype
     public String price;
     public int seatCap;
+    public int remainingSeat;
     //enum
     public enum flightStatusENU{UNPUBLISHED, AVAILABLE, FULL, TERMINATE};
     public enum flightExistting{EXIST, DELETED}
@@ -38,6 +39,7 @@ public class Flight {
         price = pri;
         plane = plType;
         seatCap = plType.seatCapacity;
+        remainingSeat = seatCap;
 
     }
 //    public Flight(String fliID, String dptTime,String fliDate, String arrivTime,
@@ -71,7 +73,49 @@ public class Flight {
 ////        else
 ////            System.out.printf("The flight has been deleted");
 //    }
+    /***** 辅助功能： 时间处理 *****/
+    private int time_modification(String origin_time;)
+    {
+        int tot_time = 0;
+        int tot_hour = 0;
+        int tot_minute = 0;
+        for(int i = 0; i< origin_time.length(); i++){
+            char k = origin_time.charAt(i);
+            String k2 = String.valueOf(k);
+            if(k2.compareTo("0") != 0 ){
+                if(i != 2){
+                    int num = Integer.parseInt(k2);
+                    switch (i) {
+                        case 0 :
+                            tot_hour += num * 10;
+                            break;
+                        case 1:
+                            tot_hour += num;
+                            break;
+                        case 3:
+                            tot_minute += num * 10;
+                            break;
+                        case 4:
+                            tot_minute += num;
+                            break;
+                    }
+                }
+            }
+        }
+        tot_time = tot_hour * 60 + tot_minute;
+        return tot_time;
+    }
 
 
+    public void check_and_change(){
+        int termin_time = time_modification(departureTime) - 120;
+        int present_time  = time_modification(DataBase.present_time);
+        if(termin_time >= present_time && flightDate.compareTo(DataBase.present_date) == 0){
+            flightStatus = flightStatusENU.TERMINATE;
+        }
+        if(remainingSeat == 0){
+            flightStatus = flightStatusENU.FULL;
+        }
+    }
 
 }
