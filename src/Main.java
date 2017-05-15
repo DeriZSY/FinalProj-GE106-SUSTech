@@ -22,8 +22,10 @@ public class Main {
         Scanner input = new Scanner(System.in);
         boolean system_On = true;
         while (true) {
+            //系统开启
             while (system_On) {
-                System.out.printf("                       Welcome to the Ticket System\n");
+                System.out.printf("Welcome to the Ticket System\n");
+                //选择登录模式（乘客／管理员）
                 System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n");
                 String status = input.nextLine();
                 if (status.compareTo("admin") == 0) {
@@ -38,37 +40,43 @@ public class Main {
                     while (admin_moode_on) {
                         String origin_function = ";create new Administer;create a new flight;delete flight;superQuery;Renew Flight inform and display;Log Out;";
                         String[] function_array = origin_function.split(";");
-                        System.out.printf("#1 create new Administer\n#2 create a new flight\n#3 delete flight\n#4 superQuery\n"
+                        System.out.printf("#1 Create A New Administer\n#2 Create A New Flight\n#3 Delete A Flight\n#4 SuperQuery\n"
                                 + "#5 Renew Flight inform and display\n#6 Log Out\n");
                         Graphing.sepreate__Line_sharp_50();
-                        System.out.printf("Please input the number for function\n");
+                        System.out.printf("Please input the number for function\nFunction Number:>>");
                         int chocieNum = input.nextInt();
                         System.out.println();
-                        System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
-                        System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
-                        String confirm = input.next();
+                        if( chocieNum < 6) {
+                            System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
+                            System.out.printf("Input \"Y\" for YES and \"N\" for NO \nConfirm:>>");
+                            String confirm = input.next();
 
-                        if (confirm.compareTo("N") == 0)
-                            continue;
-                        switch (chocieNum) {
-                            case 1:
-                                Admin.create_newAdmin();
+                            if (confirm.compareTo("N") == 0)
                                 continue;
-                            case 2:
-                                Admin.createFlight();
-                                continue;
-                            case 3:
-                                Admin.deleteFlight();
-                                continue;
-                            case 4:
-                                Admin.superQuery();
-                                continue;
-                        }//end Switch
-                        System.out.printf("Are you sure to Log Out?");
-                        System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
-                        String confirm_out = input.nextLine();
-                        if (confirm_out.compareTo("Y") == 0)
-                            admin_moode_on = false;
+                            switch (chocieNum) {
+                                case 1:
+                                    Admin.create_newAdmin();
+                                    continue;
+                                case 2:
+                                    Admin.createFlight();
+                                    continue;
+                                case 3:
+                                    Admin.deleteFlight();
+                                    continue;
+                                case 4:
+                                    Admin.superQuery();
+                                    continue;
+                                case 5:
+                                    Admin.updateFlight();
+                            }//end Switch
+                        }
+                        else if (chocieNum == 6) {
+                            System.out.printf("Are you sure to Log Out?");
+                            System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
+                            String confirm_out = input.nextLine();
+                            if (confirm_out.compareTo("Y") == 0)
+                                admin_moode_on = false;
+                        }
                     }//end Admin Function
                 }//end Admin Mood
            else if (status.compareTo("passenger") == 0) {

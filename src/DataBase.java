@@ -6,8 +6,6 @@ import java.util.Scanner;
  */
 public class DataBase {
 
-    //Method
-
 /************* 初始化数据   ******************/
     // Initialize Planes
     public static Plane Airbus251 = new Plane(100, 20, 80);
@@ -31,17 +29,19 @@ public class DataBase {
             String psWord = input.next();
             for (Admin everyAdmin : admin_list) {
 //                System.out.printf("on");
-                if (everyAdmin.adminUserName.compareTo(usrName) == 0 || everyAdmin.adminPassWord.compareTo(psWord) == 0) {
-                    everyAdmin.admstatus = Admin.adminStatus.LGOIN;
-                    System.out.printf("Login Success! ");
-                    System.out.printf("Welcome back to the system, %s!", everyAdmin.adminUserName);
-                    is_ture = false;
-                    break;
+                if (everyAdmin.adminUserName.compareTo(usrName) == 0 ) {
+//                    everyAdmin.admstatus = Admin.adminStatus.LGOIN;
+                    if(everyAdmin.adminPassWord.compareTo(psWord) == 0) {
+                        System.out.printf("Login Success! ");
+                        System.out.printf("Welcome back to the system, %s!", everyAdmin.adminUserName);
+                        is_ture = false;
+                        break;
+                    }
                 }  
-            } if(is_ture = true)
-        	{System.out.println("Login failed, pleas try again!");}
-            
-
+            }
+            if(is_ture) {
+                System.out.println("Login failed, pleas try again!");
+            }
         }
     }
 

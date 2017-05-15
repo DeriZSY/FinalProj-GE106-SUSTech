@@ -19,14 +19,9 @@ public class Flight {
     flightExistting flightEx = flightExistting.DELETED;
     //ArrayList for information of the plane
     private ArrayList<Passenger> all_Passenger = new ArrayList<Passenger>();
-    
-    /*************get method***************/
-
-
     public String price;
-    /*********** Method ***********/
 
-    //Constructor
+    /***** Constructor *****/
     public  Flight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
                   String stpCity, String arrivCity, String alCompany,String pri, Plane plType){
         flightID = fliID;
@@ -56,10 +51,7 @@ public class Flight {
         plane = plType;
     }
 
-
-
-    /********* For Other's Usage **************/
-/************************  显示乘坐次航班的所有乘客 的名字和ID ******************************/
+    /***** 显示航班信息 *****/
     public void dis_full_inform(){
         System.out.printf("The list of passengers:");
         System.out.printf("Name\t\tID\t\tBook Time\t\tOrder Status");
@@ -69,9 +61,7 @@ public class Flight {
 
     }
 
-
-    /***********  For Admin's Usage **********/
-    //For administer to reset inform;
+    /***** 修改航班信息 *****/
     public void set_Flight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity, String stpCity, String arrivCity, String alCompany){
         if(flightEx == flightExistting.EXIST) {
             flightID = fliID;

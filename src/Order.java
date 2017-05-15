@@ -18,7 +18,7 @@ public class Order {
         pass_name     =     name;
         pass_IDs      =     IDs;
         seatNum       =     seat_num;
-        flightID     =     flight_num;
+        flightID      =     flight_num;
         createDate    =     create_date;
         specialDemand =     special_demand;
         orderstatus   = orderstates.UNPAID;}

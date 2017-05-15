@@ -21,9 +21,7 @@ public class Passenger {
     ;
     logingSatus loginStates = logingSatus.UNLOGIN;
 
-    /***** methods *****/
-
-    //constructor
+    /***** Constructor *****/
 	public Passenger (String realname, String realID){
 		this.realName = realname;
 		this.realID = realID;
@@ -31,15 +29,7 @@ public class Passenger {
 	}
 
 
-/****************************** 判断是否登陆  ***********************************/
-//    //Judge if it's login
-//    public boolean is_log_in() {
-//        if (loginStates == logingSatus.LGOING)
-//            return true;
-//        return false;
-//    }
-/******************************  再次输入密码以确认   ***********************************/
-    //Confirm passWord
+    /***** 辅助功能： 确认密码 *****/
     public static void confirmPasword() {
 
         Scanner input = new Scanner(System.in);
@@ -51,8 +41,8 @@ public class Passenger {
             }
         }
     }
-/******************************* 乘客功能 ： 查询航班   **********************************/
-    // queryFlight
+
+    /***** 乘客功能 ： 查询航班 *****/
     public static void queryFlight() {
 //        if (is_log_in()) {
         Scanner input = new Scanner(System.in);
@@ -100,10 +90,8 @@ public class Passenger {
                         int j = 0;
                         boolean is_result = false;
                         while (j < everyFlight.flightID.length() && i < fID.length()) {
-//                           System.out.printf("While running\n");
                             if (input_for_search[i] == everyFlight.flightID.charAt(j)) {
                                 i++;
-//                                System.out.printf("if running\n");
                             }
                             j++;
                             if (i == fID.length())
@@ -136,7 +124,7 @@ public class Passenger {
 //            DataBase.passengerLogIn();
 //    //end register and methods involved
     }
-/***********************************预定航班功能************************************/
+    /***** 乘客功能： 预订航班*****/
    public void reserveFlight(){
 	   Scanner input = new Scanner (System.in);
 	   int num=0;//用于调用user输入ID对应的航班

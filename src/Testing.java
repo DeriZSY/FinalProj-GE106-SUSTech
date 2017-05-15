@@ -14,8 +14,10 @@ public class Testing {
         
         Admin.create_newAdmin();
         Admin.create_newAdmin();
-        Admin.create_newAdmin();
-       System.out.print(DataBase.admin_list.get(1).adminUserName);
+        DataBase.adminLogin();
+//        Admin.create_newAdmin();
+//        Admin.create_newAdmin();
+//       System.out.print(DataBase.admin_list.get(1).adminUserName);
        
         
         /*for(Admin a :  DataBase.admin_list){
