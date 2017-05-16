@@ -257,45 +257,55 @@ public class Admin {
         while (is_true) {
             System.out.printf("(Input 'Q' to leave at any moment)\n");
             System.out.printf("Please Input \nflightID\n");
-            inform_list[0] = input.next();
-            if (inform_list[0].compareTo("Q")==0)  
-                break;
+            inform_list[0] = input.nextLine();
+            if (inform_list[0].compareTo("Q")==0){
+                is_true = false;
+                break;}
             System.out.printf("Departure Time(e.g. 18:00)\n");
-            inform_list[2] = input.next();
+            inform_list[2] = input.nextLine();
             if (inform_list[2].compareTo("Q")==0)
-                break;
+            {   is_true = false;
+                break;}
             System.out.printf("Arrival Time(e.g.19:00)\n");
-            inform_list[1] = input.next();
+            inform_list[1] = input.nextLine();
             if (inform_list[1].compareTo("Q")==0)
-                break;
+            {   is_true = false;
+                break;}
             System.out.printf("Flight Date (e.g. 2017-03-22)\n");
-            inform_list[3] = input.next();
+            inform_list[3] = input.nextLine();
             if (inform_list[3].compareTo("Q")==0)
-                break;
+            {   is_true = false;
+                break;}
             System.out.printf("Departure City\n");
-            inform_list[4] = input.next();
+            inform_list[4] = input.nextLine();
             if (inform_list[4].compareTo("Q")==0)
-                break;
+            {   is_true = false;
+                break;}
             System.out.printf("Stop by City(input null if there isn't):\n");
             inform_list[5] = input.nextLine();
             if (inform_list[5].compareTo("Q")==0)
-                break;
+            {   is_true = false;
+                break;}
             System.out.printf("Arrival City:\n");
             inform_list[6] = input.nextLine();
             if (inform_list[6].compareTo("Q")==0)
-                break;
+            {   is_true = false;
+                break;}
             System.out.printf("Airline Company:\n");
             inform_list[7] = input.nextLine();
             if (inform_list[7].compareTo("Q")==0)
-                break;
+            {   is_true = false;
+                break;}
             System.out.printf("Ticket Price:\n");
             inform_list[8] = input.nextLine();
             if (inform_list[8].compareTo("Q")==0)
-                break;
+            {   is_true = false;
+                break;}
             System.out.printf("Plane Type：\n(\"1\" for Airbus251 and \"2\" for Mig_MniJet)\n");
 //      为了方便起见，在DataBase中就new了两个plane，演示的时候用战斗机，选2.如果仍想输入名称的话，
 //        可以将plane放在arraylist里面通过对比字符串与计数调出所要的plane.
             int decide = input.nextInt();
+            input.nextLine();
             Plane plane0 = DataBase.Mig_MniJet;
             switch (decide) {
                 case 1:
@@ -308,10 +318,16 @@ public class Admin {
 
             Flight new_flight = new Flight(inform_list[0], inform_list[2], inform_list[1], inform_list[3], inform_list[4], inform_list[5], inform_list[6], inform_list[7], inform_list[8], plane0);
             DataBase.flight_list.add(new_flight);
-            System.out.println("Enter 1:go on creating new flights  2:quit");
-            int k = input.nextInt();
-            if (k==2)
-            	is_true = false;
+            System.out.printf("Do you want to continue to create new flights?\n");
+            System.out.println("(Input 'Y' to continue and  'N' to quit and go to the main menu)\n");
+            String choice = input.nextLine();
+            if(choice.compareTo("Y") != 0) {
+                is_true = false;
+                break;
+            }
+            else
+                continue;
+
         }
     }//create Flight end
 
