@@ -45,7 +45,7 @@ public class Main {
                         String origin_function = ";create new Administer;Modify Information of a Existing Administer;Create a new flight;delete flight;SuperQuery;Renew Flight inform and display;Modify Existing Flight;Log Out;";
                         String[] function_array = origin_function.split(";");
                         System.out.printf("#1 Create A New Administer\n#2 Modify Information of a Existing Administer\n#3 Create A New Flight\n#4 Delete A Flight\n#5 SuperQuery\n"
-                                + "#6 Renew Flight inform and display\n#7 Modify Existing Flight\n#8 Log Out");
+                                + "#6 Renew Flight inform and display\n#7 Modify Existing Flight\n#8 Log Out\n");
                         Graphing.sepreate__Line_sharp_50();
                         System.out.printf("Please input the number for function\nFunction Number:>>");
                         int chocieNum = input.nextInt();

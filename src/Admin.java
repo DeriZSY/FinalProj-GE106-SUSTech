@@ -263,7 +263,7 @@ public class Admin {
             inform_list[2] = input.nextLine();
             if (inform_list[2] == "Q")
                 break;
-            System.out.printf("Arrival time(e.g.19:00)\n");
+            System.out.printf("Arrival Time(e.g.19:00)\n");
             inform_list[1] = input.nextLine();
             if (inform_list[1] == "Q")
                 break;
@@ -271,23 +271,23 @@ public class Admin {
             inform_list[3] = input.nextLine();
             if (inform_list[3] == "Q")
                 break;
-            System.out.printf("departure city\n");
+            System.out.printf("Departure City\n");
             inform_list[4] = input.nextLine();
             if (inform_list[4] == "Q")
                 break;
-            System.out.printf("stop by city(input null if there isn't)\n");
+            System.out.printf("Stop by City(input null if there isn't):\n");
             inform_list[5] = input.nextLine();
             if (inform_list[5] == "Q")
                 break;
-            System.out.printf("arrival city\n");
+            System.out.printf("Arrival City:\n");
             inform_list[6] = input.nextLine();
             if (inform_list[6] == "Q")
                 break;
-            System.out.printf("airline company,\n");
+            System.out.printf("Airline Company:\n");
             inform_list[7] = input.nextLine();
             if (inform_list[7] == "Q")
                 break;
-            System.out.printf("Ticket price:\n");
+            System.out.printf("Ticket Price:\n");
             inform_list[8] = input.nextLine();
             if (inform_list[8] == "Q")
                 break;
@@ -305,14 +305,9 @@ public class Admin {
                     break;
             }
 
-//        String original_Input = input.nextLine();
             Flight new_flight = new Flight(inform_list[0], inform_list[2], inform_list[1], inform_list[3], inform_list[4], inform_list[5], inform_list[6], inform_list[7], inform_list[8], plane0);
             DataBase.flight_list.add(new_flight);
         }
-//        } else {
-//            System.out.printf("Please Log in First!");
-//            DataBase.adminLogin();
-//        }
     }//create Flight end
 
     /***** 管理员功能： 删除航班 *****/
@@ -549,8 +544,5 @@ public class Admin {
         }
     }
 }
-
-
-
 
 
