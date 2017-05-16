@@ -8,7 +8,8 @@ public class Passenger {
     public String passengerPassword;
     public String realName;
     public String realID;//passenger's own ID.
-    public ArrayList<Order> orderList;
+    public ArrayList<Order> orderList = new ArrayList<Order>();
+    public String demand;
 
     public enum passengerStat {VIP, nonVIP}
     public passengerStat passengerStatus = passengerStat.nonVIP;
@@ -132,12 +133,12 @@ public class Passenger {
     	System.out.println("The flight information:");
     	 for (Flight flight : DataBase.flight_list) {
     		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED){
-    			 System.out.printf("the flight ID:%d\nthe flight status:", flight.flightID);
+    			 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
     			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
-    			 System.out.printf("start city:%d  stopbycity:%d  arrival city:%d\n", flight.startCity,flight.stopByCity,flight.arrivalCity);
-    			 System.out.printf("departure time:%d  arrival time:%d\n", flight.departureTime,flight.arrivalTime);
-    			 System.out.printf("original price:%d  (VIP will enjoy a 10% off)\n",flight.price);
-    			 System.out.printf("airline company:%d\n",flight.airlineCompany );
+    			 System.out.printf("start city:%s  stopbycity:%s  arrival city:%s\n", flight.startCity,flight.stopByCity,flight.arrivalCity);
+    			 System.out.printf("departure time:%s  arrival time:%s\n", flight.departureTime,flight.arrivalTime);
+    			 System.out.printf("original price:%s  (VIP will enjoy a 10percent off)\n",flight.price);
+    			 System.out.printf("airline company:%s\n",flight.airlineCompany );
     		 }
              }
   //预定航班
@@ -153,12 +154,48 @@ public class Passenger {
     			+ " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num).plane.seatCapacity);
     	int seatNum = input.nextInt();
     	System.out.println("Do you have any special demand? If any,please enter it.");
-    	String demand = input.nextLine();
-    	System.out.printf("You have successfully reserved the flight %s"
+    	demand = input.next();
+    	System.out.printf("You have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
     	Order order = new Order (realName,passengerID,seatNum,ID,"做pre的那一天的日期",demand);
     	order.orderstatus = Order.orderstates.PAID;
     	DataBase.order_list.add(order);
+    	orderList.add(order);
     
     }
+   /***************退订功能*************/
+   public void unsubscribeFlight (){
+	   boolean is_true = true;
+	   while (is_true){
+	   System.out.println("Your order's info：");
+	   int i = 0;
+	   for (Order a : orderList){
+		   i++;
+		   System.out.printf(i+" Flight ID:"+a.getFlightID()+"  Order status:"+a.getOrderstatus()+"\n");
+		   
+	   }
+	   System.out.println("Enter the num of the order you want to unsubscribe");
+		   int decide = input.nextInt();
+		   int b = DataBase.order_list.indexOf(orderList.get(decide-1));
+		   System.out.println("You have succeeded in unsubsribing the flight "+orderList.get(decide-1).getFlightID());
+		   orderList.remove(decide-1);//在Passenger的order中删除
+		    DataBase.order_list.remove(b);//在数据库中将它删除
+		    System.out.println("Enter 1.go on subscribing 2.quit");
+		    decide = input.nextInt();
+		    if (decide == 2){
+		    	is_true = false;
+		    }
+		  
+	   }
+	   
+	   
+   }
+   
+   
+   
+   
+   
+   
+   
+   
 }
