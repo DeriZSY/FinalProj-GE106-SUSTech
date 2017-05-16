@@ -11,7 +11,39 @@ public class Order {
     orderstates orderstatus;
 
 
-    /*********** Method ***********/
+    public String getPass_name() {
+		return pass_name;
+	}
+
+	public String getPass_IDs() {
+		return pass_IDs;
+	}
+
+	public int getSeatNum() {
+		return seatNum;
+	}
+
+	public String getFlightID() {
+		return flightID;
+	}
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public String getSpecialDemand() {
+		return specialDemand;
+	}
+
+	public String getOrderID() {
+		return orderID;
+	}
+
+	public orderstates getOrderstatus() {
+		return orderstatus;
+	}
+
+	/*********** Method ***********/
 
     public Order( String name, String IDs, int seat_num,
                   String flight_num, String create_date, String special_demand){

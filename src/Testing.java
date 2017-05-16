@@ -10,11 +10,17 @@ public class Testing {
         Scanner input = new Scanner(System.in);
         
     /******    passenger/ database test ******/
+        
+      Admin.createFlight();
+      Admin.updateFlight();
+      Passenger p = new Passenger("","");
+      p.reserveFlight();
+      p.unsubscribeFlight();
       
         
-        Admin.create_newAdmin();
-        Admin.create_newAdmin();
-        DataBase.adminLogin();
+      //  Admin.create_newAdmin();
+       // Admin.create_newAdmin();
+     //   DataBase.adminLogin();
 //        Admin.create_newAdmin();
 //        Admin.create_newAdmin();
 //       System.out.print(DataBase.admin_list.get(1).adminUserName);
