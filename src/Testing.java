@@ -15,6 +15,9 @@ public class Testing {
       Admin.updateFlight();
       Passenger p = new Passenger("","");
       p.reserveFlight();
+      p.reserveFlight();
+      p.reserveFlight();
+      p.reserveFlight();
       p.unsubscribeFlight();
       
         

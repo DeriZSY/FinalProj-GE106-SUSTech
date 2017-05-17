@@ -131,6 +131,9 @@ public class Passenger {
 	   int num=0;//用于调用user输入ID对应的航班
     	// 查询各个flight的信息  显示除开unpublished的所有信息
     	System.out.println("The flight information:");
+    	for (Flight flight : DataBase.flight_list){
+    		flight.check_and_change();
+    	}
     	 for (Flight flight : DataBase.flight_list) {
     		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED){
     			 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
@@ -149,10 +152,16 @@ public class Passenger {
     			break;
     		}
     		num++;
-    	}// 用户选择的是num号飞机
-    	System.out.printf("Which seat do you want to take?\n"
+    	}// 用户选择的是num号flight
+    	System.out.println("The following seats are not available:");
+    	for (int j : DataBase.flight_list.get(num).seatNumList){
+    		System.out.print(j +" ");
+    	}
+    	System.out.printf("\nWhich seat do you want to take?\n "
     			+ " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num).plane.seatCapacity);
     	int seatNum = input.nextInt();
+    	DataBase.flight_list.get(num).remainingSeat--;
+    	DataBase.flight_list.get(num).seatNumList.add(seatNum);
     	System.out.println("Do you have any special demand? If any,please enter it.");
     	demand = input.next();
     	System.out.printf("You have successfully reserved the flight %s\n"

@@ -15,6 +15,7 @@ public class Flight {
     public String price;
     public int seatCap;
     public int remainingSeat;
+    public ArrayList<Integer> seatNumList =  new ArrayList<Integer>() ;
     //enum
     public enum flightStatusENU{UNPUBLISHED, AVAILABLE, FULL, TERMINATE};
     public enum flightExistting{EXIST, DELETED}
