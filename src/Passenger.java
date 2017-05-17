@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Passenger {
     /****** variables ********/
-    public String passengerID;//used for registration.
+    public static String passengerID;//used for registration.
     public String passengerPassword;
-    public String realName;
+    public static String realName;
     public String realID;//passenger's own ID.
-    public ArrayList<Order> orderList = new ArrayList<Order>();
-    public String demand;
+    public static ArrayList<Order> orderList = new ArrayList<Order>();
+    public static String demand;
 
     public enum passengerStat {VIP, nonVIP}
     public passengerStat passengerStatus = passengerStat.nonVIP;
@@ -126,7 +126,7 @@ public class Passenger {
 //    //end register and methods involved
     }
     /***** 乘客功能： 预订航班*****/
-   public void reserveFlight(){
+   public static void reserveFlight(){
 	   Scanner input = new Scanner (System.in);
 	   int num=0;//用于调用user输入ID对应的航班
     	// 查询各个flight的信息  显示除开unpublished的所有信息
@@ -173,7 +173,8 @@ public class Passenger {
     
     }
    /***************退订功能*************/
-   public void unsubscribeFlight (){
+   public static void unsubscribeFlight (){
+       Scanner input = new Scanner(System.in);
 	   boolean is_true = true;
 	   while (is_true){
 	   System.out.println("Your order's info：");
