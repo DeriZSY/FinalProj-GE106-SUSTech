@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Passenger {
     /****** variables ********/
     public static String passengerID;//used for registration.
-    public String passengerPassword;
+    public static String passengerPassword;
     public static String realName;
-    public String realID;//passenger's own ID.
+    public static String realID;//passenger's own ID.
     public static ArrayList<Order> orderList = new ArrayList<Order>();
     public static String demand;
 
@@ -45,7 +45,7 @@ public class Passenger {
 
     /***** 乘客功能 ： 查询航班 *****/
     public static void queryFlight() {
-//        if (is_log_in()) {
+        Admin.flightAutoCheck();
         Scanner input = new Scanner(System.in);
         //选择需要搜索的方式，1、通过细节信息查询航班，2、通过航班ID查询信息（支持模糊查找），3、查看整个订单列表
             System.out.printf("Do you want to check by detailed information or by flightID?" +
@@ -109,7 +109,7 @@ public class Passenger {
                                 System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
                                 String choice2 = input.nextLine();
                                 if (choice2.compareTo("Y") == 0) {
-                                    everyFlight.dis_full_inform();
+                                    everyFlight.disp_flight_inform();
                                 }
                             } else {
                                 continue;
@@ -120,8 +120,14 @@ public class Passenger {
                     break;//case 1 break;
                 //显示整个订单列表
                 case 3:
-                    for(Order order: DataBase.order_list){
-                        order.order_disp();
+                    System.out.printf("Please input your username:\n>>");
+                    String aim_name = input.nextLine();
+                    for(Passenger everyPassenger : DataBase.passengers_lilst) {
+                        if(everyPassenger.passengerID.compareTo(aim_name) == 0){
+                            for (Order everyOrder : everyPassenger.orderList) {
+                                everyOrder.order_disp();
+                            }
+                        }
                     }
             }
 //       }else
@@ -130,6 +136,7 @@ public class Passenger {
     }
     /***** 乘客功能： 预订航班*****/
    public static void reserveFlight(){
+       Admin.flightAutoCheck();
 	   Scanner input = new Scanner (System.in);
 	   int num=0;//用于调用user输入ID对应的航班
     	// 查询各个flight的信息  显示除开unpublished的所有信息
@@ -138,7 +145,7 @@ public class Passenger {
     		flight.check_and_change();
     	}
     	 for (Flight flight : DataBase.flight_list) {
-    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED){
+    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED || flight.flightEx != Flight.flightExistting.DELETED){
     			 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
     			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
     			 System.out.printf("start city:%s  stopbycity:%s  arrival city:%s\n", flight.startCity,flight.stopByCity,flight.arrivalCity);
@@ -163,20 +170,32 @@ public class Passenger {
     	System.out.printf("\nWhich seat do you want to take?\n "
     			+ " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num).plane.seatCapacity);
     	int seatNum = input.nextInt();
-    	DataBase.flight_list.get(num).remainingSeat--;
-    	DataBase.flight_list.get(num).seatNumList.add(seatNum);
+    	DataBase.flight_list.get(num).remainingSeat--;//对应航班剩余座位减1；
+    	DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
     	System.out.println("Do you have any special demand? If any,please enter it.");
-    	demand = input.next();
+    	demand = input.nextLine();
+        Order newOrder = new Order (realName,passengerID,seatNum,ID,"做pre的那一天的日期",demand);
+        newOrder.orderstatus = Order.orderstates.PAID;
+       //输入乘客ID，并将订单添加到对应乘客的订单列表
+        boolean is_true = true;
+        while(is_true) {
+            System.out.printf("Please input your passengerID\n");
+            String aim_name = input.nextLine();
+            for (Passenger everyPassenger : DataBase.passengers_lilst) {
+                if (everyPassenger.passengerID.compareTo(aim_name) == 0) {
+                    everyPassenger.orderList.add(newOrder);
+                    is_true =false;
+                }else
+                    System.out.printf("The passengerID you input does not exist, please try again.\n");
+            }
+        }
+        //预订成功
     	System.out.printf("You have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
-    	Order order = new Order (realName,passengerID,seatNum,ID,"做pre的那一天的日期",demand);
-    	order.orderstatus = Order.orderstates.PAID;
-    	DataBase.order_list.add(order);
-    	orderList.add(order);
-    
     }
    /***************退订功能*************/
    public static void unsubscribeFlight (){
+       Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
 	   boolean is_true = true;
 	   while (is_true){

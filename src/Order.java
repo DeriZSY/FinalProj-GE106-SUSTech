@@ -57,6 +57,12 @@ public class Order {
 
     public void order_disp(){
         System.out.printf("%s",orderID);
+		for(Flight everyFlight : DataBase.flight_list){
+			if(everyFlight.flightID.compareTo(flightID) == 0){
+				everyFlight.disp_flight_inform();
+			}
+		}
+		System.out.println();
     }
 
     }
