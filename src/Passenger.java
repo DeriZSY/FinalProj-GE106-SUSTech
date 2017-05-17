@@ -176,6 +176,7 @@ public class Passenger {
     	demand = input.nextLine();
         Order newOrder = new Order (realName,passengerID,seatNum,ID,"做pre的那一天的日期",demand);
         newOrder.orderstatus = Order.orderstates.PAID;
+        DataBase.order_list.add(newOrder);
        //输入乘客ID，并将订单添加到对应乘客的订单列表
         boolean is_true = true;
         while(is_true) {
