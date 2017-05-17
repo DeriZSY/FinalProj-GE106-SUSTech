@@ -134,7 +134,7 @@ public class Admin {
     /***** 管理员功能：超级查找 *****/
     public static void superQuery() {
         Scanner input = new Scanner(System.in);
-//            if (is_log_in()) {
+        Admin.flightAutoCheck();//开始前先更新信息
                 /*选择查询种类： 1：通过航班ID 查询，2：通过订单ID查询 3，通过具体信息查询*/
         System.out.printf("Do you want to check flightID or OrderID or do normal query ?" +
                 "\n(Input \"1\" for check by flightID and \"2\" for check by OrderId " +
@@ -149,16 +149,15 @@ public class Admin {
             switch (factor) {
                 //管理员查询，模式1：按照航班号码查询，结束后可查看信息，或者修改信息；支持模糊查询功能；
                 case 1:
-                    Admin.flightAutoCheck();
+
                     System.out.printf("Please Input the flightID\nFlight Id:");
                     String fID = input.nextLine();
-//
+                    //模糊查询：提取输入信息中的有效信息
                     char[] input_for_search = new char[fID.length()];
                     for (int i = 0; i < fID.length(); i++) {
                         input_for_search[i] = fID.charAt(i);
                     }
-
-
+                    //模糊查询
                     for (Flight everyFlight : DataBase.flight_list) {
                         int i = 0;
                         int j = 0;
@@ -187,6 +186,7 @@ public class Admin {
                             //输入为 U 则调用更新信息功能
                             else if (choice.compareTo("U") == 0) {
                                 Admin.updateFlight();
+                            //输入为 M 则进入调整航班信息模式
                             } else if (choice.compareTo("M") == 0) {
                                 Admin.reset_Flight(everyFlight);
                             }
@@ -199,12 +199,10 @@ public class Admin {
                     System.out.printf("Check Over, all available results have been shown");
                     break;//case 1 break;
                 case 2:
-                    Admin.flightAutoCheck();
                     break;//case 2 break;
 
                 //case 3 starts
                 case 3:
-                    Admin.flightAutoCheck();
                     System.out.printf("What's your choice for departure city\n City name:");
                     String dpCity = input.nextLine();
                     System.out.printf("What's your choice for arriving city\n City name:");
@@ -344,7 +342,8 @@ public class Admin {
                 if (everyflight.flightEx == Flight.flightExistting.EXIST)
                     System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
                             everyflight.startCity, everyflight.arrivalCity, everyflight.flightDate);
-
+                else
+                    System.out.printf("Sorry, the flight has been deleted\n");
                 Graphing.sepreate__Line_sharp_50();
                 System.out.println();
             }// inform displaying end
@@ -532,7 +531,8 @@ public class Admin {
                 if (everyflight.flightEx == Flight.flightExistting.EXIST)
                     System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
                             everyflight.startCity, everyflight.arrivalCity, everyflight.flightDate);
-
+                else
+                    System.out.printf("Sorry, the flight has been deleted");
                 Graphing.sepreate__Line_sharp_50();
                 System.out.println();
             }// inform displaying end
