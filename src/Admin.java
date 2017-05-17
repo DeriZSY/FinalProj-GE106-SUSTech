@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Admin {
     //Variable for Admin
+	//Testing
     public String adminUserName;
     public String adminPassWord;
 
