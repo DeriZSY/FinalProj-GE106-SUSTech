@@ -195,8 +195,16 @@ public class Admin {
                                 if (a_choice.compareTo("del") == 0) {
                                     String deleting_ID = everyFlight.flightID;
                                     Admin.delete_aimFlight(deleting_ID);
-                                } else if (a_choice.compareTo("reset") == 0)
-                                    Admin.reset_Flight(everyFlight);
+                                } else if (a_choice.compareTo("reset") == 0){
+                                    if(everyFlight.flightStatus == Flight.flightStatusENU.UNPUBLISHED){
+                                        Admin.reset_UNPUBLISh_Flight(everyFlight);
+                                    }
+                                    else if (everyFlight.flightStatus == Flight.flightStatusENU.TERMINATE)
+                                        System.out.printf("Sorry, the flight is terminated and cannot be reset\n");
+                                    else
+                                        Admin.reset_PUBLISHED_Flight(everyFlight);
+                                }
+
                             }
                             //否则结束对该此查询结果的操作，继续查询
                             else {
@@ -402,10 +410,11 @@ public class Admin {
                     aim_index = DataBase.flight_list.indexOf(everyflight);
                 }
 
-                if(everyflight.flightStatus != Flight.flightStatusENU.TERMINATE)
+                if(everyflight.flightStatus.equals(Flight.flightStatusENU.TERMINATE) || everyflight.flightStatus.equals(Flight.flightStatusENU.UNPUBLISHED)){
                     can_be_deleted = true;
+                }
             }
-            while (can_be_deleted) {
+            if (can_be_deleted) {
                 System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
                 String choice = input.nextLine();
                 if (choice.compareTo("Y") == 0) {
@@ -413,6 +422,8 @@ public class Admin {
                 } else
                     System.out.printf("Deleting canceled.");
             }
+            else
+                System.out.printf("The flight has been published and is not terminated, so it cannot be deleted.\n");
         }
     }
     /***** 管理员功能： 更新航班信息 *****/
