@@ -47,12 +47,14 @@ public class Passenger {
     public static void queryFlight() {
 //        if (is_log_in()) {
         Scanner input = new Scanner(System.in);
+        //选择需要搜索的方式，1、通过细节信息查询航班，2、通过航班ID查询信息（支持模糊查找），3、查看整个订单列表
             System.out.printf("Do you want to check by detailed information or by flightID?" +
                     "\n(Input \"1\" for check by detailed information and \"2\" for check by flightID, Input \"3\" to check "
                     +"the whole order list)"+"\nInput:");
             int choic = input.nextInt();
             input.nextLine();
             switch (choic) {
+                //按照细节信息查询航班
                 case 1:
                     System.out.printf("What's your choice for departure city\n City name:");
                     String dpCity = input.nextLine();
@@ -67,7 +69,7 @@ public class Passenger {
                             String choice = input.nextLine();
                             if (choice.compareTo("Y") == 0) {
                                 confirmPasword();
-                                /**************** add an order **************/
+                                Passenger.reserveFlight();
                                 System.out.printf("Book Success!");
                             } else {
                                 continue;
@@ -75,8 +77,8 @@ public class Passenger {
                         }
                     }
                     break;
+                //通过航班ID查询航班
                 case 2:
-
                     System.out.printf("Please Input the flightID\nFlight Id:");
                     String fID = input.nextLine();
 //
@@ -116,6 +118,7 @@ public class Passenger {
                     }
                     System.out.printf("Check Over, all available results have been shown");
                     break;//case 1 break;
+                //显示整个订单列表
                 case 3:
                     for(Order order: DataBase.order_list){
                         order.order_disp();
