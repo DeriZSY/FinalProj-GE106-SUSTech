@@ -118,8 +118,13 @@ public class Flight {
         }
     }
 
+<<<<<<< HEAD
     public void disp_flight_inform(){
         System.out.printf("%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n",flightID, flightStatus,
+=======
+    public  void disp_flight_inform(){
+        System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n",flightID, flightStatus, flightEx,
+>>>>>>> Jaken
                 startCity, arrivalCity, flightDate);
     }
 
