@@ -356,7 +356,7 @@ public class Admin {
                         System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
                         String choice = input.nextLine();
                         if (choice.compareTo("Y") == 0)
-                            everyflight.flightEx = Flight.flightExistting.DELETED;
+                           DataBase.flight_list.remove(everyflight);
                         else
                             System.out.printf("Deleting canceled.");
                     }
