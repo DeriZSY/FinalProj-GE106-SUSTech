@@ -9,9 +9,11 @@ public class Test {
                 "Moscow ", "St.Petersburg", "Airplot", "$300",DataBase.Airbus251);
         Flight a3 = new Flight("ZG003", "11:00", "2017-04-12", "17:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
+        a1.flightStatus = Flight.flightStatusENU.TERMINATE;
+        a2.flightStatus = Flight.flightStatusENU.AVAILABLE;
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
         DataBase.flight_list.add(a3);
-        Passenger.queryFlight();
+        Admin.deleteFlight();
     }
 }
