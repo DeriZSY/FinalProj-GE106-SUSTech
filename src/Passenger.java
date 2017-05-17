@@ -131,7 +131,6 @@ public class Passenger {
                             Order.orderlist_disp(everyPassenger.orderList);
                         }
                     }
-
             }
     }
 
@@ -197,6 +196,7 @@ public class Passenger {
     	System.out.printf("You have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
     }
+
    /***************退订功能*************/
    public static void unsubscribeFlight (){
        Admin.flightAutoCheck();
@@ -221,17 +221,6 @@ public class Passenger {
 		    if (decide == 2){
 		    	is_true = false;
 		    }
-		  
 	   }
-	   
-	   
    }
-   
-   
-   
-   
-   
-   
-   
-   
 }

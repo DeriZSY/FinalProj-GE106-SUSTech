@@ -379,7 +379,6 @@ public class Admin {
                 /*选择所要删除的航班*/
             System.out.printf("Input the flight ID for the flight you want to delete (Input 'Q' to quit)\nFlightID:");
             String deleting_ID = input.nextLine();
-
             Admin.delete_aimFlight(deleting_ID);
                 /*是否继续删除作业？*/
             System.out.printf("Do you want to continue to delete flights ?(Input \"Y\" for Yes, and \"N\" for no)\n");
@@ -397,18 +396,23 @@ public class Admin {
         if (deleting_ID.compareTo("Q") != 0) {
             Scanner input = new Scanner(System.in);
             int aim_index = 0;
+            boolean can_be_deleted = false;
             for (Flight everyflight : DataBase.flight_list) {
-
                 if (everyflight.flightID.compareTo(deleting_ID) == 0) {
                     aim_index = DataBase.flight_list.indexOf(everyflight);
                 }
+
+                if(everyflight.flightStatus != Flight.flightStatusENU.TERMINATE)
+                    can_be_deleted = true;
             }
-            System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
-            String choice = input.nextLine();
-            if (choice.compareTo("Y") == 0) {
-                DataBase.flight_list.remove(DataBase.flight_list.get(aim_index));
-            } else
-                System.out.printf("Deleting canceled.");
+            while (can_be_deleted) {
+                System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
+                String choice = input.nextLine();
+                if (choice.compareTo("Y") == 0) {
+                    DataBase.flight_list.remove(DataBase.flight_list.get(aim_index));
+                } else
+                    System.out.printf("Deleting canceled.");
+            }
         }
     }
     /***** 管理员功能： 更新航班信息 *****/
