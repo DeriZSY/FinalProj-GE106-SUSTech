@@ -145,7 +145,7 @@ public class Passenger {
     		flight.check_and_change();
     	}
     	 for (Flight flight : DataBase.flight_list) {
-    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED || flight.flightEx != Flight.flightExistting.DELETED){
+    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED) {
     			 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
     			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
     			 System.out.printf("start city:%s  stopbycity:%s  arrival city:%s\n", flight.startCity,flight.stopByCity,flight.arrivalCity);

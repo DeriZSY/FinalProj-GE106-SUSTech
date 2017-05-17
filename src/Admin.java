@@ -1,6 +1,7 @@
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Admin {
@@ -224,7 +225,7 @@ public class Admin {
                                     System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
                                     String choicek = input.nextLine();
                                     if (choicek.compareTo("Y") == 0)
-                                        everyFlight.flightEx = Flight.flightExistting.DELETED;
+                                        DataBase.flight_list.remove(everyFlight);
                                     else
                                         System.out.printf("Deleting canceled.");
                                 }//extended deleted end
@@ -329,7 +330,7 @@ public class Admin {
         }
     }//create Flight end
 
-    /***** 管理员功能： 删除航班 *****/
+    /***** 管理员功能： 删除航班（界面版） *****/
     public static void deleteFlight() {
 //        if (is_log_in()) {
         while (true) {
@@ -339,29 +340,15 @@ public class Admin {
             System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
                 /* 显示航班信息*/
             for (Flight everyflight : DataBase.flight_list) {
-                if (everyflight.flightEx == Flight.flightExistting.EXIST)
-                    System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
-                            everyflight.startCity, everyflight.arrivalCity, everyflight.flightDate);
-                else
-                    System.out.printf("Sorry, the flight has been deleted\n");
+                everyflight.disp_flight_inform();
                 Graphing.sepreate__Line_sharp_50();
                 System.out.println();
             }// inform displaying end
                 /*选择所要删除的航班*/
             System.out.printf("Input the flight ID for the flight you want to delete (Input 'Q' to quit)\nFlightID:");
             String deleting_ID = input.nextLine();
-            if (deleting_ID.compareTo("Q") != 0) {
-                for (Flight everyflight : DataBase.flight_list) {
-                    if (everyflight.flightID.compareTo(deleting_ID) == 0 && everyflight.flightEx == Flight.flightExistting.EXIST) {
-                        System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
-                        String choice = input.nextLine();
-                        if (choice.compareTo("Y") == 0)
-                           DataBase.flight_list.remove(everyflight);
-                        else
-                            System.out.printf("Deleting canceled.");
-                    }
-                }
-            }//deleting process end
+
+            Admin.delete_aimFlight(deleting_ID);
                 /*是否继续删除作业？*/
             System.out.printf("Do you want to continue to delete flights ?(Input \"Y\" for Yes, and \"N\" for no)\n");
             String choice = input.nextLine();
@@ -371,9 +358,27 @@ public class Admin {
                 Graphing.sepreate__Line_sharp_50();
             Graphing.a_Empty_Line();
             break;
+        }
         }// delete Flight End
-    }
+    /***** 管理员功能： 删除航班（功能版）*****/
+    public static void delete_aimFlight(String deleting_ID){
+        if (deleting_ID.compareTo("Q") != 0) {
+            Scanner input = new Scanner(System.in);
+            int aim_index = 0;
+            for (Flight everyflight : DataBase.flight_list) {
 
+                if (everyflight.flightID.compareTo(deleting_ID) == 0) {
+                    aim_index = DataBase.flight_list.indexOf(everyflight);
+                }
+            }
+            System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
+            String choice = input.nextLine();
+            if (choice.compareTo("Y") == 0) {
+                DataBase.flight_list.remove(DataBase.flight_list.get(aim_index));
+            } else
+                System.out.printf("Deleting canceled.");
+        }
+    }
     /***** 管理员功能： 更新航班信息 *****/
     public static void updateFlight() {
         //显示所有航班信息
@@ -382,10 +387,7 @@ public class Admin {
         System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
                 /* 显示航班信息*/
         for (Flight everyflight : DataBase.flight_list) {
-            if (everyflight.flightEx == Flight.flightExistting.EXIST)
-                System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
-                        everyflight.startCity, everyflight.arrivalCity, everyflight.flightDate);
-
+            everyflight.disp_flight_inform();
             Graphing.sepreate__Line_sharp_50();
             System.out.println();
         }// inform displaying end
@@ -528,11 +530,7 @@ public class Admin {
             System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
                 /* 显示航班信息*/
             for (Flight everyflight : DataBase.flight_list) {
-                if (everyflight.flightEx == Flight.flightExistting.EXIST)
-                    System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n", everyflight.flightID, everyflight.flightStatus, everyflight.flightEx,
-                            everyflight.startCity, everyflight.arrivalCity, everyflight.flightDate);
-                else
-                    System.out.printf("Sorry, the flight has been deleted");
+                everyflight.disp_flight_inform();
                 Graphing.sepreate__Line_sharp_50();
                 System.out.println();
             }// inform displaying end
@@ -541,7 +539,7 @@ public class Admin {
             String deleting_ID = input.nextLine();
             if (deleting_ID.compareTo("Q") != 0) {
                 for (Flight everyflight : DataBase.flight_list) {
-                    if (everyflight.flightID.compareTo(deleting_ID) == 0 && everyflight.flightEx == Flight.flightExistting.EXIST) {
+                    if (everyflight.flightID.compareTo(deleting_ID) == 0) {
                         System.out.printf("Are you sure to modify this flight?(input \"Y\" for yes and \"N\" for No)\n");
                         String choice = input.nextLine();
                         if (choice.compareTo("Y") == 0)
