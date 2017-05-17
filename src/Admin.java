@@ -494,7 +494,7 @@ public class Admin {
     }}
 
     /***** 管理员功能： 修改航班信息 *****/
-    public static void reset_Flight(Flight selectedFlight) {
+    public static void reset_UNPUBLISh_Flight(Flight selectedFlight) {
         flightAutoCheck();
         Scanner input = new Scanner(System.in);
         while (true) {
@@ -554,6 +554,35 @@ public class Admin {
         }
     }
 
+    public static void reset_PUBLISHED_Flight(Flight selectedFlight){
+            flightAutoCheck();
+            Scanner input = new Scanner(System.in);
+            while (true) {
+                System.out.printf("Choose the inform you want to reset:\n");
+                System.out.printf("1. Price \n2. Seat Cpacityn(Input 'Q' to quit)\n");
+                String origin_function = "Price;Seat Capacity";
+                String[] function_array = origin_function.split(";");
+                String choiceStr = input.nextLine();
+                if (choiceStr.compareTo("Q") != 0) {
+                    int choiceNum = Integer.parseInt(choiceStr);
+                    System.out.printf("The information you choose to change is %s\n", function_array[choiceNum - 1]);
+                    System.out.printf("Please Input the new Information\nInform:>>");
+                    String newInform = input.nextLine();
+                    switch (choiceNum) {
+                        case 1:
+                            selectedFlight.price = newInform;
+                            break;
+                        case 2:
+                            int new_SeatCap = Integer.parseInt(newInform);
+                            selectedFlight.seatCap = new_SeatCap;
+                            break;
+                    }
+                } else
+                    break;
+            }
+        }
+
+    /***** 显示航班信息， 并可选择航班修改信息 *****/
     public static void showAndReset() {
         while (true) {
             Scanner input = new Scanner(System.in);
@@ -573,8 +602,27 @@ public class Admin {
                     if (everyflight.flightID.compareTo(deleting_ID) == 0) {
                         System.out.printf("Are you sure to modify this flight?(input \"Y\" for yes and \"N\" for No)\n");
                         String choice = input.nextLine();
-                        if (choice.compareTo("Y") == 0)
-                            reset_Flight(everyflight);
+                        if (choice.compareTo("Y") == 0){
+                            //如果航班未发布，可修改所有信息
+                            if(everyflight.flightStatus == Flight.flightStatusENU.UNPUBLISHED){
+                                Admin.reset_UNPUBLISh_Flight(everyflight);
+                            }
+                            //如果航班终结，则无法修改，会提示是否删除
+                            else if(everyflight.flightStatus == Flight.flightStatusENU.TERMINATE){
+                                System.out.printf("Sorry, the flight you choose to reset is already terminate.\n");
+                                System.out.printf("Do you want to delete it ?\n(Input 'Y' for delete, and 'N' for ending modify)");
+                                String b_choice  = input.nextLine();
+                                if(b_choice.compareTo("Y") == 0){
+                                    Admin.delete_aimFlight(everyflight.flightID);
+                                }
+                                //如果航班已发布，未终结，可修改部分信息
+                                else
+                                    Admin.reset_PUBLISHED_Flight(everyflight);
+                                    break;
+                            } else{
+
+                            }
+                        }
                         else
                             System.out.printf("Modify Canceled.");
                     }
