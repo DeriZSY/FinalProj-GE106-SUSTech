@@ -31,14 +31,15 @@ public class Passenger {
 
 
     /***** 辅助功能： 确认密码 *****/
-    public static void confirmPasword() {
-
+    public static void confirmPasword(String passengerID) {
         Scanner input = new Scanner(System.in);
         System.out.printf("Please Input your password to confirm :\n password:");
         String pWord = input.nextLine();
-        for(Passenger everypassenger : DataBase.passengers_lilst) {
-            if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
-                System.out.printf("Success !");
+        for (Passenger everypassenger : DataBase.passengers_lilst) {
+            if (everypassenger.passengerID.compareTo(passengerID) == 0) {
+                if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
+                    System.out.printf("Confirm Success !\n");
+                }
             }
         }
     }
@@ -68,7 +69,9 @@ public class Passenger {
                             System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check");
                             String choice = input.nextLine();
                             if (choice.compareTo("Y") == 0) {
-                                confirmPasword();
+                                System.out.printf("Please Input Your PassengerID :\n>>");
+                                String passengerID = input.nextLine();
+                                confirmPasword(passengerID);
                                 Passenger.reserveFlight();
                                 System.out.printf("Book Success!");
                             } else {
@@ -81,7 +84,7 @@ public class Passenger {
                 case 2:
                     System.out.printf("Please Input the flightID\nFlight Id:");
                     String fID = input.nextLine();
-//
+
                     char[] input_for_search = new char[fID.length()];
                     for (int i = 0; i < fID.length(); i++) {
                         input_for_search[i] = fID.charAt(i);
@@ -117,23 +120,23 @@ public class Passenger {
                         }
                     }
                     System.out.printf("Check Over, all available results have been shown");
-                    break;//case 1 break;
+                    break;
                 //显示整个订单列表
                 case 3:
-                    System.out.printf("Please input your username:\n>>");
-                    String aim_name = input.nextLine();
-                    for(Passenger everyPassenger : DataBase.passengers_lilst) {
-                        if(everyPassenger.passengerID.compareTo(aim_name) == 0){
-                            for (Order everyOrder : everyPassenger.orderList) {
-                                everyOrder.order_disp();
-                            }
+                    System.out.printf("Please Input your Username");
+                    String passengerID = input.nextLine();
+                    Passenger.confirmPasword(passengerID);
+                    for(Passenger everyPassenger : DataBase.passengers_lilst){
+                        if(everyPassenger.passengerID.compareTo(passengerID) == 0){
+                            Order.orderlist_disp(everyPassenger.orderList);
                         }
                     }
+
             }
-//       }else
-//            DataBase.passengerLogIn();
-//    //end register and methods involved
     }
+
+
+
     /***** 乘客功能： 预订航班*****/
    public static void reserveFlight(){
        Admin.flightAutoCheck();
