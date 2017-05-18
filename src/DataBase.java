@@ -15,7 +15,7 @@ public class DataBase {
     public static ArrayList<Admin> admin_list = new ArrayList<Admin>();
     public static ArrayList<Passenger> passengers_lilst = new ArrayList<Passenger>();
     public static String present_time = "00:00";
-    public static String present_date = "2017-05-15";
+    public static String present_date = "2017-01-01";
 
 /************  Administer 登陆 *************/
     //Method

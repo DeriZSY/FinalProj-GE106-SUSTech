@@ -111,6 +111,8 @@ public class Flight {
     public void check_and_change(){
         int termin_time = time_modification(departureTime) - 120;
         int present_time  = time_modification(DataBase.present_time);
+
+
         if(termin_time >= present_time && flightDate.compareTo(DataBase.present_date) == 0){
             flightStatus = flightStatusENU.TERMINATE;
         }

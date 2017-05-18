@@ -14,6 +14,8 @@ public class Test {
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
         DataBase.flight_list.add(a3);
-        Admin.deleteFlight();
+//        Admin.deleteFlight()
+//        Admin.create_newAdmin();
+        Admin.delete_aimFlight("ZG002");
     }
 }
