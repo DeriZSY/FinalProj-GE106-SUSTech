@@ -27,9 +27,9 @@ public class Admin {
     /***** 管理员功能： 创建新管理员 *****/
     public static void create_newAdmin() {
         Scanner input = new Scanner(System.in);
-        boolean is_true = true;
+        boolean is_true = false;
         String uName = "defaultName";
-        while (is_true) {
+      do {
             System.out.printf("Please input the username for a new Administer (Input 'Q' to leave):\nUsername:>>");
             uName = input.nextLine();
             for (Admin everyAdmin : DataBase.admin_list) {
@@ -37,15 +37,14 @@ public class Admin {
                 if (everyAdmin.adminUserName.compareTo(uName) == 0 ) {
 //                    System.out.printf("Check1\n");
                     System.out.printf("The name is already taken; please try a new one !\n");
-                    input.nextLine();
+                   input.nextLine();
+                    is_true = true;
                     break;
-                } else if (everyAdmin.adminUserName.compareTo(uName) != 0) {
-//                    System.out.printf("Check2\n");
-                    is_true = false;
-                }
+                } else 
+                        is_true = false;
 //                System.out.printf("Check\n");
             }
-        }//while end
+        }while (is_true);
         is_true = true;
         if (uName.compareTo("Q") != 0) {
             while (is_true) {

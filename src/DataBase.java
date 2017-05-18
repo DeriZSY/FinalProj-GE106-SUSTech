@@ -78,20 +78,35 @@ public class DataBase {
 
 /*********   Passenger 注册 ****************/
     public static void register() {
-        //input passengerID
+    	boolean is_true = false;
+        String ID;
+        //input passenger's info
         Scanner input = new Scanner(System.in);
         System.out.print("Enter your real name please");
         String passenger_realName = input.nextLine();
         System.out.print("Enter your real ID please");
         String passenger_realID = input.nextLine();
-        System.out.print("Enter your ID used for Log in");
-        String passenger_ID = input.nextLine();
+        //检查是否有重名
+       do {
+        System.out.print("Create an ID used for Log in please");
+         ID = input.nextLine();
+        	for(Passenger everypassenger : passengers_lilst){
+        		if (everypassenger.passengerID.compareTo(ID)==0){
+        			System.out.println("Your ID has been used ,please use another one!");
+        			 input.nextLine();
+        			is_true = true;
+        			break;
+        		}else
+        			is_true = false;
+        	}
+       
+        }   while(is_true);
         //input password , confirm twice
         System.out.print("Enter your password please");
         String password1 = input.nextLine();
         System.out.print("Enter your password again please");
         String password2 = input.nextLine();
-        while (decidePassword(password1, password2) == false) {
+        while (decideString(password1, password2) == false) {
             System.out.println("Different password,please try again");
             System.out.print("Enter your password please");
             password1 = input.nextLine();
@@ -102,7 +117,7 @@ public class DataBase {
         String passenger_Password = password1;
         //create new passenger
         Passenger new_passenger = new Passenger(passenger_realName,passenger_realID);
-        new_passenger.passengerID = passenger_ID;
+        new_passenger.passengerID = ID;
         new_passenger.passengerPassword = passenger_Password;
      // input passenger's status
         System.out.println("Willing to become a VIP? (100$ per year)");
@@ -121,12 +136,14 @@ public class DataBase {
         passengers_lilst.add(new_passenger);// add the new passenger to the array list
     }
 
-    //decidePassword is used in register for determining the 2 passwords are the same or not
-    public static boolean decidePassword(String passwordA, String passwordB) {
+    //decidePassword is used in register for determining the 2 String  are the same or not
+    public static boolean decideString(String passwordA, String passwordB) {
         boolean a = false;
         if (passwordA .equals(passwordB) ) {
             a = true;
         }
         return a;
     }
+    
+    
 }
