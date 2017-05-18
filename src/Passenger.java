@@ -131,7 +131,6 @@ public class Passenger {
                             Order.orderlist_disp(everyPassenger.orderList);
                         }
                     }
-
             }
     }
 
@@ -141,20 +140,28 @@ public class Passenger {
    public static void reserveFlight(){
        Admin.flightAutoCheck();
 	   Scanner input = new Scanner (System.in);
+	   
 	   int num=0;//用于调用user输入ID对应的航班
     	// 查询各个flight的信息  显示除开unpublished的所有信息
     	System.out.println("The flight information:");
+<<<<<<< HEAD
     	for (Flight flight : DataBase.flight_list){
     		flight.check_and_change();
     	}
     	 for (Flight flight : DataBase.flight_list) {
     		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED) {
     			 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
+=======
+    	    	 for (Flight flight : DataBase.flight_list) {
+    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED){
+    			 flight.disp_flight_inform();
+    		/*	 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
+>>>>>>> Jaken
     			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
     			 System.out.printf("start city:%s  stopbycity:%s  arrival city:%s\n", flight.startCity,flight.stopByCity,flight.arrivalCity);
     			 System.out.printf("departure time:%s  arrival time:%s\n", flight.departureTime,flight.arrivalTime);
     			 System.out.printf("original price:%s  (VIP will enjoy a 10percent off)\n",flight.price);
-    			 System.out.printf("airline company:%s\n",flight.airlineCompany );
+    			 System.out.printf("airline company:%s\n",flight.airlineCompany ); */
     		 }
              }
   //预定航班
@@ -180,7 +187,7 @@ public class Passenger {
         Order newOrder = new Order (realName,passengerID,seatNum,ID,"做pre的那一天的日期",demand);
         newOrder.orderstatus = Order.orderstates.PAID;
         DataBase.order_list.add(newOrder);
-       //输入乘客ID，并将订单添加到对应乘客的订单列表
+       //输入乘客ID，并将订单添加到对应乘客的订单列表  进入付款界面
         boolean is_true = true;
         while(is_true) {
             System.out.printf("Please input your passengerID\n");
@@ -189,42 +196,61 @@ public class Passenger {
                 if (everyPassenger.passengerID.compareTo(aim_name) == 0) {
                     everyPassenger.orderList.add(newOrder);
                     is_true =false;
-                }else
-                    System.out.printf("The passengerID you input does not exist, please try again.\n");
-            }
+                    break;
+                }
+            } // 把order加入这个人orderlist中。
+            if(is_true = true)
+            	  System.out.printf("The passengerID you input does not exist, please try again.\n");
         }
         //预订成功
     	System.out.printf("You have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
     }
+
    /***************退订功能*************/
    public static void unsubscribeFlight (){
        Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
 	   boolean is_true = true;
+	   boolean is_true0 =true;
+	   while (is_true0){
+		   System.out.println("Enter you ID please");
+		   String id = input.nextLine();
+		   System.out.println("Enter your password please");
+		   String pw = input.nextLine();
+		   for (Passenger everyPassenger : DataBase.passengers_lilst){
+			   if (everyPassenger.passengerID.compareTo(id)== 0 && everyPassenger.passengerPassword.compareTo(pw)==0) {  
 	   while (is_true){
-	   System.out.println("Your order's info：");
+	   System.out.println("Your order's information：");
 	   int i = 0;
-	   for (Order a : orderList){
+	   for (Order a : everyPassenger.orderList){
 		   i++;
 		   System.out.printf(i+" Flight ID:"+a.getFlightID()+"  Order status:"+a.getOrderstatus()+"\n");
 		   
 	   }
 	   System.out.println("Enter the num of the order you want to unsubscribe");
 		   int decide = input.nextInt();
-		   int b = DataBase.order_list.indexOf(orderList.get(decide-1));
-		   System.out.println("You have succeeded in unsubsribing the flight "+orderList.get(decide-1).getFlightID());
-		   orderList.remove(decide-1);//在Passenger的order中删除
+		   int b = DataBase.order_list.indexOf(everyPassenger.orderList.get(decide-1));// 选择的这个乘客的order在数据库中的位置
+		   System.out.println("You have succeeded in unsubsribing the flight "+everyPassenger.orderList.get(decide-1).getFlightID());
+		   everyPassenger.orderList.remove(decide-1);//在Passenger的order中删除
 		    DataBase.order_list.remove(b);//在数据库中将它删除
 		    System.out.println("Enter 1.go on subscribing 2.quit");
 		    decide = input.nextInt();
 		    if (decide == 2){
 		    	is_true = false;
 		    }
-		  
+<<<<<<< HEAD
 	   }
-	   
-	   
+   }
+=======
+		  
+	   }    is_true0 = false;
+	   break;
+	   }
+			   }
+		   if (is_true0 = true)
+			   System.out.println("Either your ID or your password is not correct, please try again! ");
+		   }
    }
    
    
@@ -233,5 +259,5 @@ public class Passenger {
    
    
    
-   
+>>>>>>> Jaken
 }

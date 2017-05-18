@@ -195,8 +195,16 @@ public class Admin {
                                 if (a_choice.compareTo("del") == 0) {
                                     String deleting_ID = everyFlight.flightID;
                                     Admin.delete_aimFlight(deleting_ID);
-                                } else if (a_choice.compareTo("reset") == 0)
-                                    Admin.reset_Flight(everyFlight);
+                                } else if (a_choice.compareTo("reset") == 0){
+                                    if(everyFlight.flightStatus == Flight.flightStatusENU.UNPUBLISHED){
+                                        Admin.reset_UNPUBLISh_Flight(everyFlight);
+                                    }
+                                    else if (everyFlight.flightStatus == Flight.flightStatusENU.TERMINATE)
+                                        System.out.printf("Sorry, the flight is terminated and cannot be reset\n");
+                                    else
+                                        Admin.reset_PUBLISHED_Flight(everyFlight);
+                                }
+
                             }
                             //否则结束对该此查询结果的操作，继续查询
                             else {
@@ -379,7 +387,6 @@ public class Admin {
                 /*选择所要删除的航班*/
             System.out.printf("Input the flight ID for the flight you want to delete (Input 'Q' to quit)\nFlightID:");
             String deleting_ID = input.nextLine();
-
             Admin.delete_aimFlight(deleting_ID);
                 /*是否继续删除作业？*/
             System.out.printf("Do you want to continue to delete flights ?(Input \"Y\" for Yes, and \"N\" for no)\n");
@@ -397,18 +404,26 @@ public class Admin {
         if (deleting_ID.compareTo("Q") != 0) {
             Scanner input = new Scanner(System.in);
             int aim_index = 0;
+            boolean can_be_deleted = false;
             for (Flight everyflight : DataBase.flight_list) {
-
                 if (everyflight.flightID.compareTo(deleting_ID) == 0) {
                     aim_index = DataBase.flight_list.indexOf(everyflight);
                 }
+
+                if(everyflight.flightStatus.equals(Flight.flightStatusENU.TERMINATE) || everyflight.flightStatus.equals(Flight.flightStatusENU.UNPUBLISHED)){
+                    can_be_deleted = true;
+                }
             }
-            System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
-            String choice = input.nextLine();
-            if (choice.compareTo("Y") == 0) {
-                DataBase.flight_list.remove(DataBase.flight_list.get(aim_index));
-            } else
-                System.out.printf("Deleting canceled.");
+            if (can_be_deleted) {
+                System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
+                String choice = input.nextLine();
+                if (choice.compareTo("Y") == 0) {
+                    DataBase.flight_list.remove(DataBase.flight_list.get(aim_index));
+                } else
+                    System.out.printf("Deleting canceled.");
+            }
+            else
+                System.out.printf("The flight has been published and is not terminated, so it cannot be deleted.\n");
         }
     }
     /***** 管理员功能： 更新航班信息 *****/
