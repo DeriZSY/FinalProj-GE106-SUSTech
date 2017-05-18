@@ -18,9 +18,9 @@ public class Flight {
     public ArrayList<Integer> seatNumList =  new ArrayList<Integer>() ;
     //enum
     public enum flightStatusENU{UNPUBLISHED, AVAILABLE, FULL, TERMINATE};
-//    public enum flightExistting{EXIST, DELETED}
+    public enum flightExistting{EXIST, DELETED}
     flightStatusENU flightStatus = flightStatusENU.UNPUBLISHED;
-//    flightExistting flightEx = flightExistting.DELETED;
+    flightExistting flightEx = flightExistting.DELETED;
     //ArrayList for information of the plane
     private ArrayList<Passenger> all_Passenger = new ArrayList<Passenger>();
 
@@ -36,6 +36,7 @@ public class Flight {
         stopByCity = stpCity;
         arrivalCity = arrivCity;
         airlineCompany = alCompany;
+        flightEx = flightExistting.EXIST;
         price = pri;
         plane = plType;
         seatCap = plType.seatCapacity;
@@ -118,14 +119,11 @@ public class Flight {
         }
     }
 
-<<<<<<< HEAD
-    public void disp_flight_inform(){
-        System.out.printf("%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n",flightID, flightStatus,
-=======
     public  void disp_flight_inform(){
         System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n",flightID, flightStatus, flightEx,
->>>>>>> Jaken
                 startCity, arrivalCity, flightDate);
     }
 
 }
+
+  
