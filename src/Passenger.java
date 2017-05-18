@@ -31,15 +31,14 @@ public class Passenger {
 
 
     /***** 辅助功能： 确认密码 *****/
-    public static void confirmPasword(String passengerID) {
+    public static void confirmPasword() {
+
         Scanner input = new Scanner(System.in);
         System.out.printf("Please Input your password to confirm :\n password:");
         String pWord = input.nextLine();
-        for (Passenger everypassenger : DataBase.passengers_lilst) {
-            if (everypassenger.passengerID.compareTo(passengerID) == 0) {
-                if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
-                    System.out.printf("Confirm Success !\n");
-                }
+        for(Passenger everypassenger : DataBase.passengers_lilst) {
+            if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
+                System.out.printf("Success !");
             }
         }
     }
@@ -69,9 +68,7 @@ public class Passenger {
                             System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check");
                             String choice = input.nextLine();
                             if (choice.compareTo("Y") == 0) {
-                                System.out.printf("Please Input Your PassengerID :\n>>");
-                                String passengerID = input.nextLine();
-                                confirmPasword(passengerID);
+                                confirmPasword();
                                 Passenger.reserveFlight();
                                 System.out.printf("Book Success!");
                             } else {
@@ -84,7 +81,7 @@ public class Passenger {
                 case 2:
                     System.out.printf("Please Input the flightID\nFlight Id:");
                     String fID = input.nextLine();
-
+//
                     char[] input_for_search = new char[fID.length()];
                     for (int i = 0; i < fID.length(); i++) {
                         input_for_search[i] = fID.charAt(i);
@@ -120,50 +117,49 @@ public class Passenger {
                         }
                     }
                     System.out.printf("Check Over, all available results have been shown");
-                    break;
+                    break;//case 1 break;
                 //显示整个订单列表
                 case 3:
-                    System.out.printf("Please Input your Username");
-                    String passengerID = input.nextLine();
-                    Passenger.confirmPasword(passengerID);
-                    for(Passenger everyPassenger : DataBase.passengers_lilst){
-                        if(everyPassenger.passengerID.compareTo(passengerID) == 0){
-                            Order.orderlist_disp(everyPassenger.orderList);
+                    System.out.printf("Please input your username:\n>>");
+                    String aim_name = input.nextLine();
+                    for(Passenger everyPassenger : DataBase.passengers_lilst) {
+                        if(everyPassenger.passengerID.compareTo(aim_name) == 0){
+                            for (Order everyOrder : everyPassenger.orderList) {
+                                Order.order_disp(everyOrder);
+                            }
                         }
                     }
             }
+//       }else
+//            DataBase.passengerLogIn();
+//    //end register and methods involved
     }
-
-
-
     /***** 乘客功能： 预订航班*****/
+    //预定航班，并显示所有航班的信息
    public static void reserveFlight(){
-       Admin.flightAutoCheck();
-	   Scanner input = new Scanner (System.in);
-	   
-	   int num=0;//用于调用user输入ID对应的航班
+       Admin.flightAutoCheck();	  
     	// 查询各个flight的信息  显示除开unpublished的所有信息
     	System.out.println("The flight information:");
-<<<<<<< HEAD
-    	for (Flight flight : DataBase.flight_list){
-    		flight.check_and_change();
-    	}
-    	 for (Flight flight : DataBase.flight_list) {
-    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED) {
-    			 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
-=======
     	    	 for (Flight flight : DataBase.flight_list) {
     		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED){
-    			 flight.disp_flight_inform();
+    			 flight.disp_flight_inform();}
     		/*	 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
->>>>>>> Jaken
     			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
     			 System.out.printf("start city:%s  stopbycity:%s  arrival city:%s\n", flight.startCity,flight.stopByCity,flight.arrivalCity);
     			 System.out.printf("departure time:%s  arrival time:%s\n", flight.departureTime,flight.arrivalTime);
     			 System.out.printf("original price:%s  (VIP will enjoy a 10percent off)\n",flight.price);
     			 System.out.printf("airline company:%s\n",flight.airlineCompany ); */
-    		 }
+    		 
              }
+                      reserveFlight0(); 
+    }
+   
+   // 预定航班 但不显示航班信息 直接预定
+   public static void reserveFlight0(){
+       Admin.flightAutoCheck();
+	   Scanner input = new Scanner (System.in);
+	   
+	   int num=0;//用于调用user输入ID对应的航班
   //预定航班
     	 System.out.println("please enter the flight ID that you want to reserve.You can only reserve the available ones");
     	String ID = input.nextLine();
@@ -206,8 +202,9 @@ public class Passenger {
     	System.out.printf("You have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
     }
-
+   
    /***************退订功能*************/
+   
    public static void unsubscribeFlight (){
        Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
@@ -239,10 +236,6 @@ public class Passenger {
 		    if (decide == 2){
 		    	is_true = false;
 		    }
-<<<<<<< HEAD
-	   }
-   }
-=======
 		  
 	   }    is_true0 = false;
 	   break;
@@ -259,5 +252,4 @@ public class Passenger {
    
    
    
->>>>>>> Jaken
 }
