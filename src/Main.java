@@ -9,9 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Admin d1 = new Admin("deri","zhang");
         DataBase.admin_list.add(d1);
-        Admin.create_newAdmin();
-        Admin.create_newAdmin();
-        Admin.create_newAdmin();
+        Admin.create_newAdmin();//只需要运行一次
         //Login
         // Initialize Flights 
         
