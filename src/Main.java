@@ -13,7 +13,9 @@ public class Main {
         Admin.create_newAdmin();
         Admin.create_newAdmin();
         //Login
-        // Initialize Flights
+        // Initialize Flights 
+        
+        /*    一下的内容都可在line 12的createflight中完成
         Flight a1 = new Flight("ZG001", "12:00", "2017-03-22", "13:22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", DataBase.Mig_MniJet);
         Flight a2 = new Flight("ZG002", "14:00", "2017-03-23", "15:22", "Shenzhen",
@@ -22,7 +24,7 @@ public class Main {
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
-        DataBase.flight_list.add(a3);
+        DataBase.flight_list.add(a3);     */
         Scanner input = new Scanner(System.in);
         boolean system_On = true;
 
@@ -49,12 +51,12 @@ public class Main {
                         String origin_function = ";create new Administer;Modify Information of a Existing Administer;Create a new flight;delete flight;SuperQuery;Renew Flight inform and display;Modify Existing Flight;Log Out;";
                         String[] function_array = origin_function.split(";");
                         System.out.printf("#1 Create A New Administer\n#2 Modify Information of a Existing Administer\n#3 Create A New Flight\n#4 Delete A Flight\n#5 SuperQuery\n"
-                                + "#6 Renew Flight inform and display\n#7 Modify Existing Flight\n#8 Log Out\n");
+                                + "#6 Renew Flight inform and display\n#7 Log Out\n");
                         Graphing.sepreate__Line_sharp_50();
                         System.out.printf("Please input the number for function\nFunction Number:>>");
                         int chocieNum = input.nextInt();
                         System.out.println();
-                        if( chocieNum < 8) {
+                        if( chocieNum < 6) {
                             System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
                             System.out.printf("Input \"Y\" for YES and \"N\" for NO \nConfirm:>>");
                             String confirm = input.nextLine();
@@ -80,12 +82,12 @@ public class Main {
                                 case 6:
                                     Admin.updateFlight();
                                     continue;
-                                case 7:
-                                    Admin.showAndReset();
-                                    continue;
+                           //     case 7:
+                          //          Admin.showAndReset();
+                           //         continue;
                             }//end Switch
                         }
-                           admin_moode_on = false;
+                           admin_moode_on = false;    
 
                     }//end Admin Function
                 }//end Admin Mood
