@@ -107,7 +107,7 @@ public class Flight {
         return tot_time;
     }
 
-
+    /***** 检测并修改状态（单个航班） *****/
     public void check_and_change(){
         int termin_time = time_modification(departureTime) - 120;
         int present_time  = time_modification(DataBase.present_time);

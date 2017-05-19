@@ -658,7 +658,7 @@ public class Admin {
         }// Modify Flight End
     }
 
-
+    /***** 根据时间修改所有航班的状态 *****/
     public static void flightAutoCheck() {
         for(Flight everyFlight : DataBase.flight_list){
             everyFlight.check_and_change();
