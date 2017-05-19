@@ -3,7 +3,10 @@
  */
 public class Test {
     public static void main(String []args){
-        Flight a1 = new Flight("ZG001", "12:00", "2017-03-22", "13:22", "NewYork",
+    	Admin.createFlight();
+    	Admin.updateFlight();
+    	
+      /*  Flight a1 = new Flight("ZG001", "12:00", "2017-03-22", "13:22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", DataBase.Mig_MniJet);
         Flight a2 = new Flight("ZG002", "14:00", "2017-03-23", "15:22", "Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$300",DataBase.Airbus251);
@@ -16,6 +19,6 @@ public class Test {
         DataBase.flight_list.add(a3);
 //        Admin.deleteFlight()
 //        Admin.create_newAdmin();
-        Admin.delete_aimFlight("ZG002");
+        Admin.delete_aimFlight("ZG002");  */
     }
 }

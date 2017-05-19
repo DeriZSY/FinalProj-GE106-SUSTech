@@ -472,10 +472,10 @@ public class Admin {
         int decide = input.nextInt();
         switch (decide) {
             case 1:
-                System.out.printf("price:%d\n", DataBase.flight_list.get(num).price);
-                System.out.print("flight status:");
-                System.out.println(DataBase.flight_list.get(num).flightStatus);
-                System.out.printf("plane type:%d\ndepature time:%d\narrival time:%d\n", DataBase.flight_list.get(num).plane, DataBase.flight_list.get(num).departureTime, DataBase.flight_list.get(num).arrivalTime);
+            	 System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
+            	 DataBase.flight_list.get(num).disp_flight_inform();
+                 Graphing.sepreate__Line_sharp_50();
+                 System.out.println();
                 break;
 
             case 2:
