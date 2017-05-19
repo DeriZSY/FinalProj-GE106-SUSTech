@@ -25,6 +25,10 @@ public class Main {
         DataBase.flight_list.add(a3);
         Scanner input = new Scanner(System.in);
         boolean system_On = true;
+
+        DataBase.present_date = "2017-03-22";
+        DataBase.present_time = "10:00";
+
         while (true) {
             //系统开启
             while (system_On) {
@@ -53,8 +57,8 @@ public class Main {
                         if( chocieNum < 8) {
                             System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
                             System.out.printf("Input \"Y\" for YES and \"N\" for NO \nConfirm:>>");
-                            String confirm = input.next();
-
+                            String confirm = input.nextLine();
+//                            input.nextLine();
                             if (confirm.compareTo("N") == 0)
                                 continue;
                             switch (chocieNum) {
@@ -81,13 +85,8 @@ public class Main {
                                     continue;
                             }//end Switch
                         }
-                        else if (chocieNum == 7) {
-                            System.out.printf("Are you sure to Log Out?");
-                            System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
-                            String confirm_out = input.nextLine();
-                            if (confirm_out.compareTo("Y") == 0)
-                                admin_moode_on = false;
-                        }
+                           admin_moode_on = false;
+
                     }//end Admin Function
                 }//end Admin Mood
            else if (status.compareTo("passenger") == 0) {

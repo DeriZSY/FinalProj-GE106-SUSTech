@@ -27,9 +27,9 @@ public class Admin {
     /***** 管理员功能： 创建新管理员 *****/
     public static void create_newAdmin() {
         Scanner input = new Scanner(System.in);
-        boolean is_true = true;
+        boolean is_true = false;
         String uName = "defaultName";
-        while (is_true) {
+      do {
             System.out.printf("Please input the username for a new Administer (Input 'Q' to leave):\nUsername:>>");
             uName = input.nextLine();
             for (Admin everyAdmin : DataBase.admin_list) {
@@ -37,15 +37,14 @@ public class Admin {
                 if (everyAdmin.adminUserName.compareTo(uName) == 0 ) {
 //                    System.out.printf("Check1\n");
                     System.out.printf("The name is already taken; please try a new one !\n");
-                    input.nextLine();
+                   input.nextLine();
+                    is_true = true;
                     break;
-                } else if (everyAdmin.adminUserName.compareTo(uName) != 0) {
-//                    System.out.printf("Check2\n");
-                    is_true = false;
-                }
+                } else 
+                        is_true = false;
 //                System.out.printf("Check\n");
             }
-        }//while end
+        }while (is_true);
         is_true = true;
         if (uName.compareTo("Q") != 0) {
             while (is_true) {
@@ -177,6 +176,7 @@ public class Admin {
                             System.out.println();
                             System.out.printf("Input 'U' to update, 'M' to modify, 'D' to display full information, and 'N' to continue your check\n");
                             String choice = input.nextLine();
+
                             //输入为 D 则显示完整信息
                             if (choice.compareTo("D") == 0) {
                                 System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
@@ -192,9 +192,11 @@ public class Admin {
                             } else if (choice.compareTo("M") == 0) {
                                 System.out.printf("Input 'del' to delete the flight and 'reset' to reset information of the flight\n");
                                 String a_choice = input.nextLine();
+                                //输入del删除
                                 if (a_choice.compareTo("del") == 0) {
-                                    String deleting_ID = everyFlight.flightID;
-                                    Admin.delete_aimFlight(deleting_ID);
+//                                    String deleting_ID = everyFlight.flightID;
+                                    Admin.delete_aimFlight(everyFlight.flightID);
+                                    //输入reset 重设信息
                                 } else if (a_choice.compareTo("reset") == 0){
                                     if(everyFlight.flightStatus == Flight.flightStatusENU.UNPUBLISHED){
                                         Admin.reset_UNPUBLISh_Flight(everyFlight);
@@ -374,7 +376,7 @@ public class Admin {
     public static void deleteFlight() {
 //        if (is_log_in()) {
         while (true) {
-            flightAutoCheck();
+//            flightAutoCheck();
             Scanner input = new Scanner(System.in);
             System.out.printf("The list of the planes are:\n");
             System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
@@ -466,7 +468,7 @@ public class Admin {
         }
       boolean is_true0 = true;
        while (is_true0){
-        System.out.printf("1:check out the latest flight's information\t2:reset the flight status\t3:reset the plane type\t4:reset the prize ");
+        System.out.printf("Input '1' to Check out the latest flight's information\n '2' to reset the flight status\n '3' to reset the plane type\n '4' to reset the prize\n ");
         int decide = input.nextInt();
         switch (decide) {
             case 1:
@@ -656,7 +658,7 @@ public class Admin {
         }// Modify Flight End
     }
 
-
+    /***** 根据时间修改所有航班的状态 *****/
     public static void flightAutoCheck() {
         for(Flight everyFlight : DataBase.flight_list){
             everyFlight.check_and_change();
