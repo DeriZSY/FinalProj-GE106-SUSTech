@@ -13,7 +13,6 @@ public class Main {
         //Login
         // Initialize Flights 
         
-        /*    一下的内容都可在line 12的createflight中完成
         Flight a1 = new Flight("ZG001", "12:00", "2017-03-22", "13:22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", DataBase.Mig_MniJet);
         Flight a2 = new Flight("ZG002", "14:00", "2017-03-23", "15:22", "Shenzhen",
@@ -22,7 +21,7 @@ public class Main {
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
-        DataBase.flight_list.add(a3);     */
+        DataBase.flight_list.add(a3);
         Scanner input = new Scanner(System.in);
         boolean system_On = true;
 

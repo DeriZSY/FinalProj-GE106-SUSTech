@@ -12,9 +12,10 @@ public class Passenger {
     public static String demand;
 
     public enum passengerStat {VIP, nonVIP}
+
     public passengerStat passengerStatus = passengerStat.nonVIP;
 
-    
+
     Scanner input = new Scanner(System.in);
 
     public enum logingSatus {LGOING, UNLOGIN}
@@ -23,11 +24,11 @@ public class Passenger {
     logingSatus loginStates = logingSatus.UNLOGIN;
 
     /***** Constructor *****/
-	public Passenger (String realname, String realID){
-		this.realName = realname;
-		this.realID = realID;
-		
-	}
+    public Passenger(String realname, String realID) {
+        this.realName = realname;
+        this.realID = realID;
+
+    }
 
 
     /***** 辅助功能： 确认密码 *****/
@@ -36,7 +37,7 @@ public class Passenger {
         Scanner input = new Scanner(System.in);
         System.out.printf("Please Input your password to confirm :\n password:");
         String pWord = input.nextLine();
-        for(Passenger everypassenger : DataBase.passengers_lilst) {
+        for (Passenger everypassenger : DataBase.passengers_lilst) {
             if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
                 System.out.printf("Success !");
             }
@@ -48,92 +49,160 @@ public class Passenger {
         Admin.flightAutoCheck();
         Scanner input = new Scanner(System.in);
         //选择需要搜索的方式，1、通过细节信息查询航班，2、通过航班ID查询信息（支持模糊查找），3、查看整个订单列表
-            System.out.printf("Do you want to check by detailed information or by flightID?" +
-                    "\n(Input \"1\" for check by detailed information and \"2\" for check by flightID, Input \"3\" to check "
-                    +"the whole order list)"+"\nInput:");
-            int choic = input.nextInt();
-            input.nextLine();
-            switch (choic) {
-                //按照细节信息查询航班
-                case 1:
-                    System.out.printf("What's your choice for departure city\n City name:");
+        System.out.printf("Do you want to check by detailed information or by flightID?" +
+                "\n(Input \"1\" for check by detailed information and \"2\" for check by flightID, Input \"3\" to check "
+                + "the whole order list)" + "\nInput:");
+        int choic = input.nextInt();
+        input.nextLine();
+        switch (choic) {
+            //按照细节信息查询航班
+            case 1:
+                boolean is_true = true;
+                while (is_true) {
+                    System.out.printf("What's your choice for departure city(Input 'Q' to quit for this information))\n City name:");
                     String dpCity = input.nextLine();
-                    System.out.printf("What's your choice for arriving city\n City name:");
+                    System.out.printf("What's your choice for arriving city(Input 'Q' to quit for this information))\n City name:");
                     String arvCity = input.nextLine();
-                    System.out.printf("What's your idea starting date ?(Input in the form of yyyy-MM-dd,for example: 2016-04-22)\n: Date:");
+                    System.out.printf("What's your idea starting date ?(Input in the form of yyyy-MM-dd,for example: 2016-04-22)(Input 'Q' to quit for this information))\nDate:");
                     String startDate = input.nextLine();
-                    for (Flight everyFlight : DataBase.flight_list) {
-                        if (everyFlight.startCity == dpCity || everyFlight.arrivalCity == arvCity || everyFlight.flightDate == startDate) {
-                            System.out.printf("The flight you are looking for is" + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is" + everyFlight.flightStatus);
-                            System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check");
-                            String choice = input.nextLine();
-                            if (choice.compareTo("Y") == 0) {
-                                confirmPasword();
-                                Passenger.reserveFlight();
-                                System.out.printf("Book Success!");
-                            } else {
-                                continue;
-                            }
-                        }
-                    }
-                    break;
-                //通过航班ID查询航班
-                case 2:
-                    System.out.printf("Please Input the flightID\nFlight Id:");
-                    String fID = input.nextLine();
-//
-                    char[] input_for_search = new char[fID.length()];
-                    for (int i = 0; i < fID.length(); i++) {
-                        input_for_search[i] = fID.charAt(i);
-                    }
+                    int choice1 = 0;
+                    if (dpCity.compareTo("Q") == 0)
+                        choice1 += 1;
+                    if (arvCity.compareTo("Q") == 0)
+                        choice1 += 2;
+                    if (startDate.compareTo("Q") == 0)
+                        choice1 += 4;
+                    // Choice  = 1, by arvCity + Date ; Choice = 2 ,dpCity + Date;
+                    // Choice = 3, by start Date ;
+                    // Choice = 4 by startCity and arvCity
+                    // Chocie = 5,by arvCtiy; Choice = 6, by dpCity;
+                    for (Flight every_Flight : DataBase.flight_list) {
 
-
-                    for (Flight everyFlight : DataBase.flight_list) {
-                        int i = 0;
-                        int j = 0;
-                        boolean is_result = false;
-                        while (j < everyFlight.flightID.length() && i < fID.length()) {
-                            if (input_for_search[i] == everyFlight.flightID.charAt(j)) {
-                                i++;
-                            }
-                            j++;
-                            if (i == fID.length())
-                                is_result = true;
-                        }
-                        if (is_result) {
-                            System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is " + everyFlight.flightStatus);
-                            System.out.println();
-                            System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check\n");
-                            String choice = input.nextLine();
-                            if (choice.compareTo("Y") == 0) {
-                                System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
-                                String choice2 = input.nextLine();
-                                if (choice2.compareTo("Y") == 0) {
-                                    everyFlight.disp_flight_inform();
+                        switch (choice1) {
+                            case 0:
+                                if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.arrivalCity.compareTo(arvCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
+                                    Passenger.searchThree(every_Flight);
+                                } else {
+                                    continue;
                                 }
-                            } else {
-                                continue;
-                            }
+                            case 1:
+                                if (every_Flight.arrivalCity.compareTo(arvCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
+                                    Passenger.searchThree(every_Flight);
+                                } else {
+                                    continue;
+                                }
+                            case 2:
+                                if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
+                                    Passenger.searchThree(every_Flight);
+                                } else {
+                                    continue;
+                                }
+                            case 3:
+                                if (every_Flight.flightDate.compareTo(startDate) == 0) {
+                                    Passenger.searchThree(every_Flight);
+                                } else {
+                                    continue;
+                                }
+                            case 4:
+                                if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.arrivalCity.compareTo(arvCity) == 0) {
+                                    Passenger.searchThree(every_Flight);
+                                } else {
+                                    continue;
+                                }
+                            case 5:
+                                if (every_Flight.arrivalCity.compareTo(arvCity) == 0) {
+                                    Passenger.searchThree(every_Flight);
+                                } else {
+                                    continue;
+                                }
+                            case 6:
+                                if (every_Flight.startCity.compareTo(dpCity) == 0) {
+                                    Passenger.searchThree(every_Flight);
+                                }
+                        }
+                        System.out.printf("Input 'Y' to continue check and 'N' to finish checking process.\n");
+                        String choice  = input.nextLine();
+                        if(choice.compareTo("Y") == 0)
+                            continue;
+                        System.out.printf("All results are shown.\n");
+                        is_true = false;
+                        break;
                         }
                     }
-                    System.out.printf("Check Over, all available results have been shown");
-                    break;//case 1 break;
-                //显示整个订单列表
-                case 3:
-                    System.out.printf("Please input your username:\n>>");
-                    String aim_name = input.nextLine();
-                    for(Passenger everyPassenger : DataBase.passengers_lilst) {
-                        if(everyPassenger.passengerID.compareTo(aim_name) == 0){
-                            for (Order everyOrder : everyPassenger.orderList) {
-                                Order.order_disp(everyOrder);
+                break;
+            //通过航班ID查询航班
+            case 2:
+                System.out.printf("Please Input the flightID\nFlight Id:");
+                String fID = input.nextLine();
+//
+                char[] input_for_search = new char[fID.length()];
+                for (int i = 0; i < fID.length(); i++) {
+                    input_for_search[i] = fID.charAt(i);
+                }
+
+
+                for (Flight everyFlight : DataBase.flight_list) {
+                    int i = 0;
+                    int j = 0;
+                    boolean is_result = false;
+                    while (j < everyFlight.flightID.length() && i < fID.length()) {
+                        if (input_for_search[i] == everyFlight.flightID.charAt(j)) {
+                            i++;
+                        }
+                        j++;
+                        if (i == fID.length())
+                            is_result = true;
+                    }
+                    if (is_result) {
+                        System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is " + everyFlight.flightStatus);
+                        System.out.println();
+                        System.out.printf("Input 'Y' to book it, and Input 'N' to continue your check\n");
+                        String choice = input.nextLine();
+                        if (choice.compareTo("Y") == 0) {
+                            System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
+                            String choice2 = input.nextLine();
+                            if (choice2.compareTo("Y") == 0) {
+                                everyFlight.disp_flight_inform();
                             }
+                        } else {
+                            continue;
                         }
                     }
-            }
+                }
+                System.out.printf("Check Over, all available results have been shown");
+                break;//case 1 break;
+            //显示整个订单列表
+            case 3:
+                System.out.printf("Please input your username:\n>>");
+                String aim_name = input.nextLine();
+                for (Passenger everyPassenger : DataBase.passengers_lilst) {
+                    if (everyPassenger.passengerID.compareTo(aim_name) == 0) {
+                        for (Order everyOrder : everyPassenger.orderList) {
+                            Order.order_disp(everyOrder);
+                        }
+                    }
+                }
+        }
 //       }else
 //            DataBase.passengerLogIn();
 //    //end register and methods involved
     }
+
+
+    /***** 乘客 搜索3 *****/
+    public static void searchThree(Flight aim_Flight) {
+        Scanner input = new Scanner(System.in);
+        System.out.printf("The flight you are looking for is" + aim_Flight.flightID + "; the Price is " + aim_Flight.price + "; the flight Sate is" + aim_Flight.flightStatus);
+        System.out.println();
+        System.out.printf("Input 'Y' to book it\n");
+        String choice = input.nextLine();
+        if (choice.compareTo("Y") == 0) {
+            confirmPasword();
+            Passenger.reserveFlight();
+            System.out.printf("Book Success!");
+        }
+    }
+
     /***** 乘客功能： 预订航班*****/
     //预定航班，并显示所有航班的信息
    public static void reserveFlight(){
