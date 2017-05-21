@@ -249,6 +249,7 @@ public class Passenger {
     	DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
     	System.out.println("Do you have any special demand? If any,please enter it.");
     	demand = input.nextLine();
+    	demand = input.nextLine();
         Order newOrder = new Order (realName,passengerID,seatNum,ID,"做pre的那一天的日期",demand);
         newOrder.orderstatus = Order.orderstates.PAID;
         DataBase.order_list.add(newOrder);
@@ -267,6 +268,8 @@ public class Passenger {
             if(is_true = true)
             	  System.out.printf("The passengerID you input does not exist, please try again.\n");
         }
+        confirmPasword();
+        
         //预订成功
     	System.out.printf("You have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
