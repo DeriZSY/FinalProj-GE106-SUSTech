@@ -109,13 +109,23 @@ public class Flight {
 
     /***** 检测并修改状态（单个航班） *****/
     public void check_and_change(){
-        int termin_time = time_modification(departureTime) - 120;
-        int present_time  = time_modification(DataBase.present_time);
-
-
-        if(termin_time >= present_time && flightDate.compareTo(DataBase.present_date) == 0){
-            flightStatus = flightStatusENU.TERMINATE;
-        }
+        int termin_time1 = time_modification(departureTime) - 120;
+        int present_time1  = time_modification(DataBase.present_time);
+       
+        int YearP=DataBase. present_date.charAt(0)*1000+DataBase.present_date.charAt(1)*100+DataBase.present_date.charAt(2)*10+DataBase.present_date.charAt(3);
+        int mouthP=DataBase.present_date.charAt(5)*10+DataBase.present_date.charAt(6);
+        int DayP=DataBase.present_date.charAt(8)*10+DataBase.present_date.charAt(9);
+        int YearT=departureTime.charAt(0)*1000+departureTime.charAt(1)*100+departureTime.charAt(2)*10+departureTime.charAt(3);
+        int mouthT=departureTime.charAt(5)*10+departureTime.charAt(6);
+        int DayT=departureTime.charAt(8)*10+departureTime.charAt(9);
+        if (YearT>YearP){
+        	flightStatus = flightStatusENU.TERMINATE;}
+        	else if (mouthT>mouthP){
+        		flightStatus = flightStatusENU.TERMINATE;}
+        		else if (DayT>DayP){
+        			flightStatus = flightStatusENU.TERMINATE;}
+        			else if (termin_time1 >= present_time1 && flightDate.compareTo(DataBase.present_date) == 0){
+            flightStatus = flightStatusENU.TERMINATE;}
         if(remainingSeat == 0){
             flightStatus = flightStatusENU.FULL;
         }

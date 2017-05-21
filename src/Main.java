@@ -13,15 +13,72 @@ public class Main {
         //Login
         // Initialize Flights 
         
-        Flight a1 = new Flight("ZG001", "12:00", "2017-03-22", "13:22", "NewYork",
+        Flight a1= new Flight("ZG001a", "12:00", "2017-06-02", "8:22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", DataBase.Mig_MniJet);
-        Flight a2 = new Flight("ZG002", "14:00", "2017-03-23", "15:22", "Shenzhen",
+        Flight a2 = new Flight("ZG002a", "14:00", "2017-06-02", "10:22", "Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$300",DataBase.Airbus251);
-        Flight a3 = new Flight("ZG003", "11:00", "2017-04-12", "17:22", "HongKong",
+        Flight a3 = new Flight("ZG003a", "11:00", "2017-06-02", "11:22", "HongKong",
+                "St.Petersburg ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
+       
+        Flight b1 = new Flight("ZG001b", "11:00", "2017-06-02", "18:22", "UA",
+                "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight b2 = new Flight("ZG002b", "11:00", "2017-06-02", "22:22", "Airplot",
+                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
+        Flight b3 = new Flight("ZG003b", "11:00", "2017-06-02", "17:22", "South Airline",
+                "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
+        
+        Flight c1 = new Flight("ZG001a", "11:00", "2017-06-03", "8:22", "NewYork",
+                "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight c2 = new Flight("ZG002a", "11:00", "2017-06-03", "10:22","Shenzhen",
+                "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
+        Flight c3 = new Flight("ZG003a", "11:00", "2017-06-03", "11:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
+        
+        Flight e1 = new Flight("ZG001b", "11:00", "2017-06-03", "18:22","UA",
+                "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight e2 = new Flight("ZG002b", "11:00", "2017-06-03", "22:22", "Airplot",
+                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
+        Flight e3 = new Flight("ZG003b", "11:00", "2017-06-03", "17:22", "South Airline",
+                "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
+        
+        Flight f1 = new Flight("ZG001a", "11:00", "2017-06-04", "8:22", "NewYork",
+                "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight f2 = new Flight("ZG002a", "11:00", "2017-06-04", "10:22","Shenzhen",
+                "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
+        Flight f3 = new Flight("ZG003a", "11:00", "2017-06-04", "11:22", "HongKong",
+                "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
+        
+        Flight g1 = new Flight("ZG001b", "11:00", "2017-06-04", "18:22", "UA",
+                "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight g2 = new Flight("ZG002b", "11:00", "2017-06-04", "22:22", "Airplot",
+                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
+        Flight g3 = new Flight("ZG003b", "11:00", "2017-06-04", "17:22","South Airline",
+                "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
         DataBase.flight_list.add(a3);
+        
+        DataBase.flight_list.add(b1);
+        DataBase.flight_list.add(b2);
+        DataBase.flight_list.add(b3);
+        
+        
+        DataBase.flight_list.add(c1);
+        DataBase.flight_list.add(c2);
+        DataBase.flight_list.add(c3);
+        
+        DataBase.flight_list.add(e1);
+        DataBase.flight_list.add(e2);
+        DataBase.flight_list.add(e3);
+       
+        
+        DataBase.flight_list.add(f1);
+        DataBase.flight_list.add(f2);
+        DataBase.flight_list.add(f3);
+        
+        DataBase.flight_list.add(g1);
+        DataBase.flight_list.add(g2);
+        DataBase.flight_list.add(g3);
         Scanner input = new Scanner(System.in);
         boolean system_On = true;
 
@@ -69,7 +126,7 @@ public class Main {
                                     Admin.deleteFlight();
                                     continue;
                                 case 5:
-                                    Admin.superQuery();
+                                  Admin.superQuery();
                                     continue;
                                 case 6:
                                     Admin.updateFlight();
@@ -118,7 +175,7 @@ public class Main {
                    Graphing.sepreate__Line_underLine_50();
                    String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
                     String[] function_array1 = origin_function1.split(";");
-                    System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 check out the flight's information\n#4 Log Out\n");
+                    System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 flight's information\n#4 Log Out\n");
                     Graphing.sepreate__Line_sharp_50();
                     System.out.printf("Please input the number for function\n");
                     int chocieNum = input.nextInt();
