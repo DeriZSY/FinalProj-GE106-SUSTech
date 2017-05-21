@@ -57,7 +57,7 @@ public class DataBase {
             System.out.printf("Pelase Input your Pass Word:\n password:");
             String pword = input.nextLine();
             for(Passenger everyPassenger : passengers_lilst) {
-                if (uName.compareTo(everyPassenger.passengerID) == 0 || pword.compareTo(everyPassenger.passengerPassword) == 0) {
+                if (uName.compareTo(everyPassenger.passengerID) == 0 && pword.compareTo(everyPassenger.passengerPassword) == 0) {
                     System.out.printf("Log In Success !\n");
                     everyPassenger.loginStates = Passenger.logingSatus.LGOING;
                     is_ture = false;

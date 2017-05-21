@@ -260,6 +260,7 @@ public class Passenger {
             String aim_name = input.nextLine();
             for (Passenger everyPassenger : DataBase.passengers_lilst) {
                 if (everyPassenger.passengerID.compareTo(aim_name) == 0) {
+                	confirmPasword();
                     everyPassenger.orderList.add(newOrder);
                     is_true = false;
                     break;
@@ -270,7 +271,7 @@ public class Passenger {
             // 把order加入这个人orderlist中。
 
         }
-        confirmPasword();
+        
         
         //预订成功
     	System.out.printf("You have successfully reserved the flight %s\n"
