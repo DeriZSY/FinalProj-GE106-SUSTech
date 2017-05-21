@@ -580,7 +580,7 @@ public class Admin {
           boolean is_true =true;
           while(is_true){
                System.out.printf("Choose the inform you want to reset:\n");
-               System.out.printf("1. Flight ID\n2. Departure Time\n3.Arrival Time" +
+               System.out.printf("1. Flight ID\n2. Departure Time\n3.Arrival Time\n" +
                        "4. Flight Date\n5. Start Ciy\n6. Stop by City\n7. Arrival City\n8. Airline Company\n9. Price\n10. Seat Capacity\n" +
                        "11. Flight State\n(Input 'Q' to quit)\n");
                String origin_function = "Flight ID;Departure Time(e.g. 13:00);Arrival Time(e.g. 12:00);Flight Date(e.g. 2016-12-22);Start Ciy;Stop by City;Arrival City;Airline Company;Price;Seat Capacity;Flight State";
@@ -634,17 +634,19 @@ public class Admin {
                      String decide = input.nextLine();
                      if (decide.compareTo("N")==0)
                    	  is_true = false;
-               } }
+               }else
+                   break;
+            }
            }
        
-   // 如果AVAILABLE 或者FULL 则用这个方法
+   /***** 如果AVAILABLE 或者FULL 则用这个方法 *****/
        public static void reset_PUBLISHED_Flight(Flight selectedFlight){
              //  flightAutoCheck();
                Scanner input = new Scanner(System.in);
    			boolean is_true = true;
                while (is_true) {
                    System.out.printf("Choose the inform you want to reset:\n");
-                   System.out.printf("1. Price \n2. Seat Cpacityn(Input 'Q' to quit)\n");
+                   System.out.printf("1. Price \n2. Seat Capacity\n(Input 'Q' to quit)\n");
                    String origin_function = "Price;Seat Capacity";
                    String[] function_array = origin_function.split(";");
                    String choiceStr = input.nextLine();
