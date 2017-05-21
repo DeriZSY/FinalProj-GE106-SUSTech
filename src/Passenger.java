@@ -210,7 +210,7 @@ public class Passenger {
     	// 查询各个flight的信息  显示除开unpublished的所有信息
     	System.out.println("The flight information:");
     	    	 for (Flight flight : DataBase.flight_list) {
-    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED){
+    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED|| flight.flightStatus != Flight.flightStatusENU.TERMINATE|| flight.flightStatus != Flight.flightStatusENU.FULL){
     			 flight.disp_flight_inform();}
     		/*	 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
     			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
