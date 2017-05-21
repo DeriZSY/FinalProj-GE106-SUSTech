@@ -25,7 +25,7 @@ public class Admin {
 
 
     /***** 管理员功能： 创建新管理员 *****/
-    public static void create_newAdmin() {
+    public static void create_newAdmin()  {
         Scanner input = new Scanner(System.in);
         boolean is_true = false;
         String uName = "defaultName";
@@ -172,7 +172,7 @@ public class Admin {
                                 is_result = true;
                         }
                         if (is_result) {
-                            System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; the Price is " + everyFlight.price + "; the flight Sate is " + everyFlight.flightStatus);
+                            System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; \nthe Price is " + everyFlight.price + "; \nthe flight Sate is " + everyFlight.flightStatus);
                             System.out.println();
                             System.out.printf("Input 'U' to update, 'M' to modify, 'D' to display full information, and 'N' to continue your check\n");
                             String choice = input.nextLine();
@@ -213,7 +213,7 @@ public class Admin {
                             }
                         }
                     }
-                    System.out.printf("Check Over, all available results have been shown");
+                    System.out.printf("\nCheck Over, all available results have been shown\n");
                     break;//case 1 break;
                 case 2:
                     System.out.printf("Please Input the OrderID:\n>>");
@@ -312,7 +312,7 @@ public class Admin {
                             if (choice.compareTo("Y") == 0) {
                                 continue;
                             }
-                            System.out.printf("All results are shown.\n");
+                            System.out.printf("\nAll results are shown.\n");
                             is_true = false;
                             break;
                             }

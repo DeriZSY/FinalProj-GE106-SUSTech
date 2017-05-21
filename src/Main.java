@@ -36,7 +36,8 @@ public class Main {
                 System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n");
                 String status = input.nextLine();
                 if (status.compareTo("admin") == 0) {
-                    //管理员模式
+                    
+                	//管理员模式
                     Graphing.sepreate__Line_sharp_50();
                 DataBase.adminLogin();
                     System.out.println();
@@ -53,13 +54,7 @@ public class Main {
                         System.out.printf("Please input the number for function\nFunction Number:>>");
                         int chocieNum = input.nextInt();
                         System.out.println();
-                        if( chocieNum < 6) {
-                            System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
-                            System.out.printf("Input \"Y\" for YES and \"N\" for NO \nConfirm:>>");
-                            String confirm = input.nextLine();
-//                            input.nextLine();
-                            if (confirm.compareTo("N") == 0)
-                                continue;
+                        if( chocieNum <= 6) {                     
                             switch (chocieNum) {
                                 case 1:
                                     Admin.create_newAdmin();
@@ -82,37 +77,53 @@ public class Main {
                            //     case 7:
                           //          Admin.showAndReset();
                            //         continue;
-                            }//end Switch
-                        }
+                            }		//end Switch
+                        }	
                            admin_moode_on = false;    
 
                     }//end Admin Function
                 }//end Admin Mood
-           else if (status.compareTo("passenger") == 0) {
+           
+                
+                else if (status.compareTo("passenger") == 0) {
 //                //乘客模式
-    /*         boolean passenger_mode_on = true;
+        	   boolean passenger_mode_on = true;
                 while (passenger_mode_on) {
-                    System.out.printf("Do you need to register first? (input \"Y\" for Yes and \"N\" for No)");
-                   String choice = input.nextLine();
-                   if (choice.compareTo("Y") == 0) {
-                      DataBase.register();
-                    } else {
-                      System.out.printf("Now, you are logging in !");
-                       DataBase.passengerLogIn();
-                    }
-                   String origin_function = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
-                    String[] function_array = origin_function.split(";");
+        	   System.out.printf("Welcome to the passenger System\n");
+               //选择登录模式(注册/登陆）
+        	   System.out.printf("what do you wnat to do?\n");
+        	   String origin_function =";register;login;";
+        	   String[] function_array = origin_function.split(";");
+                    System.out.printf("#1 register\n #2 login\n");
+                    Graphing.sepreate__Line_sharp_50();
+                   System.out.printf("  please enter the number>>\t");
+                   int choice = input.nextInt();
+                   System.out.println();
+                   if( choice < 3) {
+                     
+                     switch(choice){
+                     case 1:
+                    	 DataBase.register();
+                    	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                    	 Graphing.sepreate__Line_underLine_50();
+                    	 continue;
+                     case 2:
+                    	 DataBase.passengerLogIn();
+                    	 Graphing.sepreate__Line_underLine_50();
+                    	 
+                     }
+                   
+                   } 
+                   System.out.printf("Now, you are logging in !\n");
+                   Graphing.sepreate__Line_underLine_50();
+                   String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
+                    String[] function_array1 = origin_function1.split(";");
                     System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 check out the flight's information\n#4 Log Out\n");
                     Graphing.sepreate__Line_sharp_50();
                     System.out.printf("Please input the number for function\n");
                     int chocieNum = input.nextInt();
                     System.out.println();
-                    System.out.printf("The function you are going to enter is %s, are you Sure? ", function_array[chocieNum]);
-                    System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
-                    String confirm = input.next();
-
-                    if (confirm.compareTo("N") == 0)
-                        continue;
+                   if (chocieNum <= 3){
                     switch (chocieNum) {
                         case 1:
                            Passenger.reserveFlight();
@@ -124,19 +135,17 @@ public class Main {
                             Passenger.queryFlight();
                             continue;
                     }//end Switch
-                    System.out.printf("Are you sure to Log Out?");
-                    System.out.printf("Input \"Y\" for YES and \"N\" for NO ");
-                    String confirm_out = input.nextLine();
-                    if (confirm_out.compareTo("Y") == 0)
+                   }
                     	passenger_mode_on  = false;
                    
 
-               } */
+               
            }// end passenger mode;
+           
        }//end system
             }
         }
-    }
+    }}
 
 
 
