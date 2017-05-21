@@ -36,7 +36,8 @@ public class Main {
                 System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n");
                 String status = input.nextLine();
                 if (status.compareTo("admin") == 0) {
-                    //管理员模式
+                    
+                	//管理员模式
                     Graphing.sepreate__Line_sharp_50();
                 DataBase.adminLogin();
                     System.out.println();
@@ -90,16 +91,26 @@ public class Main {
                 }//end Admin Mood
            else if (status.compareTo("passenger") == 0) {
 //                //乘客模式
-    /*         boolean passenger_mode_on = true;
+        	   boolean passenger_mode_on = true;
                 while (passenger_mode_on) {
-                    System.out.printf("Do you need to register first? (input \"Y\" for Yes and \"N\" for No)");
+        	   System.out.printf("Welcome to the passenger System\n");
+               //选择登录模式(注册/登陆）
+                    System.out.printf("Do you need to register first? (input \"Y\" for Yes and \"N\" for No)\n");
                    String choice = input.nextLine();
                    if (choice.compareTo("Y") == 0) {
                       DataBase.register();
-                    } else {
-                      System.out.printf("Now, you are logging in !");
-                       DataBase.passengerLogIn();
-                    }
+                     
+                      System.out.printf("Do you want to login? (input \"Y\" for Yes and \"N\" for No)\n");
+                      String Choice = input.nextLine();
+                      if(choice.compareTo("Y") == 0){
+                    	  DataBase.passengerLogIn();
+                      }
+                    } 
+                   else {
+                	   DataBase.passengerLogIn();
+                       }
+                   System.out.printf("Now, you are logging in !\n");
+                   Graphing.sepreate__Line_underLine_50();
                    String origin_function = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
                     String[] function_array = origin_function.split(";");
                     System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 check out the flight's information\n#4 Log Out\n");
@@ -131,8 +142,9 @@ public class Main {
                     	passenger_mode_on  = false;
                    
 
-               } */
+               } 
            }// end passenger mode;
+           
        }//end system
             }
         }

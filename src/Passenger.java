@@ -274,7 +274,7 @@ public class Passenger {
    
    /***************退订功能*************/
    
-   public static void unsubscribeFlight (){
+   public static void unsubscribedFlight (){
        Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
 	   boolean is_true = true;
