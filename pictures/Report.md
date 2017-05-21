@@ -73,3 +73,4 @@
 #### 其他功能：
 ##### 1. 主函数操作界面
 ##### 2. 航班随时间和预订人数自动变更状态功能
+![Testing Picture](https://github.com/DeriZSY/FinalProj-GE106-SUSTech/blob/master/pictures/createFlight.png)
