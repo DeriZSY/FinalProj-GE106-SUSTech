@@ -74,9 +74,9 @@ public class Main {
                                 case 6:
                                     Admin.updateFlight();
                                     continue;
-                           //     case 7:
-                          //          Admin.showAndReset();
-                           //         continue;
+//                                case 7:
+//                                    Admin.showAndReset();
+//                                    continue;
                             }		//end Switch
                         }	
                            admin_moode_on = false;    

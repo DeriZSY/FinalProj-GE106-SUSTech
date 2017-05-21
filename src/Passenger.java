@@ -260,12 +260,14 @@ public class Passenger {
             for (Passenger everyPassenger : DataBase.passengers_lilst) {
                 if (everyPassenger.passengerID.compareTo(aim_name) == 0) {
                     everyPassenger.orderList.add(newOrder);
-                    is_true =false;
+                    is_true = false;
                     break;
                 }
-            } // 把order加入这个人orderlist中。
-            if(is_true = true)
-            	  System.out.printf("The passengerID you input does not exist, please try again.\n");
+            }
+            if(is_true)
+                System.out.printf("The passengerID you input does not exist, please try again.\n");
+            // 把order加入这个人orderlist中。
+
         }
         //预订成功
     	System.out.printf("You have successfully reserved the flight %s\n"
