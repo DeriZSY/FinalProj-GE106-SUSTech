@@ -25,7 +25,7 @@ public class Test {
     	System.out.println();
     	
     	Passenger.reserveFlight();
-    	
+    	Passenger.unsubscribedFlight();
       
 //        Admin.deleteFlight()
 //        Admin.create_newAdmin();
