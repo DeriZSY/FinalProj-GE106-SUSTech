@@ -16,14 +16,15 @@ public class Test {
          DataBase.flight_list.add(a1);
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
-         Admin.updateFlight();
+    	
+//         Admin.updateFlight();
     
     	DataBase.passengerLogIn();
-    	System.out.println();
-    	for (Passenger x :DataBase.passengers_lilst){
-    		System.out.print("ID:"+x.passengerID);
-    	}
-    	System.out.println();
+//    	System.out.println();
+//    	for (Passenger x :DataBase.passengers_lilst){
+//    		System.out.print("ID:"+x.passengerID+x.passengerPassword);
+//    	}
+//    	System.out.println();
     	
     	Passenger.reserveFlight();
     	Passenger.unsubscribedFlight();
