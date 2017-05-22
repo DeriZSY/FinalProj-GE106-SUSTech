@@ -13,11 +13,11 @@ public class Main {
         //Login
         // Initialize Flights 
         
-        Flight a1= new Flight("ZG001a", "12:00", "2017-06-02", "8:22", "NewYork",
+        Flight a1= new Flight("ZG001a", "12:00", "2017-06-02", "18.22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", DataBase.Mig_MniJet);
-        Flight a2 = new Flight("ZG002a", "14:00", "2017-06-02", "10:22", "Shenzhen",
+        Flight a2 = new Flight("ZG002a", "14:00", "2017-06-02", "22:22", "Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$300",DataBase.Airbus251);
-        Flight a3 = new Flight("ZG003a", "11:00", "2017-06-02", "11:22", "HongKong",
+        Flight a3 = new Flight("ZG003a", "11:00", "2017-06-02", "23:22", "HongKong",
                 "St.Petersburg ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
        
         Flight b1 = new Flight("ZG001b", "11:00", "2017-06-02", "18:22", "UA",
@@ -27,11 +27,11 @@ public class Main {
         Flight b3 = new Flight("ZG003b", "11:00", "2017-06-02", "17:22", "South Airline",
                 "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
         
-        Flight c1 = new Flight("ZG001a", "11:00", "2017-06-03", "8:22", "NewYork",
+        Flight c1 = new Flight("ZG001a", "11:00", "2017-06-03", "18:22", "NewYork",
                 "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight c2 = new Flight("ZG002a", "11:00", "2017-06-03", "10:22","Shenzhen",
+        Flight c2 = new Flight("ZG002a", "11:00", "2017-06-03", "22:22","Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
-        Flight c3 = new Flight("ZG003a", "11:00", "2017-06-03", "11:22", "HongKong",
+        Flight c3 = new Flight("ZG003a", "11:00", "2017-06-03", "23:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
         
         Flight e1 = new Flight("ZG001b", "11:00", "2017-06-03", "18:22","UA",
@@ -41,14 +41,14 @@ public class Main {
         Flight e3 = new Flight("ZG003b", "11:00", "2017-06-03", "17:22", "South Airline",
                 "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
         
-        Flight f1 = new Flight("ZG001a", "11:00", "2017-06-04", "8:22", "NewYork",
+        Flight f1 = new Flight("ZG001a", "11:00", "2017-06-04", "18:22", "NewYork",
                 "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight f2 = new Flight("ZG002a", "11:00", "2017-06-04", "10:22","Shenzhen",
+        Flight f2 = new Flight("ZG002a", "11:00", "2017-06-04", "22:22","Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
-        Flight f3 = new Flight("ZG003a", "11:00", "2017-06-04", "11:22", "HongKong",
+        Flight f3 = new Flight("ZG003a", "11:00", "2017-06-04", "23:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
         
-        Flight g1 = new Flight("ZG001b", "11:00", "2017-06-04", "18:22", "UA",
+        Flight g1 = new Flight("ZG001b", "11:00", "2017-06-04", "19:22", "UA",
                 "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
         Flight g2 = new Flight("ZG002b", "11:00", "2017-06-04", "22:22", "Airplot",
                 "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
