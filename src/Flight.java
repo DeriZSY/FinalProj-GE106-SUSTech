@@ -115,9 +115,9 @@ public class Flight {
         int YearP=DataBase. present_date.charAt(0)*1000+DataBase.present_date.charAt(1)*100+DataBase.present_date.charAt(2)*10+DataBase.present_date.charAt(3);
         int mouthP=DataBase.present_date.charAt(5)*10+DataBase.present_date.charAt(6);
         int DayP=DataBase.present_date.charAt(8)*10+DataBase.present_date.charAt(9);
-        int YearT=departureTime.charAt(0)*1000+departureTime.charAt(1)*100+departureTime.charAt(2)*10+departureTime.charAt(3);
-        int mouthT=departureTime.charAt(5)*10+departureTime.charAt(6);
-        int DayT=departureTime.charAt(8)*10+departureTime.charAt(9);
+        int YearT=flightDate.charAt(0)*1000+flightDate.charAt(1)*100+flightDate.charAt(2)*10+flightDate.charAt(3);
+        int mouthT=flightDate.charAt(5)*10+flightDate.charAt(6);
+        int DayT=flightDate.charAt(8)*10+flightDate.charAt(9);
         if (YearT>YearP){
         	flightStatus = flightStatusENU.TERMINATE;}
         	else if (mouthT>mouthP){
