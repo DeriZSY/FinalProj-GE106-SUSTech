@@ -16,7 +16,8 @@ public class Test {
          DataBase.flight_list.add(a1);
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
-    	Admin.updateFlight();
+         Admin.updateFlight();
+    
     	DataBase.passengerLogIn();
     	System.out.println();
     	for (Passenger x :DataBase.passengers_lilst){
