@@ -125,7 +125,7 @@ public class Flight {
         		else if (YearT==YearP&&mouthT==mouthP&&DayT<DayP){flightStatus = flightStatusENU.TERMINATE;}
         			else if (termin_time <= present_time && flightDate.compareTo(DataBase.present_date) == 0){
             flightStatus = flightStatusENU.TERMINATE;}
-        			else {flightStatus = flightStatusENU.AVAILABLE;}
+        			
         if(remainingSeat == 0){
             flightStatus = flightStatusENU.FULL;
         }
