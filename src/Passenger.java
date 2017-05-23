@@ -33,13 +33,16 @@ public class Passenger {
 
     /***** 辅助功能： 确认密码 *****/
     public static void confirmPasword() {
-
         Scanner input = new Scanner(System.in);
+        System.out.printf("Please input your uername:\nuername:>>");
+        String uName = input.nextLine();
         System.out.printf("Please Input your password to confirm :\n password:");
         String pWord = input.nextLine();
         for (Passenger everypassenger : DataBase.passengers_lilst) {
+            if(uName.compareTo(everypassenger.passengerID) == 0){
             if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
                 System.out.printf("Success !");
+            }
             }
         }
     }
@@ -65,6 +68,7 @@ public class Passenger {
                     String arvCity = input.nextLine();
                     System.out.printf("What's your idea starting date ?(Input in the form of yyyy-MM-dd,for example: 2016-04-22)(Input 'Q' to quit for this information))\nDate:");
                     String startDate = input.nextLine();
+                    Graphing.standard_sepreation();
                     int choice1 = 0;
                     if (dpCity.compareTo("Q") == 0)
                         choice1 += 1;
@@ -72,10 +76,6 @@ public class Passenger {
                         choice1 += 2;
                     if (startDate.compareTo("Q") == 0)
                         choice1 += 4;
-                    // Choice  = 1, by arvCity + Date ; Choice = 2 ,dpCity + Date;
-                    // Choice = 3, by start Date ;
-                    // Choice = 4 by startCity and arvCity
-                    // Chocie = 5,by arvCtiy; Choice = 6, by dpCity;
                     for (Flight every_Flight : DataBase.flight_list) {
 
                         switch (choice1) {
@@ -83,45 +83,49 @@ public class Passenger {
                                 if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.arrivalCity.compareTo(arvCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
                                     Passenger.searchThree(every_Flight);
                                 } else {
-                                    continue;
+                                    break;
                                 }
                             case 1:
                                 if (every_Flight.arrivalCity.compareTo(arvCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
                                     Passenger.searchThree(every_Flight);
                                 } else {
-                                    continue;
+                                    break;
                                 }
                             case 2:
                                 if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
                                     Passenger.searchThree(every_Flight);
                                 } else {
-                                    continue;
+                                    break;
                                 }
                             case 3:
                                 if (every_Flight.flightDate.compareTo(startDate) == 0) {
                                     Passenger.searchThree(every_Flight);
                                 } else {
-                                    continue;
+                                    break;
                                 }
                             case 4:
                                 if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.arrivalCity.compareTo(arvCity) == 0) {
                                     Passenger.searchThree(every_Flight);
                                 } else {
-                                    continue;
+                                    break;
                                 }
                             case 5:
                                 if (every_Flight.arrivalCity.compareTo(arvCity) == 0) {
                                     Passenger.searchThree(every_Flight);
                                 } else {
-                                    continue;
+                                    break;
                                 }
                             case 6:
                                 if (every_Flight.startCity.compareTo(dpCity) == 0) {
                                     Passenger.searchThree(every_Flight);
-                                }
+                                }break;
+                            default:
+                                System.out.printf("No Available Result\n");
+                                Graphing.standard_sepreation();
                         }
                         System.out.printf("Input 'Y' to continue check and 'N' to finish checking process.\n");
                         String choice  = input.nextLine();
+                        Graphing.standard_sepreation();
                         if(choice.compareTo("Y") == 0)
                             continue;
                         System.out.printf("All results are shown.\n");
