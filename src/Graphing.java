@@ -18,4 +18,9 @@ public class Graphing {
         }
         System.out.println();
     }
+    public static void standard_sepreation(){
+        System.out.println();
+        Graphing.sepreate__Line_underLine_50();
+        System.out.println();
+    }
 }
