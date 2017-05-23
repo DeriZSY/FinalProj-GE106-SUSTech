@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Passenger {
     /****** variables ********/
-    public static String passengerID;//used for registration.
-    public static String passengerPassword;
-    public static String realName;
-    public static String realID;//passenger's own ID.
-    public static ArrayList<Order> orderList = new ArrayList<Order>();
-    public static String demand;
+    public  String passengerID;//used for registration.
+    public  String passengerPassword;
+    public  String realName;
+    public  String realID;//passenger's own ID.
+    public  ArrayList<Order> orderList = new ArrayList<Order>();
+    public  String demand;
 
     public enum passengerStat {VIP, nonVIP}
 
@@ -224,9 +224,32 @@ public class Passenger {
     }
    
    // 预定航班 但不显示航班信息 直接预定
-   public static void reserveFlight0(){
+   public static void reserveFlight0(){  //对与每一个object，这个方法都是一样的，跟Object本身无关，可以用static
        Admin.flightAutoCheck();
 	   Scanner input = new Scanner (System.in);
+	 // 查找这个乘客
+	   int psnum = 0 ;  //乘客是psnum号
+	   boolean is_true = true;
+       while(is_true) {
+           System.out.printf("Please input your passengerID\n");
+           String aim_name = input.nextLine();
+           int counter = 0;
+           for (Passenger everyPassenger : DataBase.passengers_lilst) {
+               if (everyPassenger.passengerID.compareTo(aim_name) != 0) {
+                  counter ++;
+               }
+               else{
+            	   psnum = counter;
+            	   is_true = false;
+            	   confirmPasword();
+            	   break;
+               }
+           }
+           if(is_true)
+               System.out.printf("The passengerID you input does not exist, please try again.\n");
+           // 把order加入这个人orderlist中。
+
+       }
 	   
 	   int num=0;//用于调用user输入ID对应的航班
   //预定航班
@@ -248,25 +271,15 @@ public class Passenger {
     	DataBase.flight_list.get(num).remainingSeat--;//对应航班剩余座位减1；
     	DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
     	System.out.println("Do you have any special demand? If any,please enter it.");
-    	demand = input.nextLine();
-        Order newOrder = new Order (realName,passengerID,seatNum,ID,"做pre的那一天的日期",demand);
+    	String demand0 = input.nextLine();
+    	demand0 = input.nextLine();
+        Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,"做pre的那一天的日期",demand0);
         newOrder.orderstatus = Order.orderstates.PAID;
         DataBase.order_list.add(newOrder);
+        DataBase.passengers_lilst.get(psnum).orderList.add(newOrder);
        //输入乘客ID，并将订单添加到对应乘客的订单列表  进入付款界面
-        boolean is_true = true;
-        while(is_true) {
-            System.out.printf("Please input your passengerID\n");
-            String aim_name = input.nextLine();
-            for (Passenger everyPassenger : DataBase.passengers_lilst) {
-                if (everyPassenger.passengerID.compareTo(aim_name) == 0) {
-                    everyPassenger.orderList.add(newOrder);
-                    is_true =false;
-                    break;
-                }
-            } // 把order加入这个人orderlist中。
-            if(is_true = true)
-            	  System.out.printf("The passengerID you input does not exist, please try again.\n");
-        }
+       
+        
         //预订成功
     	System.out.printf("You have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
@@ -274,19 +287,19 @@ public class Passenger {
    
    /***************退订功能*************/
    
-   public static void unsubscribedFlight (){
+   public  static void unsubscribedFlight (){
        Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
-	   boolean is_true = true;
-	   boolean is_true0 =true;
-	   while (is_true0){
+	   boolean is_true1 = true;
+	   boolean is_true2 =true;
+	   while (is_true1){
 		   System.out.println("Enter you ID please");
 		   String id = input.nextLine();
 		   System.out.println("Enter your password please");
 		   String pw = input.nextLine();
 		   for (Passenger everyPassenger : DataBase.passengers_lilst){
 			   if (everyPassenger.passengerID.compareTo(id)== 0 && everyPassenger.passengerPassword.compareTo(pw)==0) {  
-	   while (is_true){
+	   while (is_true2){
 	   System.out.println("Your order's information：");
 	   int i = 0;
 	   for (Order a : everyPassenger.orderList){
@@ -303,14 +316,14 @@ public class Passenger {
 		    System.out.println("Enter 1.go on subscribing 2.quit");
 		    decide = input.nextInt();
 		    if (decide == 2){
-		    	is_true = false;
+		    	is_true2 = false;
 		    }
-		  
-	   }    is_true0 = false;
+	   }
+	   is_true1= false;
 	   break;
 	   }
 			   }
-		   if (is_true0 = true)
+		   if (is_true1 == true)
 			   System.out.println("Either your ID or your password is not correct, please try again! ");
 		   }
    }

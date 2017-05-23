@@ -111,11 +111,21 @@ public class Flight {
     public void check_and_change(){
         int termin_time = time_modification(departureTime) - 120;
         int present_time  = time_modification(DataBase.present_time);
-
-
-        if(termin_time >= present_time && flightDate.compareTo(DataBase.present_date) == 0){
-            flightStatus = flightStatusENU.TERMINATE;
-        }
+       
+        int YearP=Integer.parseInt(String.valueOf(DataBase. present_date.charAt(0)))*1000+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(1)))*100+
+        		Integer.parseInt(String.valueOf(DataBase.present_date.charAt(2)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(3)));
+        int mouthP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(5)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(6)));
+        int DayP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(8)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(9)));
+        int YearT=Integer.parseInt(String.valueOf(flightDate.charAt(0)))*1000+Integer.parseInt(String.valueOf(flightDate.charAt(1)))*100+Integer.parseInt(String.valueOf(flightDate.charAt(2)))*10+Integer.parseInt(String.valueOf(flightDate.charAt(3)));
+        int mouthT=Integer.parseInt(String.valueOf(flightDate.charAt(5)))*10+Integer.parseInt(String.valueOf(flightDate.charAt(6)));
+        int DayT=Integer.parseInt(String.valueOf(flightDate.charAt(8)))*10+Integer.parseInt(String.valueOf(flightDate.charAt(9)));
+       
+        if (YearT<YearP){flightStatus = flightStatusENU.TERMINATE;}
+        	else if (YearT==YearP&&mouthT<mouthP){flightStatus = flightStatusENU.TERMINATE;}
+        		else if (YearT==YearP&&mouthT==mouthP&&DayT<DayP){flightStatus = flightStatusENU.TERMINATE;}
+        			else if (termin_time <= present_time && flightDate.compareTo(DataBase.present_date) == 0){
+            flightStatus = flightStatusENU.TERMINATE;}
+        			
         if(remainingSeat == 0){
             flightStatus = flightStatusENU.FULL;
         }

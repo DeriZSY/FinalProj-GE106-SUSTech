@@ -57,23 +57,20 @@ public class DataBase {
             System.out.printf("Pelase Input your Pass Word:\n password:");
             String pword = input.nextLine();
             for(Passenger everyPassenger : passengers_lilst) {
-                if (uName.compareTo(everyPassenger.passengerID) == 0 || pword.compareTo(everyPassenger.passengerPassword) == 0) {
+                if (uName.compareTo(everyPassenger.passengerID) == 0 && pword.compareTo(everyPassenger.passengerPassword) == 0) {
                     System.out.printf("Log In Success !\n");
                     everyPassenger.loginStates = Passenger.logingSatus.LGOING;
                     is_ture = false;
                     break;
-                } else {
-                    System.out.printf("Log In Error.(Input \"1\" for try again and \"2\" for go to register");
+                }} if(is_ture == true){
+                    System.out.printf("Log In Error. Input \"1\" for try again and \"2\" for go to register");
                     int choice = input.nextInt();
                     if (choice == 1)
                         continue;
-                    else{
+                   if(choice == 2){
                         System.out.printf("Now you will come to register");
-                        register();}
-                }
-            }
-        }
-    }
+                        register();}}}}
+     
 
 
 /*********   Passenger 注册 ****************/
