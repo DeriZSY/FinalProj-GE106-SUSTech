@@ -174,7 +174,8 @@ public class Admin {
                         if (is_result) {
                             System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; \nthe Price is " + everyFlight.price + "; \nthe flight Sate is " + everyFlight.flightStatus);
                             System.out.println();
-                            System.out.printf("Input 'U' to update, 'M' to modify, 'D' to display full information, and 'N' to continue your check\n");
+                            System.out.println();
+                            System.out.printf("Input 'U' to update, 'D' to display full information, and 'N' to continue your check\n");
                             String choice = input.nextLine();
 
                             //输入为 D 则显示完整信息
@@ -188,24 +189,6 @@ public class Admin {
                             //输入为 U 则调用更新信息功能
                             else if (choice.compareTo("U") == 0) {
                                 Admin.updateFlight();
-                                //输入为 M 则进入调整航班信息模式
-                            } else if (choice.compareTo("M") == 0) {
-                                System.out.printf("Input 'del' to delete the flight and 'reset' to reset information of the flight\n");
-                                String a_choice = input.nextLine();
-                                //输入del删除
-                                if (a_choice.compareTo("del") == 0) {
-//                                    String deleting_ID = everyFlight.flightID;
-                                    Admin.delete_aimFlight(everyFlight.flightID);
-                                    //输入reset 重设信息
-                                } else if (a_choice.compareTo("reset") == 0) {
-                                    if (everyFlight.flightStatus == Flight.flightStatusENU.UNPUBLISHED) {
-                                        Admin.reset_UNPUBLISh_Flight(everyFlight);
-                                    } else if (everyFlight.flightStatus == Flight.flightStatusENU.TERMINATE)
-                                        System.out.printf("Sorry, the flight is terminated and cannot be reset\n");
-                                    else
-                                        Admin.reset_PUBLISHED_Flight(everyFlight);
-                                }
-
                             }
                             //否则结束对该此查询结果的操作，继续查询
                             else {
@@ -259,10 +242,6 @@ public class Admin {
                             choice1 += 2;
                         if (startDate.compareTo("Q") == 0)
                             choice1 += 4;
-                        // Choice  = 1, by arvCity + Date ; Choice = 2 ,dpCity + Date;
-                        // Choice = 3, by start Date ;
-                        // Choice = 4 by startCity and arvCity
-                        // Chocie = 5,by arvCtiy; Choice = 6, by dpCity;
                         for (Flight every_Flight : DataBase.flight_list) {
 
                             switch (choice1) {
@@ -328,10 +307,11 @@ public class Admin {
         System.out.printf("1");
         System.out.printf("The flight you are looking for is %s \n the price of the flight %s \n The Current State of the flight is %s", aim_Flight.flightID, aim_Flight.price, aim_Flight.flightStatus);
         System.out.println();
-        System.out.printf("Input 'Y' to finish, and Input 'N' to continue your check");
+        System.out.printf("Input 'Y' to finish, and Input 'N' to continue your check\n");
         String choice = input.nextLine();
+        System.out.println();
         if (choice.compareTo("Y") == 0) {
-            System.out.printf("Do you want to delete it or Change its States?(input \"D\" for deleting and \"C\"for changing)");
+            System.out.printf("Do you want to delete it or Change its States?(input \"D\" for deleting and \"C\"for changing)\n");
             String Choice = input.nextLine();
             if (Choice.compareTo("D") == 0) {
                 System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
