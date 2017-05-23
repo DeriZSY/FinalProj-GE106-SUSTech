@@ -389,7 +389,7 @@ public class Admin {
                 if(inform_list[2].compareTo("Q") !=0) {
                     dTime = get_total_minutes(inform_list[2]);
 
-                    if (dTime - pTime > 120 && is_the_same_date(inform_list[3])) {
+                    if (dTime - pTime < 120 && is_the_same_date(inform_list[3])) {
                         System.out.printf("The present time is %s\n", DataBase.present_time);
                         System.out.printf("The departure time must be at least 2 hours later than the present time.\n");
                         System.out.printf("Please Input a Available departure time\n");
