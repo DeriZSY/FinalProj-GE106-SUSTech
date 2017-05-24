@@ -417,7 +417,7 @@ public class Admin {
                     if(inform_list[1].compareTo("Q") != 0) {
                         //检测到达时间是否大于起飞时间
                         int aTime = get_total_minutes(inform_list[1]);
-                        if (aTime < dTime) {
+                        if (aTime <= dTime) {
                             System.out.printf("Departure time is %s\n", inform_list[2]);
                             System.out.printf("The Arriving time must be greater than departure time.\n ");
                             System.out.printf("Please Input a Available arriving time.\n");
