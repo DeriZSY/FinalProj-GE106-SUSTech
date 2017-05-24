@@ -24,7 +24,7 @@ public class DataBase {
         boolean  is_ture = true;
         while (is_ture) {
             //input username
-            System.out.printf("Please input your user name:\nuserName: ");
+            System.out.printf("\nPlease input your user name:\nuserName: ");
             String usrName = input.next();
             //input password
             System.out.printf("Please input your password:\npassword: ");
@@ -52,9 +52,9 @@ public class DataBase {
         boolean is_ture = true;
         while (is_ture) {
             Scanner input = new Scanner(System.in);
-            System.out.printf("Please Input your User Name: \n username:");
+            System.out.printf("Please Input your User Name: \nusername:");
             String uName = input.nextLine();
-            System.out.printf("Pelase Input your Pass Word:\n password:");
+            System.out.printf("Pelase Input your Pass Word:\npassword:");
             String pword = input.nextLine();
             for(Passenger everyPassenger : passengers_lilst) {
                 if (uName.compareTo(everyPassenger.passengerID) == 0 && pword.compareTo(everyPassenger.passengerPassword) == 0) {
@@ -63,7 +63,7 @@ public class DataBase {
                     is_ture = false;
                     break;
                 }} if(is_ture == true){
-                    System.out.printf("Log In Error. Input \"1\" for try again and \"2\" for go to register");
+                    System.out.printf("Log In Error. Input \"1\" for try again and \"2\" for go to register   ");
                     int choice = input.nextInt();
                     if (choice == 1)
                         continue;
@@ -79,17 +79,17 @@ public class DataBase {
         String ID;
         //input passenger's info
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter your real name please\t");
+        System.out.printf("Enter your real name please\t   ");
         String passenger_realName = input.nextLine();
-        System.out.print("Enter your real ID please\t");
+        System.out.print("Enter your real ID please\t\t\t\t           ");
         String passenger_realID = input.nextLine();
         //检查是否有重名
        do {
-        System.out.print("Create an ID used for Log in please\t");
+        System.out.print("Create an ID used for Log in please\t\t\t\t   ");
          ID = input.nextLine();
         	for(Passenger everypassenger : passengers_lilst){
         		if (everypassenger.passengerID.compareTo(ID)==0){
-        			System.out.println("Your ID has been used ,please use another one!\n");
+        			System.out.println("Your ID has been used ,please use another one!\n   ");
         			 input.nextLine();
         			is_true = true;
         			break;
@@ -99,15 +99,15 @@ public class DataBase {
        
         }   while(is_true);
         //input password , confirm twice
-        System.out.print("Enter your password please\t");
+        System.out.print("Enter your password please\t\t\t\t\t   ");
         String password1 = input.nextLine();
-        System.out.print("Enter your password again please\t");
+        System.out.print("Enter your password again please\t\t\t\t   ");
         String password2 = input.nextLine();
         while (decideString(password1, password2) == false) {
             System.out.println("Different password,please try again");
-            System.out.print("Enter your password please\t");
+            System.out.print("Enter your password please\t\t\t\t\t   ");
             password1 = input.nextLine();
-            System.out.print("Enter your password again please\t");
+            System.out.print("Enter your password again please\t\t\t\t   ");
             password2 = input.nextLine();
         }
         System.out.println("You have succeeded in setting your password");

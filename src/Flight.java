@@ -111,7 +111,7 @@ public class Flight {
     public void check_and_change(){
         int termin_time = time_modification(departureTime) - 120;
         int present_time  = time_modification(DataBase.present_time);
-       
+
         int YearP=Integer.parseInt(String.valueOf(DataBase. present_date.charAt(0)))*1000+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(1)))*100+
         		Integer.parseInt(String.valueOf(DataBase.present_date.charAt(2)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(3)));
         int mouthP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(5)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(6)));
@@ -131,10 +131,12 @@ public class Flight {
         }
     }
 
+
     public  void disp_flight_inform(){
-        System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\n",flightID, flightStatus, flightEx,
+    	System.out.printf("%s\t\t%s\t\t%s\t\t%s%20s\t\t\t%s\n",flightID, flightStatus, flightEx,
                 startCity, arrivalCity, flightDate);
     }
+
 
 }
 

@@ -17,9 +17,13 @@ public class Test {
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
 //        Admin.deleteFlight();
-        Admin.superQuery();
+//        Admin.superQuery();
 //         Admin.updateFlight();
-    
+    Admin.createFlight();
+//        String a = "2017-01-02";
+//        if(Admin.is_the_same_date(a)){
+//            System.out.printf("Yes");
+//        }
 //    	DataBase.passengerLogIn();
 //    	System.out.println();
 //    	for (Passenger x :DataBase.passengers_lilst){

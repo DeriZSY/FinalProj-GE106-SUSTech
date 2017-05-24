@@ -349,6 +349,7 @@ public class Admin {
         String[] inform_list = new String[9];
         boolean is_true = true;
         boolean is_true0 = false;
+        int pTime = get_total_minutes(DataBase.present_time);
         while (is_true) {
             System.out.printf("(Input 'Q' to leave at any moment)\n");
       //input ID 并检查是否重名      
@@ -370,46 +371,141 @@ public class Admin {
             if (inform_list[0].compareTo("Q")==0){
                 is_true = false;
                 break;}
-            System.out.printf("Departure Time(e.g. 18:00)\n");
-            inform_list[2] = input.nextLine();
-            if (inform_list[2].compareTo("Q")==0)
-            {   is_true = false;
-                break;}
-            System.out.printf("Arrival Time(e.g.19:00)\n");
-            inform_list[1] = input.nextLine();
-            if (inform_list[1].compareTo("Q")==0)
-            {   is_true = false;
-                break;}
+
+            //起飞日期
             System.out.printf("Flight Date (e.g. 2017-03-22)\n");
             inform_list[3] = input.nextLine();
             if (inform_list[3].compareTo("Q")==0)
             {   is_true = false;
                 break;}
+
+            //起飞时间
+            int dTime = 0;
+            while(true) {
+                    System.out.printf("Departure Time(e.g. 18:00)\n");
+                    inform_list[2] = input.nextLine();
+
+                    //检查起飞时间是否再当前时间之后两小时以上
+                if(inform_list[2].compareTo("Q") !=0) {
+                    dTime = get_total_minutes(inform_list[2]);
+
+                    if (dTime - pTime < 120 && is_the_same_date(inform_list[3])) {
+                        System.out.printf("The present time is %s\n", DataBase.present_time);
+                        System.out.printf("The departure time must be at least 2 hours later than the present time.\n");
+                        System.out.printf("Please Input a Available departure time\n");
+                        Graphing.standard_sepreation();
+                        continue;
+                    } else
+                        break;
+                }
+                    else
+                        break;
+                }
+
+            if (inform_list[2].compareTo("Q") == 0) {
+                is_true = false;
+                break;
+            }
+
+
+
+
+            //到达时间
+            while(true) {
+                    System.out.printf("Arrival Time(e.g.19:00)\n");
+                    inform_list[1] = input.nextLine();
+                    if(inform_list[1].compareTo("Q") != 0) {
+                        //检测到达时间是否大于起飞时间
+                        int aTime = get_total_minutes(inform_list[1]);
+                        if (aTime < dTime) {
+                            System.out.printf("Departure time is %s\n", inform_list[2]);
+                            System.out.printf("The Arriving time must be greater than departure time.\n ");
+                            System.out.printf("Please Input a Available arriving time.\n");
+                            Graphing.standard_sepreation();
+                            continue;
+                        } else
+                            break;
+                    }else
+                        break;
+                }
+            if (inform_list[1].compareTo("Q") == 0) {
+                is_true = false;
+                break;
+            }
+
+
+
+            //起飞城市
             System.out.printf("Departure City\n");
             inform_list[4] = input.nextLine();
             if (inform_list[4].compareTo("Q")==0)
             {   is_true = false;
                 break;}
-            System.out.printf("Stop by City(input null if there isn't):\n");
-            inform_list[5] = input.nextLine();
-            if (inform_list[5].compareTo("Q")==0)
-            {   is_true = false;
-                break;}
-            System.out.printf("Arrival City:\n");
-            inform_list[6] = input.nextLine();
+            //中转城市
+            while (true) {
+                    System.out.printf("Stop by City(input null if there isn't):\n");
+                    inform_list[5] = input.nextLine();
+                    //检测中转城市是否与起飞城市相同
+                if(inform_list[5].compareTo("Q")!= 0){
+                    if(inform_list[5].compareTo(inform_list[4]) == 0){
+                        System.out.printf("Your departure city is %s\n",inform_list[4]);
+                        System.out.printf("The Stop by city cannot be same as the departure city.\n");
+                        System.out.printf("Please input a available stop by city.\n ");
+                        Graphing.standard_sepreation();
+                        continue;
+                    }else
+                        break;}
+                        else
+                            break;
+                    }
+            if (inform_list[5].compareTo("Q") == 0) {
+                is_true = false;
+                break;
+                }
+
+            //到达城市
+            while(true) {
+                System.out.printf("Arrival City:\n");
+                inform_list[6] = input.nextLine();
+                //检测到达城市是否与中转城市相同
+                if(inform_list[6].compareTo("Q")!= 0){
+                if(inform_list[6].compareTo(inform_list[5]) == 0){
+                    System.out.printf("Your departure city is %s\n",inform_list[5]);
+                    System.out.printf("The arrival city cannot be same as the stop by city.\n");
+                    System.out.printf("Please input a available stop by city.\n ");
+                    Graphing.standard_sepreation();
+                    continue;
+                }else
+                    //检测到达城市是否与出发城市相同
+                if(inform_list[6].compareTo(inform_list[4]) == 0){
+                    System.out.printf("Your departure city is %s\n",inform_list[4]);
+                    System.out.printf("The arrival city cannot be same as the departure city.\n");
+                    System.out.printf("Please input a available stop by city.\n ");
+                    Graphing.standard_sepreation();
+                    continue;}
+                    else
+                        break;}
+                        else
+                            break;
+                }
             if (inform_list[6].compareTo("Q")==0)
             {   is_true = false;
                 break;}
+
+            //航空公司
             System.out.printf("Airline Company:\n");
             inform_list[7] = input.nextLine();
             if (inform_list[7].compareTo("Q")==0)
             {   is_true = false;
                 break;}
+
+           //票价
             System.out.printf("Ticket Price:\n");
             inform_list[8] = input.nextLine();
             if (inform_list[8].compareTo("Q")==0)
             {   is_true = false;
                 break;}
+            //机型
             System.out.printf("Plane Type：\n(\"1\" for Airbus251 and \"2\" for Mig_MniJet)\n");
 //      为了方便起见，在DataBase中就new了两个plane，演示的时候用战斗机，选2.如果仍想输入名称的话，
 //        可以将plane放在arraylist里面通过对比字符串与计数调出所要的plane.
@@ -728,7 +824,55 @@ public class Admin {
                everyFlight.check_and_change();
            }
        }
-   }
+    /***** 辅助功能： 时间处理 *****/
+    public static int get_total_minutes(String origin_time)
+    {
+        int tot_time = 0;
+        int tot_hour = 0;
+        int tot_minute = 0;
+        for(int i = 0; i< origin_time.length(); i++){
+            char k = origin_time.charAt(i);
+            String k2 = String.valueOf(k);
+            if(k2.compareTo("0") != 0 ){
+                if(i != 2){
+                    int num = Integer.parseInt(k2);
+                    switch (i) {
+                        case 0 :
+                            tot_hour += num * 10;
+                            break;
+                        case 1:
+                            tot_hour += num;
+                            break;
+                        case 3:
+                            tot_minute += num * 10;
+                            break;
+                        case 4:
+                            tot_minute += num;
+                            break;
+                    }
+                }
+            }
+        }
+        tot_time = tot_hour * 60 + tot_minute;
+        return tot_time;
+    }
+
+    /***** 辅助功能：比较日期 *****/
+    public static boolean is_the_same_date(String inputDate){
+        int YearP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(0)))*1000+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(1)))*100+
+                Integer.parseInt(String.valueOf(DataBase.present_date.charAt(2)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(3)));
+        int monthP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(5)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(6)));
+        int DayP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(8)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(9)));
+
+        int YearT=Integer.parseInt(String.valueOf(inputDate.charAt(0)))*1000+Integer.parseInt(String.valueOf(inputDate.charAt(1)))*100+Integer.parseInt(String.valueOf(inputDate.charAt(2)))*10+Integer.parseInt(String.valueOf(inputDate.charAt(3)));
+        int monthT=Integer.parseInt(String.valueOf(inputDate.charAt(5)))*10+Integer.parseInt(String.valueOf(inputDate.charAt(6)));
+        int DayT=Integer.parseInt(String.valueOf(inputDate.charAt(8)))*10+Integer.parseInt(String.valueOf(inputDate.charAt(9)));
+        if(YearP == YearT &&  monthP == monthT && DayP == DayT){
+            return true;
+        }
+        return false;
+    }
+}
 
 
 
