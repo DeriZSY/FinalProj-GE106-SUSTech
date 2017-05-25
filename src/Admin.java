@@ -378,6 +378,9 @@ public class Admin {
             if (inform_list[3].compareTo("Q")==0)
             {   is_true = false;
                 break;}
+            //到达日期
+            System.out.printf("Arrival Date (e.g. 2017-03-22)\n");
+            String arrivalDate = input.nextLine();
 
             //起飞时间
             int dTime = 0;
@@ -389,7 +392,7 @@ public class Admin {
                 if(inform_list[2].compareTo("Q") !=0) {
                     dTime = get_total_minutes(inform_list[2]);
 
-                    if (dTime - pTime < 120 && is_the_same_date(inform_list[3])) {
+                    if (dTime -pTime < 120 && is_the_same_date(inform_list[3],DataBase.present_date)) {
                         System.out.printf("The present time is %s\n", DataBase.present_time);
                         System.out.printf("The departure time must be at least 2 hours later than the present time.\n");
                         System.out.printf("Please Input a Available departure time\n");
@@ -417,7 +420,7 @@ public class Admin {
                     if(inform_list[1].compareTo("Q") != 0) {
                         //检测到达时间是否大于起飞时间
                         int aTime = get_total_minutes(inform_list[1]);
-                        if (aTime <= dTime) {
+                        if (aTime <= dTime && is_the_same_date(arrivalDate,inform_list[3])) {
                             System.out.printf("Departure time is %s\n", inform_list[2]);
                             System.out.printf("The Arriving time must be greater than departure time.\n ");
                             System.out.printf("Please Input a Available arriving time.\n");
@@ -858,16 +861,15 @@ public class Admin {
     }
 
     /***** 辅助功能：比较日期 *****/
-    public static boolean is_the_same_date(String inputDate){
-        int YearP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(0)))*1000+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(1)))*100+
-                Integer.parseInt(String.valueOf(DataBase.present_date.charAt(2)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(3)));
-        int monthP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(5)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(6)));
-        int DayP=Integer.parseInt(String.valueOf(DataBase.present_date.charAt(8)))*10+Integer.parseInt(String.valueOf(DataBase.present_date.charAt(9)));
+    public static boolean is_the_same_date(String inputDate1, String inputDate2){
+        int Year2=Integer.parseInt(String.valueOf(inputDate2.charAt(0)))*1000+Integer.parseInt(String.valueOf(inputDate2.charAt(1)))*100+Integer.parseInt(String.valueOf(inputDate2.charAt(2)))*10+Integer.parseInt(String.valueOf(inputDate2.charAt(3)));
+        int month2=Integer.parseInt(String.valueOf(inputDate2.charAt(5)))*10+Integer.parseInt(String.valueOf(inputDate2.charAt(6)));
+        int Day2=Integer.parseInt(String.valueOf(inputDate2.charAt(8)))*10+Integer.parseInt(String.valueOf(inputDate2.charAt(9)));
 
-        int YearT=Integer.parseInt(String.valueOf(inputDate.charAt(0)))*1000+Integer.parseInt(String.valueOf(inputDate.charAt(1)))*100+Integer.parseInt(String.valueOf(inputDate.charAt(2)))*10+Integer.parseInt(String.valueOf(inputDate.charAt(3)));
-        int monthT=Integer.parseInt(String.valueOf(inputDate.charAt(5)))*10+Integer.parseInt(String.valueOf(inputDate.charAt(6)));
-        int DayT=Integer.parseInt(String.valueOf(inputDate.charAt(8)))*10+Integer.parseInt(String.valueOf(inputDate.charAt(9)));
-        if(YearP == YearT &&  monthP == monthT && DayP == DayT){
+        int Year1=Integer.parseInt(String.valueOf(inputDate1.charAt(0)))*1000+Integer.parseInt(String.valueOf(inputDate1.charAt(1)))*100+Integer.parseInt(String.valueOf(inputDate1.charAt(2)))*10+Integer.parseInt(String.valueOf(inputDate1.charAt(3)));
+        int month1=Integer.parseInt(String.valueOf(inputDate1.charAt(5)))*10+Integer.parseInt(String.valueOf(inputDate1.charAt(6)));
+        int Day1=Integer.parseInt(String.valueOf(inputDate1.charAt(8)))*10+Integer.parseInt(String.valueOf(inputDate1.charAt(9)));
+        if(Year1 == Year2 &&  month1 == month2 && Day1 == Day2){
             return true;
         }
         return false;

@@ -20,6 +20,12 @@ public class Test {
 //        Admin.superQuery();
 //         Admin.updateFlight();
     Admin.createFlight();
+//        String d1  = "2017-01-01";
+//        String d2  = "2018-02-02";
+//        String time = "03:00";
+//        if(Admin.is_the_same_date(d1,DataBase.present_date)&& Admin.get_total_minutes(time) - Admin.get_total_minutes(DataBase.present_time) >= 120){
+//            System.out.printf("true");
+//        }
 //        String a = "2017-01-02";
 //        if(Admin.is_the_same_date(a)){
 //            System.out.printf("Yes");
