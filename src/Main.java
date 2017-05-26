@@ -90,7 +90,7 @@ public class Main {
             while (system_On) {
                 System.out.printf("Welcome to the Ticket System\n");  
                 //选择登录模式（乘客／管理员）
-                System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n");//这两句会出现两次
+                System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n\t\t");//这两句会出现两次
                 String status = input.nextLine();
                 if (status.compareTo("admin") == 0) {
                     
@@ -146,34 +146,37 @@ public class Main {
 //                //乘客模式
         	   boolean passenger_mode_on = true;
                 while (passenger_mode_on) {
-        	   System.out.printf("Welcome to the passenger System\n");
+                	 Graphing.sepreate__Line_underLine_50();
+        	   System.out.printf("\nWelcome to the passenger System\n");
                //选择登录模式(注册/登陆）
         	   System.out.printf("what do you wnat to do?\n");
         	   String origin_function =";register;login;";
         	   String[] function_array = origin_function.split(";");
-                    System.out.printf("#1 register\n #2 login\n");
+                    System.out.printf("#1 register\n#2 login\n");
                     Graphing.sepreate__Line_sharp_50();
-                   System.out.printf("  please enter the number>>\t");
+                   System.out.printf("please enter the number>>\t");
                    int choice = input.nextInt();
                    System.out.println();
                    if( choice < 3) {
                      
                      switch(choice){
                      case 1:
+                    	 Graphing.sepreate__Line_underLine_50();
                     	 DataBase.register();
                     	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                     	 Graphing.sepreate__Line_underLine_50();
                     	 continue;
                      case 2:
-                    	 DataBase.passengerLogIn();
-        //这里需要，但不知道放哪里            	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                     	 Graphing.sepreate__Line_underLine_50();
-                    	 
+                    	 DataBase.passengerLogIn();
+                    	 Graphing.sepreate__Line_underLine_50();
+                    	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                      }
                    
                    } 
                    System.out.printf("Now, you are logging in !\n");
                    Graphing.sepreate__Line_underLine_50();
+                   System.out.printf("What do you want?\n");
                    String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
                     String[] function_array1 = origin_function1.split(";");
                     System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 flight's information\n#4 Log Out\n");
