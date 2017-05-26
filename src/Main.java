@@ -80,7 +80,7 @@ public class Main {
         DataBase.flight_list.add(g2);
         DataBase.flight_list.add(g3);
         Scanner input = new Scanner(System.in);
-        boolean system_On = true;
+        boolean system_On = true;  //这个没有用啊
 
         DataBase.present_date = "2017-03-22";
         DataBase.present_time = "10:00";
@@ -88,9 +88,9 @@ public class Main {
         while (true) {
             //系统开启
             while (system_On) {
-                System.out.printf("Welcome to the Ticket System\n");
+                System.out.printf("Welcome to the Ticket System\n");  
                 //选择登录模式（乘客／管理员）
-                System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n");
+                System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n");//这两句会出现两次
                 String status = input.nextLine();
                 if (status.compareTo("admin") == 0) {
                     
@@ -166,6 +166,7 @@ public class Main {
                     	 continue;
                      case 2:
                     	 DataBase.passengerLogIn();
+        //这里需要，但不知道放哪里            	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                     	 Graphing.sepreate__Line_underLine_50();
                     	 
                      }
