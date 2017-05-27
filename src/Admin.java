@@ -616,66 +616,79 @@ public class Admin {
        public static void updateFlight() {
    		//循环：修改多个flight的信息
    		boolean is_true0 = true;
-   			while (is_true0)
-   			{
-           //显示所有航班信息
-           flightAutoCheck();
-           System.out.printf("The list of the planes are:\n");
-           System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
+   			while (is_true0) {
+                //显示所有航班信息
+//           flightAutoCheck();
+                System.out.printf("The list of the planes are:\n");
+                System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
                    /* 显示航班信息*/
-           for (Flight everyflight : DataBase.flight_list) {
-               everyflight.disp_flight_inform();
-               Graphing.sepreate__Line_sharp_50();
-               System.out.println();
-           }// inform displaying end
-           //input a flight
-           Scanner input = new Scanner(System.in);
-           String validId = "";
-           int num = 0;//输入的这个航班在arraylist的位数，第一位num=0
-        
-   		//循环至输入有效的flightID为止
-   		boolean is_true = true;
-           while (is_true) {
-               System.out.println("Please enter the flight ID for the flight you want to update");
-               String inputStr = input.nextLine();
-               int counter = 0;
-               for (Flight flight : DataBase.flight_list) {
-                   if (flight.flightID.compareTo(inputStr) == 0) {
-                       System.out.printf("Succeed in finding the flight %s\n", inputStr);
-                       is_true = false;
-                       validId = inputStr;
-                       break;
-                   }
-                   counter++;
-               }
+                for (Flight everyflight : DataBase.flight_list) {
+                    everyflight.disp_flight_inform();
+                    Graphing.sepreate__Line_sharp_50();
+                    System.out.println();
+                }// inform displaying end
+                //input a flight
+                Scanner input = new Scanner(System.in);
+                String validId = "Default";
+                int num = 0;//输入的这个航班在arraylist的位数，第一位num=0
 
-               if (is_true)
-                   System.out.print("the flight is not found,please type the ID again");
-               else {
-                   num = counter;
-               }
+                //循环至输入有效的flightID为止
+                boolean is_true = true;
+                while (is_true) {
+                    System.out.println("Please enter the flight ID for the flight you want to update\n(Input 'Q' to quit)\n");
+                    String inputStr = input.nextLine();
+                    if (inputStr.compareTo("Q") != 0) {
+                        int counter = 0;
+                        for (Flight flight : DataBase.flight_list) {
+                            if (flight.flightID.compareTo(inputStr) == 0) {
+                                System.out.printf("Succeed in finding the flight %s\n", inputStr);
+                                is_true = false;
+                                validId = inputStr;
+                                break;
+                            }
+                            counter++;
+                        }
 
-           } // 得到了管理员希望更改的航班 :DataBase.flight_list.get(num)
-       	   flightAutoCheck();
-         //  System.out.printf("Input '1' to Check out the latest flight's information\n '2' to reset the flight status\n '3' to reset the plane type\n '4' to reset the prize\n ");
-         //  int decide = input.nextInt();
-     // unpublished
-           if (DataBase.flight_list.get(num).flightStatus == Flight.flightStatusENU.UNPUBLISHED)
-           	reset_UNPUBLISh_Flight(DataBase.flight_list.get(num));
-     // available or full
-           else {
-           if (DataBase.flight_list.get(num).flightStatus == Flight.flightStatusENU.AVAILABLE ||DataBase.flight_list.get(num).flightStatus == Flight.flightStatusENU.FULL)
-           	reset_PUBLISHED_Flight(DataBase.flight_list.get(num));
-     // terminated
-           else
-                   System.out.printf("Sorry, the flight you choose to reset is already terminate.\n");
-           }
-   				System.out.println("Enter 'Y' for updating another flight.Enter 'N' to quit.");
-   				String decide = input.nextLine();
-   				if(decide.compareTo("N")==0)
-   					is_true0 = false ;
-           }//end while for is_true0
-       }
+                        if (is_true)
+                            System.out.print("the flight is not found,please type the ID again");
+                        else {
+                            num = counter;
+
+
+                    } // 得到了管理员希望更改的航班 :DataBase.flight_list.get(num)
+//       	   flightAutoCheck();
+                    //  System.out.printf("Input '1' to Check out the latest flight's information\n '2' to reset the flight status\n '3' to reset the plane type\n '4' to reset the prize\n ");
+                    //  int decide = input.nextInt();
+                    // unpublished
+                    if (DataBase.flight_list.get(num).flightStatus == Flight.flightStatusENU.UNPUBLISHED)
+                        reset_UNPUBLISh_Flight(DataBase.flight_list.get(num));
+                        // available or full
+                    else {
+                        if (DataBase.flight_list.get(num).flightStatus == Flight.flightStatusENU.AVAILABLE || DataBase.flight_list.get(num).flightStatus == Flight.flightStatusENU.FULL)
+                            reset_PUBLISHED_Flight(DataBase.flight_list.get(num));
+                            // terminated
+                        else
+                            System.out.printf("Sorry, the flight you choose to reset is already terminate.\n");
+                    }
+                        System.out.println("Enter 'Y' for updating another flight.Enter 'N' to quit.");
+                        String decide = input.nextLine();
+                        if (decide.compareTo("N") == 0) {
+                            is_true0 = false;
+                            is_true = false;
+                        }
+                }
+                  else{
+                        System.out.println("Enter 'Y' for updating another flight.Enter 'N' to quit.");
+                        String decide = input.nextLine();
+                        if (decide.compareTo("N") == 0) {
+                            is_true0 = false;
+                            is_true = false;
+                        }
+                    }
+                }
+
+                }//end while for is_true0
+            }
 
        /***** 管理员功能： 修改航班信息 *****/
        // 若unpublished 则用这个方法
