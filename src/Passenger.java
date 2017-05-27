@@ -214,7 +214,7 @@ public class Passenger {
     	// 查询各个flight的信息  显示除开unpublished的所有信息
     	System.out.println("The flight information:");
     	    	 for (Flight flight : DataBase.flight_list) {
-    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED|| flight.flightStatus != Flight.flightStatusENU.TERMINATE|| flight.flightStatus != Flight.flightStatusENU.FULL){
+    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED){
     			 flight.disp_flight_inform();}
     		/*	 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
     			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
@@ -282,6 +282,11 @@ public class Passenger {
         DataBase.order_list.add(newOrder);
         DataBase.passengers_lilst.get(psnum).orderList.add(newOrder);
        //输入乘客ID，并将订单添加到对应乘客的订单列表  进入付款界面
+        // print passenger's order info
+        System.out.println("Your lastes order information:");
+        for(Order order :DataBase.passengers_lilst.get(psnum).orderList ){
+        	order.order_disp(order);
+        }
        
         
         //预订成功

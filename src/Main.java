@@ -150,6 +150,7 @@ public class Main {
                 	 Graphing.sepreate__Line_underLine_50();
         	   System.out.printf("\nWelcome to the passenger System\n");
                //选择登录模式(注册/登陆）
+        	   
         	   System.out.printf("what do you wnat to do?\n");
         	   String origin_function =";register;login;";
         	   String[] function_array = origin_function.split(";");
@@ -174,6 +175,9 @@ public class Main {
                     	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                  
                    System.out.printf("Now, you are logging in !\n");
+                 //循环 选择功能
+            	   boolean is_true1 = true;
+            	   while(is_true1){
                    Graphing.sepreate__Line_underLine_50();
                    System.out.printf("What do you want?\n");
                    String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
@@ -196,6 +200,9 @@ public class Main {
                             continue;
                     }//end Switch
                    }
+                   else
+                	   is_true1 = false;
+                     }
                     	passenger_mode_on  = false;
                        }
                    } 
