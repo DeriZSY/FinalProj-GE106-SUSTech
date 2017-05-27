@@ -92,6 +92,7 @@ public class Main {
                 //选择登录模式（乘客／管理员）
                 System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n\t\t");
                 String status = input.nextLine();
+                String a = input.nextLine();
 
                 //管理员模式
                 if (status.compareTo("admin") == 0) {
@@ -124,15 +125,19 @@ public class Main {
                                     Admin.modifyPersonalInform();
                                     continue;
                                 case 3:
+                                	Admin.flightAutoCheck();
                                     Admin.createFlight();
                                     continue;
                                 case 4:
+                                	Admin.flightAutoCheck();
                                     Admin.deleteFlight();
                                     continue;
                                 case 5:
+                                	Admin.flightAutoCheck();
                                   Admin.superQuery();
                                     continue;
                                 case 6:
+                                	Admin.flightAutoCheck();
                                     Admin.updateFlight();
                                     continue;
 //                                case 7:
@@ -152,7 +157,10 @@ public class Main {
                 	 Graphing.sepreate__Line_underLine_50();
         	   System.out.printf("\nWelcome to the passenger System\n");
                //选择登录模式(注册/登陆）
+
+        	   
         	   System.out.printf("what do you wnat to do?\n");
+
         	   String origin_function =";register;login;";
         	   String[] function_array = origin_function.split(";");
                     System.out.printf("#1 register\n#2 login\n");
@@ -176,6 +184,9 @@ public class Main {
                     	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
                    System.out.printf("Now, you are logging in !\n");
+                 //循环 选择功能
+            	   boolean is_true1 = true;
+            	   while(is_true1){
                    Graphing.sepreate__Line_underLine_50();
                    System.out.printf("What do you want?\n");
                    String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
@@ -188,16 +199,22 @@ public class Main {
                    if (chocieNum <= 3){
                     switch (chocieNum) {
                         case 1:
+                        	Admin.flightAutoCheck();
                            Passenger.reserveFlight();
                             continue;
                         case 2:
+                        	Admin.flightAutoCheck();
                            Passenger.unsubscribedFlight();
                             continue;
                         case 3:
+                        	Admin.flightAutoCheck();
                             Passenger.queryFlight();
                             continue;
                     }//end Switch
                    }
+                   else
+                	   is_true1 = false;
+                     }
                     	passenger_mode_on  = false;
                        }
                    } 

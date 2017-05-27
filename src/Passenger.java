@@ -61,7 +61,7 @@ public class Passenger {
             //按照细节信息查询航班
             case 1:
                 boolean is_true = true;
-                while (is_true) {
+                while(is_true) {
                     System.out.printf("What's your choice for departure city(Input 'Q' to quit for this information))\n City name:");
                     String dpCity = input.nextLine();
                     System.out.printf("What's your choice for arriving city(Input 'Q' to quit for this information))\n City name:");
@@ -76,64 +76,115 @@ public class Passenger {
                         choice1 += 2;
                     if (startDate.compareTo("Q") == 0)
                         choice1 += 4;
-                    for (Flight every_Flight : DataBase.flight_list) {
-
-                        switch (choice1) {
-                            case 0:
+                    System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrial City","Flight Date");
+                    switch (choice1) {
+                        case 0:
+                            for (Flight every_Flight : DataBase.flight_list) {
+                                int times = 0;
                                 if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.arrivalCity.compareTo(arvCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
-                                    Passenger.searchThree(every_Flight);
+//                                        Admin.searchThree(every_Flight);
+                                    times += 1;
+                                    every_Flight.disp_flight_inform();
                                 } else {
-                                    break;
+                                    continue;
                                 }
-                            case 1:
+
+                            }
+                            break;
+                        case 1:
+                            for (Flight every_Flight : DataBase.flight_list) {
+                                int times = 0;
                                 if (every_Flight.arrivalCity.compareTo(arvCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
-                                    Passenger.searchThree(every_Flight);
+//                                        Admin.searchThree(every_Flight);
+                                    times += 1;
+                                    every_Flight.disp_flight_inform();
                                 } else {
-                                    break;
+                                    continue;
                                 }
-                            case 2:
+
+                            }
+                            break;
+                        case 2:
+                            for (Flight every_Flight : DataBase.flight_list) {
+                                int times = 0;
                                 if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.flightDate.compareTo(startDate) == 0) {
-                                    Passenger.searchThree(every_Flight);
+//                                        Admin.searchThree(every_Flight);
+                                    times += 1;
+                                    every_Flight.disp_flight_inform();
                                 } else {
-                                    break;
+                                    continue;
                                 }
-                            case 3:
+
+                            }
+                            break;
+                        case 3:
+                            for (Flight every_Flight : DataBase.flight_list) {
+                                int times = 0;
                                 if (every_Flight.flightDate.compareTo(startDate) == 0) {
-                                    Passenger.searchThree(every_Flight);
+//                                        Admin.searchThree(every_Flight);
+                                    times += 1;
+                                    every_Flight.disp_flight_inform();
                                 } else {
-                                    break;
+                                    continue;
                                 }
-                            case 4:
+
+                            }
+                            break;
+                        case 4:
+                            for (Flight every_Flight : DataBase.flight_list) {
+                                int times = 0;
                                 if (every_Flight.startCity.compareTo(dpCity) == 0 && every_Flight.arrivalCity.compareTo(arvCity) == 0) {
-                                    Passenger.searchThree(every_Flight);
+//                                        Admin.searchThree(every_Flight);
+                                    times += 1;
+                                    every_Flight.disp_flight_inform();
                                 } else {
-                                    break;
+                                    continue;
                                 }
-                            case 5:
+
+                            }
+                            break;
+                        case 5:
+                            for (Flight every_Flight : DataBase.flight_list) {
+                                int times = 0;
                                 if (every_Flight.arrivalCity.compareTo(arvCity) == 0) {
-                                    Passenger.searchThree(every_Flight);
+//                                        Admin.searchThree(every_Flight);
+                                    times += 1;
+                                    every_Flight.disp_flight_inform();
                                 } else {
-                                    break;
+                                    continue;
                                 }
-                            case 6:
+
+                            }
+                            break;
+                        case 6:
+                            for (Flight every_Flight : DataBase.flight_list) {
+                                int times = 0;
                                 if (every_Flight.startCity.compareTo(dpCity) == 0) {
-                                    Passenger.searchThree(every_Flight);
-                                }break;
-                            default:
-                                System.out.printf("No Available Result\n");
-                                Graphing.standard_sepreation();
-                        }
-                        System.out.printf("Input 'Y' to continue check and 'N' to finish checking process.\n");
-                        String choice  = input.nextLine();
-                        Graphing.standard_sepreation();
-                        if(choice.compareTo("Y") == 0)
-                            continue;
-                        System.out.printf("All results are shown.\n");
-                        is_true = false;
-                        break;
-                        }
+                                    times += 1;
+                                    every_Flight.disp_flight_inform();
+                                } else {
+                                    continue;
+                                }
+                            }
+                            break;
+                        default:
+                            System.out.printf("No Available Result\n");
+                            Graphing.standard_sepreation();
+                            break;
                     }
-                break;
+
+                    System.out.printf("Input 'Y' to continue check and 'N' to finish checking process.\n");
+                    String choice = input.nextLine();
+                    Graphing.standard_sepreation();
+                    if (choice.compareTo("Y") == 0) {
+                        continue;
+                    }
+                    System.out.printf("\nQuery End.\n");
+                    is_true = false;
+                    break;
+
+                }
+                break;//case 3 breaks;
             //通过航班ID查询航班
             case 2:
                 System.out.printf("Please Input the flightID\nFlight Id:");
@@ -196,15 +247,23 @@ public class Passenger {
     /***** 乘客 搜索3 *****/
     public static void searchThree(Flight aim_Flight) {
         Scanner input = new Scanner(System.in);
-        System.out.printf("The flight you are looking for is" + aim_Flight.flightID + "; the Price is " + aim_Flight.price + "; the flight Sate is" + aim_Flight.flightStatus);
-        System.out.println();
-        System.out.printf("Input 'Y' to book it\n");
+//        System.out.printf("The flight you are looking for is" + aim_Flight.flightID + "; the Price is " + aim_Flight.price + "; the flight Sate is" + aim_Flight.flightStatus);
+//        System.out.println();
+        System.out.printf("Do you want to book any of the flights ?\n(Input flight ID to book or 'Q' to quit)\n");
         String choice = input.nextLine();
-        if (choice.compareTo("Y") == 0) {
+        if (choice.compareTo("Q") != 0) {
+            for (Flight aimFlight : DataBase.flight_list) {
+                if(aim_Flight.flightID.compareTo(choice) == 0) {
+                    System.out.printf("Input 'Y' to book it\n");
+                    String choice2 = input.nextLine();
+                    if (choice2.compareTo("Y") == 0) {
 //            confirmPasword();
-            DataBase.confirmPasswordPassenger();
-            Passenger.reserveFlight();
-            System.out.printf("Book Success!");
+                        DataBase.confirmPasswordPassenger();
+                        Passenger.reserveFlight();
+                        System.out.printf("Book Success!");
+                    }
+                }
+            }
         }
     }
 
@@ -278,27 +337,46 @@ public class Passenger {
     	DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
     	System.out.println("Do you have any special demand? If any,please enter it.");
     	String demand0 = input.nextLine();
-    	demand0 = input.nextLine();
+
+    	demand0 = input.nextLine();   	
         Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,"做pre的那一天的日期",demand0);
-        newOrder.orderstatus = Order.orderstates.PAID;
+        System.out.printf("Do you want to pay now?\nInput\"Y\"to pay now, and \"N\"to pay at airport\n");
+    	 String status = input.nextLine();
+    	 if (status.compareTo("Y")==0){
+        newOrder.orderstatus = Order.orderstates.PAID;}
+    	 else if(status.compareTo("N")==0){
+    		 newOrder.orderstatus = Order.orderstates.UNPAID;
+    	 System.out.printf("remember to pay at airport");
+    	 }
+    	 
+//=======
+//    	demand0 = input.nextLine();
+//        Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,"5.28",demand0);
+//        newOrder.orderstatus = Order.orderstates.PAID;
+//>>>>>>> Jaken
         DataBase.order_list.add(newOrder);
         DataBase.passengers_lilst.get(psnum).orderList.add(newOrder);
        //输入乘客ID，并将订单添加到对应乘客的订单列表  进入付款界面
+        // print passenger's order info
+        System.out.println("Your lastest order information:");
+        for(Order order :DataBase.passengers_lilst.get(psnum).orderList ){
+        	order.order_disp(order);
+        }
        
         
         //预订成功
-    	System.out.printf("You have successfully reserved the flight %s\n"
+    	System.out.printf("\nYou have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
     }
    
    /***************退订功能*************/
    
    public  static void unsubscribedFlight (){
-       Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
 	   boolean is_true1 = true;
 	   boolean is_true2 =true;
 	   while (is_true1){
+		   Admin.flightAutoCheck();
 		   System.out.println("Enter you ID please");
 		   String id = input.nextLine();
 		   System.out.println("Enter your password please");
@@ -315,11 +393,22 @@ public class Passenger {
 	   }
 	   System.out.println("Enter the num of the order you want to unsubscribe");
 		   int decide = input.nextInt();
+		   String name = everyPassenger.orderList.get(decide-1).getFlightID();//所选订单对应的flightID
 		   int b = DataBase.order_list.indexOf(everyPassenger.orderList.get(decide-1));// 选择的这个乘客的order在数据库中的位置
-		   System.out.println("You have succeeded in unsubsribing the flight "+everyPassenger.orderList.get(decide-1).getFlightID());
+		   System.out.println("You have succeeded in unsubsribing the flight\n "+everyPassenger.orderList.get(decide-1).getFlightID());
+		   System.out.printf("Payment will be credited to your bank account\n");
 		   everyPassenger.orderList.remove(decide-1);//在Passenger的order中删除
 		    DataBase.order_list.remove(b);//在数据库中将它删除
-		    System.out.println("Enter 1.go on subscribing 2.quit");
+		    int number ;//所选订单对应flight在数据库中的位置
+		    number = Admin.flightNum(name);
+		    DataBase.flight_list.get(number).remainingSeat--;
+		    
+		    
+		    System.out.println("Your lastest order information:");
+	        for(Order order :DataBase.passengers_lilst.get(decide-1).orderList ){
+	        	order.order_disp(order);
+	        }
+		    System.out.println("\nEnter 1.go on subscribing 2.quit");
 		    decide = input.nextInt();
 		    if (decide == 2){
 		    	is_true2 = false;

@@ -124,15 +124,15 @@ public class Flight {
         		else if (YearT==YearP&&mouthT==mouthP&&DayT<DayP){flightStatus = flightStatusENU.TERMINATE;}
         			else if (termin_time <= present_time && flightDate.compareTo(DataBase.present_date) == 0){
             flightStatus = flightStatusENU.TERMINATE;}
-        			
-        if(remainingSeat == 0){
+        			if(flightStatus == flightStatusENU.FULL || flightStatus == flightStatusENU.AVAILABLE  ){
+        if(remainingSeat <= 0){
             flightStatus = flightStatusENU.FULL;
         }
-    }
+    }}
 
 
     public  void disp_flight_inform(){
-    	System.out.printf("%s\t\t%s\t\t%s\t\t%s%20s\t\t\t%s\n",flightID, flightStatus, flightEx,
+    	System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n",flightID, flightStatus,
                 startCity, arrivalCity, flightDate);
 //        System.out.printf("Passenger Name\t\tPassenger ID\t\tSeat Number\t\tBook Time\t\tOrder State");
 //        for(Order everyOrder : DataBase.order_list ){
