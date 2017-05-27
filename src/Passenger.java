@@ -34,14 +34,14 @@ public class Passenger {
     /***** 辅助功能： 确认密码 *****/
     public static void confirmPasword() {
         Scanner input = new Scanner(System.in);
-        System.out.printf("Please input your uername:\nuername:>>");
+        System.out.printf("Please input your uesrname:\nuesrname:>>\t");
         String uName = input.nextLine();
-        System.out.printf("Please Input your password to confirm :\n password:");
+        System.out.printf("Please Input your password to confirm:\npassword>>\t");
         String pWord = input.nextLine();
         for (Passenger everypassenger : DataBase.passengers_lilst) {
             if(uName.compareTo(everypassenger.passengerID) == 0){
             if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
-                System.out.printf("Success !");
+                System.out.printf("Success !\n");
             }
             }
         }
@@ -212,9 +212,9 @@ public class Passenger {
    public static void reserveFlight(){
        Admin.flightAutoCheck();	  
     	// 查询各个flight的信息  显示除开unpublished的所有信息
-    	System.out.println("The flight information:");
+    	System.out.println("The flight information:\nFlightID\tFlightStatus\t\tFlightEX\tStartCity\tArrivalCity\t\t\tFlightDate");
     	    	 for (Flight flight : DataBase.flight_list) {
-    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED|| flight.flightStatus != Flight.flightStatusENU.TERMINATE|| flight.flightStatus != Flight.flightStatusENU.FULL){
+    		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED ){  //terminate full按照要求是要打印出来的
     			 flight.disp_flight_inform();}
     		/*	 System.out.printf("the flight ID:%s\nthe flight status:", flight.flightID);
     			 System.out.println(flight.flightStatus+"   you can only reserve the available ones");
