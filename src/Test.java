@@ -16,10 +16,13 @@ public class Test {
          DataBase.flight_list.add(a1);
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
+        Order order = new Order("1","2",2,"3","2","2");
+        order.setSpecialDemand("fuck!");
+        order.order_disp(order);
 //        Admin.deleteFlight();
 //        Admin.superQuery();
 //         Admin.updateFlight();
-    Admin.createFlight();
+//    Admin.createFlight();
 //        String d1  = "2017-01-01";
 //        String d2  = "2018-02-02";
 //        String time = "03:00";

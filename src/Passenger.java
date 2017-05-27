@@ -277,20 +277,20 @@ public class Passenger {
     	System.out.println("Do you have any special demand? If any,please enter it.");
     	String demand0 = input.nextLine();
     	demand0 = input.nextLine();
-        Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,"做pre的那一天的日期",demand0);
+        Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,"5.28",demand0);
         newOrder.orderstatus = Order.orderstates.PAID;
         DataBase.order_list.add(newOrder);
         DataBase.passengers_lilst.get(psnum).orderList.add(newOrder);
        //输入乘客ID，并将订单添加到对应乘客的订单列表  进入付款界面
         // print passenger's order info
-        System.out.println("Your lastes order information:");
+        System.out.println("Your lastest order information:");
         for(Order order :DataBase.passengers_lilst.get(psnum).orderList ){
         	order.order_disp(order);
         }
        
         
         //预订成功
-    	System.out.printf("You have successfully reserved the flight %s\n"
+    	System.out.printf("\nYou have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
     }
    
