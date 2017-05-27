@@ -257,7 +257,7 @@ public class Passenger {
 	   
 	   int num=0;//用于调用user输入ID对应的航班
   //预定航班
-    	 System.out.println("please enter the flight ID that you want to reserve.You can only reserve the available ones");
+        System.out.println("Please enter the flight ID that you want to reserve.You can only reserve the available ones");
     	String ID = input.nextLine();
     	for (Flight flight : DataBase.flight_list){
     		if (flight.flightID.compareTo(ID)==0){

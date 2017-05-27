@@ -1,3 +1,4 @@
+import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -23,7 +24,6 @@ public class Flight {
     flightExistting flightEx = flightExistting.DELETED;
     //ArrayList for information of the plane
     private ArrayList<Passenger> all_Passenger = new ArrayList<Passenger>();
-
 
     /***** Constructor *****/
     public  Flight(String fliID, String dptTime,String fliDate, String arrivTime, String stCity,
@@ -75,8 +75,7 @@ public class Flight {
 ////            System.out.printf("The flight has been deleted");
 //    }
     /***** 辅助功能： 时间处理 *****/
-    private int time_modification(String origin_time)
-    {
+    private int time_modification(String origin_time){
         int tot_time = 0;
         int tot_hour = 0;
         int tot_minute = 0;
@@ -133,8 +132,12 @@ public class Flight {
 
 
     public  void disp_flight_inform(){
-    	System.out.printf("%s\t\t%s\t\t%s\t\t%s%20s\t\t\t%s\n",flightID, flightStatus, flightEx,
-                startCity, arrivalCity, flightDate);
+//    	System.out.printf("%s\t\t%s\t\t%s\t\t%s%20s\t\t\t%s\n",flightID, flightStatus, flightEx,
+//                startCity, arrivalCity, flightDate);
+        System.out.printf("Passenger Name\t\tPassenger ID\t\tSeat Number\t\tBook Time\t\tOrder State");
+        for(Order everyOrder : DataBase.order_list ){
+
+        }
     }
 
 

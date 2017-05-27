@@ -52,9 +52,9 @@ public class DataBase {
         boolean is_ture = true;
         while (is_ture) {
             Scanner input = new Scanner(System.in);
-            System.out.printf("Please Input your User Name: \nusername:");
+            System.out.printf("Please Input your User Name: \nusername:\t");
             String uName = input.nextLine();
-            System.out.printf("Pelase Input your Pass Word:\npassword:");
+            System.out.printf("Pelase Input your Pass Word:\npassword:\t");
             String pword = input.nextLine();
             for(Passenger everyPassenger : passengers_lilst) {
                 if (uName.compareTo(everyPassenger.passengerID) == 0 && pword.compareTo(everyPassenger.passengerPassword) == 0) {
@@ -79,13 +79,13 @@ public class DataBase {
         String ID;
         //input passenger's info
         Scanner input = new Scanner(System.in);
-        System.out.printf("Enter your real name please\t   ");
+        System.out.printf("Enter your real name please\t\t   ");
         String passenger_realName = input.nextLine();
-        System.out.print("Enter your real ID please\t\t\t\t           ");
+        System.out.print("Enter your real ID please\t\t   ");
         String passenger_realID = input.nextLine();
         //检查是否有重名
        do {
-        System.out.print("Create an ID used for Log in please\t\t\t\t   ");
+        System.out.print("Create an ID used for Log in please\t   ");
          ID = input.nextLine();
         	for(Passenger everypassenger : passengers_lilst){
         		if (everypassenger.passengerID.compareTo(ID)==0){
@@ -99,15 +99,15 @@ public class DataBase {
        
         }   while(is_true);
         //input password , confirm twice
-        System.out.print("Enter your password please\t\t\t\t\t   ");
+        System.out.print("Enter your password please\t\t   ");
         String password1 = input.nextLine();
-        System.out.print("Enter your password again please\t\t\t\t   ");
+        System.out.print("Enter your password again please\t   ");
         String password2 = input.nextLine();
         while (decideString(password1, password2) == false) {
             System.out.println("Different password,please try again");
-            System.out.print("Enter your password please\t\t\t\t\t   ");
+            System.out.print("Enter your password please\t   ");
             password1 = input.nextLine();
-            System.out.print("Enter your password again please\t\t\t\t   ");
+            System.out.print("Enter your password again please\t   ");
             password2 = input.nextLine();
         }
         System.out.println("You have succeeded in setting your password");

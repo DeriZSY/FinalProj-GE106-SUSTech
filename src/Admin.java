@@ -30,7 +30,7 @@ public class Admin {
         boolean is_true = false;
         String uName = "defaultName";
       do {
-            System.out.printf("Please input the username for a new Administer (Input 'Q' to leave):\nUsername:>>");
+            System.out.printf("Please input the username for a new Administer (Input 'Q' to leave):\nUsername:>>\t");
             uName = input.nextLine();
             for (Admin everyAdmin : DataBase.admin_list) {
 //                System.out.printf("on");
@@ -48,10 +48,10 @@ public class Admin {
         is_true = true;
         if (uName.compareTo("Q") != 0) {
             while (is_true) {
-                System.out.printf("Please input the password for a new Administer:\nPassword:>>");
+                System.out.printf("Please input the password for a new Administer:\nPassword:>>\t");
                 String pWord = input.nextLine();
 //        String[] inform_list = origin_inform.split(";");
-                System.out.printf("Please input again to confirm:\nPassword:>>");
+                System.out.printf("Please input again to confirm:\nPassword:>>\t");
                 String pWord2 = input.nextLine();
                 if (pWord.compareTo(pWord2) == 0) {
                     Admin new_admin = new Admin(uName, pWord);
