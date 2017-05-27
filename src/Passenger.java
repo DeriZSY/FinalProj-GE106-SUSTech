@@ -383,7 +383,8 @@ public class Passenger {
 	   System.out.println("Enter the num of the order you want to unsubscribe");
 		   int decide = input.nextInt();
 		   int b = DataBase.order_list.indexOf(everyPassenger.orderList.get(decide-1));// 选择的这个乘客的order在数据库中的位置
-		   System.out.println("You have succeeded in unsubsribing the flight "+everyPassenger.orderList.get(decide-1).getFlightID());
+		   System.out.println("You have succeeded in unsubsribing the flight\n "+everyPassenger.orderList.get(decide-1).getFlightID());
+		   System.out.printf("Payment will be credited to your bank account\n");
 		   everyPassenger.orderList.remove(decide-1);//在Passenger的order中删除
 		    DataBase.order_list.remove(b);//在数据库中将它删除
 		    System.out.println("Enter 1.go on subscribing 2.quit");

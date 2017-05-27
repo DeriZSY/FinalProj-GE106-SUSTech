@@ -66,13 +66,17 @@ public class DataBase {
                     reserved_PassName = uName;
                     break;
                 }} if(is_ture == true){
-                    System.out.printf("Log In Error. Input \"1\" for try again and \"2\" for go to register   ");
+                    System.out.printf("Log In Error. Input \"1\" for try again and \"2\" for go to register \n  ");
                     int choice = input.nextInt();
                     if (choice == 1)
                         continue;
                    if(choice == 2){
-                        System.out.printf("Now you will come to register");
-                        register();}}}}
+                        System.out.printf("Now you will come to register\n");
+                        register();
+                        System.out.printf("Now, you need to login.\n");
+                        Graphing.sepreate__Line_underLine_50();
+                        System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                   	 }}}}
      
 
 
