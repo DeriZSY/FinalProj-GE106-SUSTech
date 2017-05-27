@@ -17,10 +17,10 @@ public class Test {
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
 //        Admin.deleteFlight();
-//        Admin.superQuery();
+        Admin.superQuery();
 ////         Admin.updateFlight();
 //    Admin.createFlight();
-         Admin.updateFlight();
+//         Admin.updateFlight();
 //    Admin.createFlight();
 //        Admin.create_newAdmin();
 //        String d1  = "2017-01-01";
