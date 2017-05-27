@@ -372,7 +372,7 @@ public class Admin {
             if(choice.compareTo("Q") != 0) {
                 for (Flight aim_Flight : DataBase.flight_list) {
                     if (aim_Flight.flightID.compareTo(choice) == 0) {
-                        System.out.printf("Do you want to delete it or  update?(input \"D\" for deleting and \"U\"for changing,\"Q\" for quit)\n");
+                        System.out.printf("Do you want to delete it or  update?(input \"D\" for deleting and \"U\"for updating,\"Q\" for quit)\n");
                         String Choice = input.nextLine();
                         Graphing.standard_sepreation();
                         if (Choice.compareTo("D") == 0) {
@@ -387,7 +387,7 @@ public class Admin {
                             Graphing.standard_sepreation();
                         }//extended deleted end
                         else if (Choice.compareTo("U") == 0) {
-                            Admin.updateFlight();
+                            Admin.updateFlight(choice);
                             Graphing.standard_sepreation();
                         }
                     }//changing end
@@ -659,8 +659,8 @@ public class Admin {
     }
 
     /***** 管理员功能： 更新航班信息 *****/
-    public static void updateFlight(String str){// 带参数，不显示所有信息
-    	int num = flightNum(str);
+    public static void updateFlight(String aim_flightID){// 带参数，不显示所有信息
+    	int num = flightNum(aim_flightID);
     	change(num);
     }
        public static void updateFlight() {
