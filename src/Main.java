@@ -122,15 +122,19 @@ public class Main {
                                     Admin.modifyPersonalInform();
                                     continue;
                                 case 3:
+                                	Admin.flightAutoCheck();
                                     Admin.createFlight();
                                     continue;
                                 case 4:
+                                	Admin.flightAutoCheck();
                                     Admin.deleteFlight();
                                     continue;
                                 case 5:
+                                	 Admin.flightAutoCheck();
                                   Admin.superQuery();
                                     continue;
                                 case 6:
+                                	Admin.flightAutoCheck();
                                     Admin.updateFlight();
                                     continue;
 //                                case 7:
@@ -189,12 +193,15 @@ public class Main {
                    if (chocieNum <= 3){
                     switch (chocieNum) {
                         case 1:
+                        	Admin.flightAutoCheck();
                            Passenger.reserveFlight();
                             continue;
                         case 2:
+                        	Admin.flightAutoCheck();
                            Passenger.unsubscribedFlight();
                             continue;
                         case 3:
+                        	Admin.flightAutoCheck();
                             Passenger.queryFlight();
                             continue;
                     }//end Switch
