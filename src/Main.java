@@ -174,8 +174,11 @@ public class Main {
                     	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                  
                    System.out.printf("Now, you are logging in !\n");
+                   //循环
+                   boolean is_true1 = true; 
+                   while(is_true1){
                    Graphing.sepreate__Line_underLine_50();
-                   System.out.printf("What do you want?\n");
+                   System.out.printf("Which function would you like to choose\n");
                    String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
                     String[] function_array1 = origin_function1.split(";");
                     System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 flight's information\n#4 Log Out\n");
@@ -195,7 +198,9 @@ public class Main {
                             Passenger.queryFlight();
                             continue;
                     }//end Switch
-                   }
+                   }else
+                   	is_true1 = false;
+                   }//end while 跳出选择功能的循环
                     	passenger_mode_on  = false;
                        }
                    } 
