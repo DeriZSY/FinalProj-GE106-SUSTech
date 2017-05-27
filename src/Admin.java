@@ -619,7 +619,7 @@ public class Admin {
    			while (is_true0)
    			{
            //显示所有航班信息
-           flightAutoCheck();
+//           flightAutoCheck();
            System.out.printf("The list of the planes are:\n");
            System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
                    /* 显示航班信息*/
@@ -656,7 +656,7 @@ public class Admin {
                }
 
            } // 得到了管理员希望更改的航班 :DataBase.flight_list.get(num)
-       	   flightAutoCheck();
+//       	   flightAutoCheck();
          //  System.out.printf("Input '1' to Check out the latest flight's information\n '2' to reset the flight status\n '3' to reset the plane type\n '4' to reset the prize\n ");
          //  int decide = input.nextInt();
      // unpublished
