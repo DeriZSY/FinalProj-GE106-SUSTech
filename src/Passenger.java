@@ -278,9 +278,17 @@ public class Passenger {
     	DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
     	System.out.println("Do you have any special demand? If any,please enter it.");
     	String demand0 = input.nextLine();
-    	demand0 = input.nextLine();
+    	demand0 = input.nextLine();   	
         Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,"做pre的那一天的日期",demand0);
-        newOrder.orderstatus = Order.orderstates.PAID;
+        System.out.printf("Do you want to pay now?\nInput\"Y\"to pay now, and \"N\"to pay at airport\n");
+    	 String status = input.nextLine();
+    	 if (status.compareTo("Y")==0){
+        newOrder.orderstatus = Order.orderstates.PAID;}
+    	 else if(status.compareTo("N")==0){
+    		 newOrder.orderstatus = Order.orderstates.UNPAID;
+    	 System.out.printf("remember to pay at airport");
+    	 }
+    	 
         DataBase.order_list.add(newOrder);
         DataBase.passengers_lilst.get(psnum).orderList.add(newOrder);
        //输入乘客ID，并将订单添加到对应乘客的订单列表  进入付款界面
