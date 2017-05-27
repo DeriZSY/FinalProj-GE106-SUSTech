@@ -20,40 +20,40 @@ public class Main {
         Flight a3 = new Flight("ZG0003", "11:00", "2017-06-02", "23:22", "HongKong",
                 "St.Petersburg ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
        
-        Flight b1 = new Flight("CA0004", "11:00", "2017-06-02", "18:22", "UA",
-                "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight b2 = new Flight("CA0010", "11:00", "2017-06-02", "22:22", "Airplot",
-                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
-        Flight b3 = new Flight("ZG0025", "11:00", "2017-06-02", "17:22", "South Airline",
-                "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
+        Flight b1 = new Flight("CA0004", "11:00", "2017-06-02", "18:22", 
+                "Moscow ", "Beijing", "NewYork","UA","$100", DataBase.Mig_MniJet);
+        Flight b2 = new Flight("CA0010", "11:00", "2017-06-02", "22:22", "St.Petersburg",
+        		"Moscow ", "Shenzhen","Airplot", "$100", DataBase.Airbus251);
+        Flight b3 = new Flight("ZG0025", "11:00", "2017-06-02", "17:22", "Beijing",
+        		"St.Petersburg", "HongKong", "South Airline", "$100", DataBase.Airbus251);
         
         Flight c1 = new Flight("ZG0013", "11:00", "2017-06-03", "18:22", "NewYork",
-                "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+                "Beijing ", "Moscow", "UA", "$100", DataBase.Mig_MniJet);
         Flight c2 = new Flight("ZG0022", "11:00", "2017-06-03", "22:22","Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
         Flight c3 = new Flight("ZG0034", "11:00", "2017-06-03", "23:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
         
-        Flight e1 = new Flight("ZG0012", "11:00", "2017-06-03", "18:22","UA",
-                "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight e1 = new Flight("ZG0012", "11:00", "2017-06-03", "18:22","NewYork",
+                "Moscow ", "Beijing", "UA", "$100", DataBase.Mig_MniJet);
         Flight e2 = new Flight("ZG0021", "11:00", "2017-06-03", "22:22", "Airplot",
-                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
-        Flight e3 = new Flight("ZG0032", "11:00", "2017-06-03", "17:22", "South Airline",
-                "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
+                "St.Petersburg ", "Moscow", "Airplot", "$100", DataBase.Airbus251);
+        Flight e3 = new Flight("ZG0032", "11:00", "2017-06-03", "17:22",  "St.Petersburg",
+        		"Moscow ", "Shenzhen", "South Airline", "$100", DataBase.Airbus251);
         
-        Flight f1 = new Flight("ZG0035", "11:00", "2017-06-04", "18:22", "NewYork",
-                "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight f1 = new Flight("ZG0035", "11:00", "2017-06-04", "18:22","NewYork",
+                "Beijing ", "Moscow", "UA", "$100", DataBase.Mig_MniJet);
         Flight f2 = new Flight("ZG0056", "11:00", "2017-06-04", "22:22","Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
         Flight f3 = new Flight("ZG0027", "11:00", "2017-06-04", "23:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
         
-        Flight g1 = new Flight("UA0021", "11:00", "2017-06-04", "19:22", "UA",
-                "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight g1 = new Flight("UA0021", "11:00", "2017-06-04", "19:22","NewYork",
+                "Beijing ", "Moscow", "UA", "$100", DataBase.Mig_MniJet);
         Flight g2 = new Flight("CA0836", "11:00", "2017-06-04", "22:22", "Airplot",
-                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
-        Flight g3 = new Flight("MI0123", "11:00", "2017-06-04", "17:22","South Airline",
-                "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
+                "St.Petersburg ", "Moscow", "Airplot", "$100", DataBase.Airbus251);
+        Flight g3 = new Flight("MI0123", "11:00", "2017-06-04", "17:22", "St.Petersburg",
+        		"Moscow ", "Shenzhen", "South Airline", "$100", DataBase.Airbus251);
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
         DataBase.flight_list.add(a3);
