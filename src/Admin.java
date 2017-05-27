@@ -42,7 +42,6 @@ public class Admin {
                     break;
                 } else 
                         is_true = false;
-//                System.out.printf("Check\n");
             }
         }while (is_true);
         is_true = true;
@@ -70,18 +69,19 @@ public class Admin {
         Scanner input = new Scanner(System.in);
         boolean is_ture = true;
         while (is_ture) {
+            DataBase.confirmPasswordAdmin();
             //input username
-            System.out.printf("Please input your user name to verify identity:\nuserName: ");
-            String usrName = input.nextLine();
-            //input password
-            System.out.printf("Please input your password:\npassword: ");
-            String psWord = input.nextLine();
+//            System.out.printf("Please input your user name to verify identity:\nuserName: ");
+//            String usrName = input.nextLine();
+//            //input password
+//            System.out.printf("Please input your password:\npassword: ");
+//            String psWord = input.nextLine();
             // check if account exist
-            for (Admin everyAdmin : DataBase.admin_list) {
-                if (everyAdmin.adminUserName.compareTo(usrName) == 0) { //check if username exist
-                    String aim_Name = everyAdmin.adminUserName;
-                    if (everyAdmin.adminPassWord.compareTo(psWord) == 0) { // check if it's the corresponding password
-                        System.out.printf("Login Success! ");
+//            for (Admin everyAdmin : DataBase.admin_list) {
+//                if (everyAdmin.adminUserName.compareTo(usrName) == 0) { //check if username exist
+//                    String aim_Name = DataBase.reserved_Admin_Name;
+//                    if (everyAdmin.adminPassWord.compareTo(psWord) == 0) { // check if it's the corresponding password
+//                        System.out.printf("Login Success! ");
                         boolean new_is_true = true;
                         String uName = "defaultName";
                         //输入用户名
@@ -90,7 +90,7 @@ public class Admin {
                             uName = input.nextLine();
                             //检查是否存在重名
                             for (Admin newEveryAdmin : DataBase.admin_list) {
-                                if (uName.compareTo(newEveryAdmin.adminUserName) == 0 && uName.compareTo(aim_Name) !=0 ) {
+                                if (uName.compareTo(newEveryAdmin.adminUserName) == 0 && uName.compareTo(DataBase.reserved_Admin_Name) !=0 ) {
                                     System.out.printf("The name is already taken; please try a new one !\n");
                                     break;
                                 }//如果存在重名，继续输入，如果不存在，则继续输入密码；用户名和密码在密码验证成功之后会统一更新
@@ -113,9 +113,11 @@ public class Admin {
                                 if (pWord.compareTo(pWord2) == 0) {//如果验证成功
                                     //修改指定用户的用户名和密码
                                     for(Admin aim_admin : DataBase.admin_list){
-                                        if(usrName.compareTo(aim_admin.adminUserName) ==0){
+                                        if(DataBase.reserved_Admin_Name.compareTo(aim_admin.adminUserName) ==0){
                                             aim_admin.adminUserName = uName;
                                             aim_admin.adminPassWord = pWord;
+                                            DataBase.reserved_Admin_Name = uName;
+                                            System.out.print("Change Committed !\n");
                                         }
                                     }
                                     new_is_true = false;
@@ -131,13 +133,12 @@ public class Admin {
                         break;
                     }//检查密码结束
                 }//检查用户名结束
-            }//登录结束
+    //登录结束
             //如果登录失败：
-            if (is_ture) {
-                System.out.println("Login failed, pleas try again!");
-            }
-        }
-    }
+//            if (is_ture) {
+//                System.out.println("Login failed, pleas try again!");
+
+
 
     /***** 管理员功能：超级查找 *****/
     public static void superQuery() {
@@ -581,25 +582,33 @@ public class Admin {
             Scanner input = new Scanner(System.in);
             int aim_index = 0;
             boolean can_be_deleted = false;
+            Flight.flightStatusENU aim = Flight.flightStatusENU.UNPUBLISHED;
             for (Flight everyflight : DataBase.flight_list) {
+
                 if (everyflight.flightID.compareTo(deleting_ID) == 0) {
                     aim_index = DataBase.flight_list.indexOf(everyflight);
+                    System.out.println(everyflight.flightStatus);
+                    aim = everyflight.flightStatus;
                 }
+//                System.out.println(can_be_deleted);
 
-                if(everyflight.flightStatus.equals(Flight.flightStatusENU.TERMINATE) || everyflight.flightStatus.equals(Flight.flightStatusENU.UNPUBLISHED)){
-                    can_be_deleted = true;
-                }
+//                System.out.println(can_be_deleted);
+////                System.out.println();
+            }
+            if(aim  == Flight.flightStatusENU.TERMINATE || aim == Flight.flightStatusENU.UNPUBLISHED){
+                can_be_deleted = true;
             }
             if (can_be_deleted) {
                 System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
                 String choice = input.nextLine();
                 if (choice.compareTo("Y") == 0) {
                     DataBase.flight_list.remove(DataBase.flight_list.get(aim_index));
+                    System.out.printf("Deleting Success !\n\n");
                 } else
-                    System.out.printf("Deleting canceled.\n");
+                    System.out.printf("Deleting canceled.\n\n");
             }
             else
-                System.out.printf("The flight has been published and is not terminated, so it cannot be deleted.\n");
+                System.out.printf("The flight has been published and is not terminated, so it cannot be deleted.\n\n");
         }
     }
 

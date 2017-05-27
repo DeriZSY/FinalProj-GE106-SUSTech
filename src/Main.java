@@ -110,10 +110,12 @@ public class Main {
                                 + "#6 Renew Flight inform and display\n#7 Log Out\n");
                         Graphing.sepreate__Line_sharp_50();
                         System.out.printf("Please input the number for function\nFunction Number:>>");
-                        int chocieNum = input.nextInt();
-                        input.nextLine();
+                        int chocieNum = 0;
+                        String choiceNumStr = input.nextLine();
+                        chocieNum = Integer.parseInt(choiceNumStr);
+//                        input.nextLine();
                         System.out.println();
-                        if( chocieNum <= 6) {                     
+                        if( chocieNum <= 6) {
                             switch (chocieNum) {
                                 case 1:
                                     Admin.create_newAdmin();
