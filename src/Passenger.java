@@ -32,20 +32,20 @@ public class Passenger {
 
 
     /***** 辅助功能： 确认密码 *****/
-    public static void confirmPasword() {
-        Scanner input = new Scanner(System.in);
-        System.out.printf("Please input your uesrname:\nuesrname:>>\t");
-        String uName = input.nextLine();
-        System.out.printf("Please Input your password to confirm:\npassword>>\t");
-        String pWord = input.nextLine();
-        for (Passenger everypassenger : DataBase.passengers_lilst) {
-            if(uName.compareTo(everypassenger.passengerID) == 0){
-            if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
-                System.out.printf("Success !\n");
-            }
-            }
-        }
-    }
+//    public static void confirmPasword() {
+//        Scanner input = new Scanner(System.in);
+//        System.out.printf("Please input your uesrname:\nuesrname:>>\t");
+//        String uName = input.nextLine();
+//        System.out.printf("Please Input your password to confirm:\npassword>>\t");
+//        String pWord = input.nextLine();
+//        for (Passenger everypassenger : DataBase.passengers_lilst) {
+//            if(uName.compareTo(everypassenger.passengerID) == 0){
+//            if (pWord.compareTo(everypassenger.passengerPassword) == 0) {
+//                System.out.printf("Success !\n");
+//            }
+//            }
+//        }
+//    }
 
     /***** 乘客功能 ： 查询航班 *****/
     public static void queryFlight() {
