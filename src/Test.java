@@ -20,9 +20,9 @@ public class Test {
 //        Admin.superQuery();
 ////         Admin.updateFlight();
 //    Admin.createFlight();
-//         Admin.updateFlight();
+         Admin.updateFlight();
 //    Admin.createFlight();
-        Admin.create_newAdmin();
+//        Admin.create_newAdmin();
 //        String d1  = "2017-01-01";
 //        String d2  = "2018-02-02";
 //        String time = "03:00";
