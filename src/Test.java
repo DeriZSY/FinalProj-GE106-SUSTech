@@ -18,14 +18,11 @@ public class Test {
          DataBase.flight_list.add(a3);
 //        Admin.deleteFlight();
 //        Admin.superQuery();
-<<<<<<< HEAD
 ////         Admin.updateFlight();
 //    Admin.createFlight();
-=======
 //         Admin.updateFlight();
 //    Admin.createFlight();
         Admin.create_newAdmin();
->>>>>>> zhang_deri
 //        String d1  = "2017-01-01";
 //        String d2  = "2018-02-02";
 //        String time = "03:00";
