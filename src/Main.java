@@ -15,8 +15,11 @@ public class Main {
         
         Flight a1= new Flight("ZG0001", "12:00", "2017-06-02", "18.22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", DataBase.Mig_MniJet);
+      
+        a1.flightStatus= Flight.flightStatusENU.AVAILABLE;
         Flight a2 = new Flight("ZG0002", "14:00", "2017-06-02", "22:22", "Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$300",DataBase.Airbus251);
+        a2.flightStatus= Flight.flightStatusENU.AVAILABLE;
         Flight a3 = new Flight("ZG0003", "11:00", "2017-06-02", "23:22", "HongKong",
                 "St.Petersburg ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
 

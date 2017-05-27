@@ -125,9 +125,10 @@ public class Flight {
         			else if (termin_time <= present_time && flightDate.compareTo(DataBase.present_date) == 0){
             flightStatus = flightStatusENU.TERMINATE;}
         			if(flightStatus == flightStatusENU.FULL || flightStatus == flightStatusENU.AVAILABLE  ){
-        if(remainingSeat <= 0){
+        if(remainingSeat == 0){
             flightStatus = flightStatusENU.FULL;
-        }
+        }else
+        	flightStatus = flightStatusENU.AVAILABLE;
     }}
 
 
