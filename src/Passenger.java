@@ -201,7 +201,8 @@ public class Passenger {
         System.out.printf("Input 'Y' to book it\n");
         String choice = input.nextLine();
         if (choice.compareTo("Y") == 0) {
-            confirmPasword();
+//            confirmPasword();
+            DataBase.confirmPasswordPassenger();
             Passenger.reserveFlight();
             System.out.printf("Book Success!");
         }
@@ -245,7 +246,8 @@ public class Passenger {
                else{
             	   psnum = counter;
             	   is_true = false;
-            	   confirmPasword();
+//            	   confirmPasword();
+                   DataBase.confirmPasswordPassenger();
             	   break;
                }
            }
