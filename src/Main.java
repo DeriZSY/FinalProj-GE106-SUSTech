@@ -13,46 +13,46 @@ public class Main {
         //Login
         // Initialize Flights 
         
-        Flight a1= new Flight("ZG001a", "12:00", "2017-06-02", "18.22", "NewYork",
+        Flight a1= new Flight("ZG0001", "12:00", "2017-06-02", "18.22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", DataBase.Mig_MniJet);
-        Flight a2 = new Flight("ZG002a", "14:00", "2017-06-02", "22:22", "Shenzhen",
+        Flight a2 = new Flight("ZG0002", "14:00", "2017-06-02", "22:22", "Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$300",DataBase.Airbus251);
-        Flight a3 = new Flight("ZG003a", "11:00", "2017-06-02", "23:22", "HongKong",
+        Flight a3 = new Flight("ZG0003", "11:00", "2017-06-02", "23:22", "HongKong",
                 "St.Petersburg ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
        
-        Flight b1 = new Flight("ZG001b", "11:00", "2017-06-02", "18:22", "UA",
+        Flight b1 = new Flight("CA0004", "11:00", "2017-06-02", "18:22", "UA",
                 "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight b2 = new Flight("ZG002b", "11:00", "2017-06-02", "22:22", "Airplot",
+        Flight b2 = new Flight("CA0010", "11:00", "2017-06-02", "22:22", "Airplot",
                 "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
-        Flight b3 = new Flight("ZG003b", "11:00", "2017-06-02", "17:22", "South Airline",
+        Flight b3 = new Flight("ZG0025", "11:00", "2017-06-02", "17:22", "South Airline",
                 "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
         
-        Flight c1 = new Flight("ZG001a", "11:00", "2017-06-03", "18:22", "NewYork",
+        Flight c1 = new Flight("ZG0013", "11:00", "2017-06-03", "18:22", "NewYork",
                 "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight c2 = new Flight("ZG002a", "11:00", "2017-06-03", "22:22","Shenzhen",
+        Flight c2 = new Flight("ZG0022", "11:00", "2017-06-03", "22:22","Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
-        Flight c3 = new Flight("ZG003a", "11:00", "2017-06-03", "23:22", "HongKong",
+        Flight c3 = new Flight("ZG0034", "11:00", "2017-06-03", "23:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
         
-        Flight e1 = new Flight("ZG001b", "11:00", "2017-06-03", "18:22","UA",
+        Flight e1 = new Flight("ZG0012", "11:00", "2017-06-03", "18:22","UA",
                 "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight e2 = new Flight("ZG002b", "11:00", "2017-06-03", "22:22", "Airplot",
+        Flight e2 = new Flight("ZG0021", "11:00", "2017-06-03", "22:22", "Airplot",
                 "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
-        Flight e3 = new Flight("ZG003b", "11:00", "2017-06-03", "17:22", "South Airline",
+        Flight e3 = new Flight("ZG0032", "11:00", "2017-06-03", "17:22", "South Airline",
                 "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
         
-        Flight f1 = new Flight("ZG001a", "11:00", "2017-06-04", "18:22", "NewYork",
+        Flight f1 = new Flight("ZG0035", "11:00", "2017-06-04", "18:22", "NewYork",
                 "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight f2 = new Flight("ZG002a", "11:00", "2017-06-04", "22:22","Shenzhen",
+        Flight f2 = new Flight("ZG0056", "11:00", "2017-06-04", "22:22","Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
-        Flight f3 = new Flight("ZG003a", "11:00", "2017-06-04", "23:22", "HongKong",
+        Flight f3 = new Flight("ZG0027", "11:00", "2017-06-04", "23:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
         
-        Flight g1 = new Flight("ZG001b", "11:00", "2017-06-04", "19:22", "UA",
+        Flight g1 = new Flight("UA0021", "11:00", "2017-06-04", "19:22", "UA",
                 "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight g2 = new Flight("ZG002b", "11:00", "2017-06-04", "22:22", "Airplot",
+        Flight g2 = new Flight("CA0836", "11:00", "2017-06-04", "22:22", "Airplot",
                 "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
-        Flight g3 = new Flight("ZG003b", "11:00", "2017-06-04", "17:22","South Airline",
+        Flight g3 = new Flight("MI0123", "11:00", "2017-06-04", "17:22","South Airline",
                 "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
@@ -92,16 +92,17 @@ public class Main {
                 //选择登录模式（乘客／管理员）
                 System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n\t\t");//这两句会出现两次
                 String status = input.nextLine();
+
+                //管理员模式
                 if (status.compareTo("admin") == 0) {
-                    
-                	//管理员模式
+                    //进入登录
                     Graphing.sepreate__Line_sharp_50();
-                DataBase.adminLogin();
+                    DataBase.adminLogin();
                     System.out.println();
                     Graphing.sepreate__Line_underLine_50();
                     System.out.printf("\nFunction Menu\n");
                     boolean admin_moode_on = true;
-
+                    //进入管理员功能
                     while (admin_moode_on) {
                         String origin_function = ";create new Administer;Modify Information of a Existing Administer;Create a new flight;delete flight;SuperQuery;Renew Flight inform and display;Modify Existing Flight;Log Out;";
                         String[] function_array = origin_function.split(";");
@@ -140,11 +141,10 @@ public class Main {
 
                     }//end Admin Function
                 }//end Admin Mood
-           
-                
+
+                // 乘客模式
                 else if (status.compareTo("passenger") == 0) {
-//                //乘客模式
-        	   boolean passenger_mode_on = true;
+                    boolean passenger_mode_on = true;
                 while (passenger_mode_on) {
                 	 Graphing.sepreate__Line_underLine_50();
         	   System.out.printf("\nWelcome to the passenger System\n");
@@ -154,10 +154,10 @@ public class Main {
         	   String[] function_array = origin_function.split(";");
                     System.out.printf("#1 register\n#2 login\n");
                     Graphing.sepreate__Line_sharp_50();
-                   System.out.printf("please enter the number>>\t");
+                   System.out.printf("please enter the number>>");
                    int choice = input.nextInt();
-                   System.out.println();
-                   if( choice < 3) {
+                  System.out.println();
+                   if( choice <= 2) {
                      
                      switch(choice){
                      case 1:
@@ -171,9 +171,7 @@ public class Main {
                     	 DataBase.passengerLogIn();
                     	 Graphing.sepreate__Line_underLine_50();
                     	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-                     }
-                   
-                   } 
+                 
                    System.out.printf("Now, you are logging in !\n");
                    Graphing.sepreate__Line_underLine_50();
                    System.out.printf("What do you want?\n");
@@ -198,7 +196,8 @@ public class Main {
                     }//end Switch
                    }
                     	passenger_mode_on  = false;
-                   
+                       }
+                   } 
 
                
            }// end passenger mode;

@@ -136,8 +136,13 @@ public class Flight {
                 startCity, arrivalCity, flightDate);
 //        System.out.printf("Passenger Name\t\tPassenger ID\t\tSeat Number\t\tBook Time\t\tOrder State");
 //        for(Order everyOrder : DataBase.order_list ){
+<<<<<<< HEAD
 
         }
+=======
+//
+//        }
+>>>>>>> master
     }
 
 
