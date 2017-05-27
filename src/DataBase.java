@@ -16,7 +16,8 @@ public class DataBase {
     public static ArrayList<Passenger> passengers_lilst = new ArrayList<Passenger>();
     public static String present_time = "01:00";
     public static String present_date = "2017-01-01";
-
+    public static String reserved_PassName = "Default";
+    public static String reserved_Admin_Name = "Default";
 /************  Administer 登陆 *************/
     //Method
     public static void adminLogin() {
@@ -37,6 +38,7 @@ public class DataBase {
                         System.out.printf("Login Success! ");
                         System.out.printf("Welcome back to the system, %s!", everyAdmin.adminUserName);
                         is_ture = false;
+                        reserved_Admin_Name = usrName;
                         break;
                     }
                 }  
@@ -61,6 +63,7 @@ public class DataBase {
                     System.out.printf("Log In Success !\n");
                     everyPassenger.loginStates = Passenger.logingSatus.LGOING;
                     is_ture = false;
+                    reserved_PassName = uName;
                     break;
                 }} if(is_ture == true){
                     System.out.printf("Log In Error. Input \"1\" for try again and \"2\" for go to register   ");
@@ -141,6 +144,43 @@ public class DataBase {
         }
         return a;
     }
-    
-    
+   /***** 确认管理员密码 *****/
+   public static void confirmPasswordAdmin(){
+        boolean is_true = true;
+        while(is_true) {
+            Scanner input = new Scanner(System.in);
+            System.out.printf("Please Input your password again to confirm:\nPassword>>>");
+            String pWord = input.nextLine();
+            for(Admin everyAdmin: DataBase.admin_list){
+                if(everyAdmin.adminUserName.compareTo(reserved_Admin_Name) == 0 ){
+                    if(everyAdmin.adminPassWord.compareTo(pWord) == 0 ){
+                        System.out.print("Confirm Success!\n");
+                        is_true = false;
+                    }
+                    else
+                        System.out.print("Password wrong, Please Try again!\n");
+                }//end if :find admin
+            }//end for : admin.list
+        }//end while loop
+   }
+   /***** 确认用户名密码 *****/
+   public static void confirmPasswordPassenger(){
+       boolean is_true = true;
+       while(is_true) {
+           Scanner input = new Scanner(System.in);
+           System.out.printf("Please Input your password again to confirm:\nPassword>>>");
+           String pWord = input.nextLine();
+           for(Passenger everyPassenger: DataBase.passengers_lilst){
+               if(everyPassenger.passengerID.compareTo(reserved_Admin_Name) == 0 ){
+                   if(everyPassenger.passengerPassword.compareTo(pWord) == 0 ){
+                       System.out.print("Confirm Success!\n");
+                       is_true = false;
+                   }
+                   else
+                       System.out.print("Password wrong, Please Try again!\n");
+               }//end if :find admin
+           }//end for : admin.list
+       }//end while loop
+   }
+
 }
