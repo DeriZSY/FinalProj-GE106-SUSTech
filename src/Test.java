@@ -17,42 +17,51 @@ public class Test {
          DataBase.flight_list.add(a1);
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
-         DataBase.passengerLogIn();
+        DataBase.passengerLogIn();
+        
          
-     
-//        Order order = new Order("1","2",2,"3","2","2");
-//        order.setSpecialDemand("hha");
-//        order.order_disp(order);
-//        Admin.deleteFlight();
-//        Admin.superQuery();
+//     
+////        Order order = new Order("1","2",2,"3","2","2");
+////        order.setSpecialDemand("hha");
+////        order.order_disp(order);
+////        Admin.deleteFlight();
+////        Admin.superQuery();
+//<<<<<<< HEAD
+//////         Admin.updateFlight();
+////    Admin.createFlight();
 //         Admin.updateFlight();
-//    Admin.createFlight();
-//        String d1  = "2017-01-01";
-//        String d2  = "2018-02-02";
-//        String time = "03:00";
-//        if(Admin.is_the_same_date(d1,DataBase.present_date)&& Admin.get_total_minutes(time) - Admin.get_total_minutes(DataBase.present_time) >= 120){
-//            System.out.printf("true");
-//        }
-//        String a = "2017-01-02";
-//        if(Admin.is_the_same_date(a)){
-//            System.out.printf("Yes");
-//        }
-//    	DataBase.passengerLogIn();
-//    	System.out.println();
-//    	for (Passenger x :DataBase.passengers_lilst){
-//    		System.out.print("ID:"+x.passengerID+x.passengerPassword);
-//    	}
-//    	System.out.println();
-    	
-//    	Passenger.reserveFlight();
-//    	Passenger.unsubscribedFlight();
-      
-//        Admin.deleteFlight()
-//        Admin.create_newAdmin();
-//        Admin.delete_aimFlight("ZG002");
-  //        Passenger.queryFlight();
-
-
+////    Admin.createFlight();
+////        Admin.create_newAdmin();
+//=======
+////         Admin.updateFlight();
+////    Admin.createFlight();
+//>>>>>>> Jaken
+////        String d1  = "2017-01-01";
+////        String d2  = "2018-02-02";
+////        String time = "03:00";
+////        if(Admin.is_the_same_date(d1,DataBase.present_date)&& Admin.get_total_minutes(time) - Admin.get_total_minutes(DataBase.present_time) >= 120){
+////            System.out.printf("true");
+////        }
+////        String a = "2017-01-02";
+////        if(Admin.is_the_same_date(a)){
+////            System.out.printf("Yes");
+////        }
+////    	DataBase.passengerLogIn();
+////    	System.out.println();
+////    	for (Passenger x :DataBase.passengers_lilst){
+////    		System.out.print("ID:"+x.passengerID+x.passengerPassword);
+////    	}
+////    	System.out.println();
+//    	
+////    	Passenger.reserveFlight();
+////    	Passenger.unsubscribedFlight();
+//      
+////        Admin.deleteFlight()
+////        Admin.create_newAdmin();
+////        Admin.delete_aimFlight("ZG002");
+//  //        Passenger.queryFlight();
+//
+//
 
     }
 }
