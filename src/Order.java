@@ -9,7 +9,7 @@ public class Order {
     private String createDate;
     private String specialDemand;
     private String orderID;
-    public  enum orderstates{PAID, UNPAID,CANCLED};
+    public  enum orderstates{PAID, UNPAID,};
     orderstates orderstatus;
 
     public String getPass_name() {

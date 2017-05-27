@@ -395,7 +395,8 @@ public class Passenger {
 		   int decide = input.nextInt();
 		   String name = everyPassenger.orderList.get(decide-1).getFlightID();//所选订单对应的flightID
 		   int b = DataBase.order_list.indexOf(everyPassenger.orderList.get(decide-1));// 选择的这个乘客的order在数据库中的位置
-		   System.out.println("You have succeeded in unsubsribing the flight "+everyPassenger.orderList.get(decide-1).getFlightID());
+		   System.out.println("You have succeeded in unsubsribing the flight\n "+everyPassenger.orderList.get(decide-1).getFlightID());
+		   System.out.printf("Payment will be credited to your bank account\n");
 		   everyPassenger.orderList.remove(decide-1);//在Passenger的order中删除
 		    DataBase.order_list.remove(b);//在数据库中将它删除
 		    int number ;//所选订单对应flight在数据库中的位置
