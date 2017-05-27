@@ -54,6 +54,24 @@ public class Main {
                 "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
         Flight g3 = new Flight("MI0123", "11:00", "2017-06-04", "17:22","South Airline",
                 "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
+
+        a1.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        a2.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        a3.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        b1.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        b2.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        b3.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        c1.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        c2.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        c3.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        e1.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        e2.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        e3.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        f1.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        f2.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        f3.flightStatus = Flight.flightStatusENU.AVAILABLE;
+
+
         DataBase.flight_list.add(a1);
         DataBase.flight_list.add(a2);
         DataBase.flight_list.add(a3);
