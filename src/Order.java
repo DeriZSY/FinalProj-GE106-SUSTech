@@ -16,7 +16,39 @@ public class Order {
         return pass_name;
     }
 
-    public String getPass_IDs() {
+    public void setPass_name(String pass_name) {
+		this.pass_name = pass_name;
+	}
+
+	public void setPass_IDs(String pass_IDs) {
+		this.pass_IDs = pass_IDs;
+	}
+
+	public void setSeatNum(int seatNum) {
+		this.seatNum = seatNum;
+	}
+
+	public void setFlightID(String flightID) {
+		this.flightID = flightID;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	public void setSpecialDemand(String specialDemand) {
+		this.specialDemand = specialDemand;
+	}
+
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
+	}
+
+	public void setOrderstatus(orderstates orderstatus) {
+		this.orderstatus = orderstatus;
+	}
+
+	public String getPass_IDs() {
         return pass_IDs;
     }
 
@@ -68,8 +100,10 @@ public class Order {
 
     /***** 传入一个Order，并显示其信息 *****/
     public static void order_disp(Order aimOrder){
-		System.out.printf("OrderID\t\tCreate Date\t\tFlight ID\t\tSeat Number\t\tSpecial Demands\t\t");
-        System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t",aimOrder.orderID,aimOrder.createDate,aimOrder.flightID,aimOrder.seatNum,aimOrder.specialDemand);
+//		System.out.printf("OrderID\t\tCreate Date\t\tFlight ID\t\tSeat Number\t\tSpecial Demands\t\t\n");
+//        System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t",aimOrder.orderID,aimOrder.createDate,aimOrder.flightID,aimOrder.seatNum,aimOrder.specialDemand);
+    	System.out.printf("Create Date\t\tFlight ID\t\tSeat Number\t\tSpecial Demands\t\t\n");
+        System.out.printf("%s\t\t\t%s\t\t\t%s\t\t\t%s\t\t\n",aimOrder.createDate,aimOrder.flightID,aimOrder.seatNum,aimOrder.specialDemand);
 	}
 
     }

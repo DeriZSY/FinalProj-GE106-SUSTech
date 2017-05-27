@@ -278,6 +278,7 @@ public class Passenger {
     	DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
     	System.out.println("Do you have any special demand? If any,please enter it.");
     	String demand0 = input.nextLine();
+
     	demand0 = input.nextLine();   	
         Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,"做pre的那一天的日期",demand0);
         System.out.printf("Do you want to pay now?\nInput\"Y\"to pay now, and \"N\"to pay at airport\n");
@@ -289,24 +290,34 @@ public class Passenger {
     	 System.out.printf("remember to pay at airport");
     	 }
     	 
+//=======
+//    	demand0 = input.nextLine();
+//        Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,"5.28",demand0);
+//        newOrder.orderstatus = Order.orderstates.PAID;
+//>>>>>>> Jaken
         DataBase.order_list.add(newOrder);
         DataBase.passengers_lilst.get(psnum).orderList.add(newOrder);
        //输入乘客ID，并将订单添加到对应乘客的订单列表  进入付款界面
+        // print passenger's order info
+        System.out.println("Your lastest order information:");
+        for(Order order :DataBase.passengers_lilst.get(psnum).orderList ){
+        	order.order_disp(order);
+        }
        
         
         //预订成功
-    	System.out.printf("You have successfully reserved the flight %s\n"
+    	System.out.printf("\nYou have successfully reserved the flight %s\n"
     			,DataBase.flight_list.get(num).flightID);
     }
    
    /***************退订功能*************/
    
    public  static void unsubscribedFlight (){
-       Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
 	   boolean is_true1 = true;
 	   boolean is_true2 =true;
 	   while (is_true1){
+		   Admin.flightAutoCheck();
 		   System.out.println("Enter you ID please");
 		   String id = input.nextLine();
 		   System.out.println("Enter your password please");
@@ -323,11 +334,21 @@ public class Passenger {
 	   }
 	   System.out.println("Enter the num of the order you want to unsubscribe");
 		   int decide = input.nextInt();
+		   String name = everyPassenger.orderList.get(decide-1).getFlightID();//所选订单对应的flightID
 		   int b = DataBase.order_list.indexOf(everyPassenger.orderList.get(decide-1));// 选择的这个乘客的order在数据库中的位置
 		   System.out.println("You have succeeded in unsubsribing the flight "+everyPassenger.orderList.get(decide-1).getFlightID());
 		   everyPassenger.orderList.remove(decide-1);//在Passenger的order中删除
 		    DataBase.order_list.remove(b);//在数据库中将它删除
-		    System.out.println("Enter 1.go on subscribing 2.quit");
+		    int number ;//所选订单对应flight在数据库中的位置
+		    number = Admin.flightNum(name);
+		    DataBase.flight_list.get(number).remainingSeat--;
+		    
+		    
+		    System.out.println("Your lastest order information:");
+	        for(Order order :DataBase.passengers_lilst.get(decide-1).orderList ){
+	        	order.order_disp(order);
+	        }
+		    System.out.println("\nEnter 1.go on subscribing 2.quit");
 		    decide = input.nextInt();
 		    if (decide == 2){
 		    	is_true2 = false;
