@@ -90,7 +90,7 @@ public class Main {
             while (system_On) {
                 System.out.printf("Welcome to the Ticket System\n");  
                 //选择登录模式（乘客／管理员）
-                System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n\t\t");//这两句会出现两次
+                System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n\t\t");
                 String status = input.nextLine();
 
                 //管理员模式
@@ -111,6 +111,7 @@ public class Main {
                         Graphing.sepreate__Line_sharp_50();
                         System.out.printf("Please input the number for function\nFunction Number:>>");
                         int chocieNum = input.nextInt();
+                        input.nextLine();
                         System.out.println();
                         if( chocieNum <= 6) {                     
                             switch (chocieNum) {
