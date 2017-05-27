@@ -322,6 +322,10 @@ public class Passenger {
 		   System.out.println("You have succeeded in unsubsribing the flight "+everyPassenger.orderList.get(decide-1).getFlightID());
 		   everyPassenger.orderList.remove(decide-1);//在Passenger的order中删除
 		    DataBase.order_list.remove(b);//在数据库中将它删除
+		    System.out.println("Your lastest order information:");
+	        for(Order order :DataBase.passengers_lilst.get(decide-1).orderList ){
+	        	order.order_disp(order);
+	        }
 		    System.out.println("Enter 1.go on subscribing 2.quit");
 		    decide = input.nextInt();
 		    if (decide == 2){
