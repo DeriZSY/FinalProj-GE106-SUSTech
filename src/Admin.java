@@ -71,7 +71,7 @@ public class Admin {
         boolean is_ture = true;
         while (is_ture) {
             //input username
-            System.out.printf("Please input your user name:\nuserName: ");
+            System.out.printf("Please input your user name to verify identity:\nuserName: ");
             String usrName = input.nextLine();
             //input password
             System.out.printf("Please input your password:\npassword: ");
@@ -79,6 +79,7 @@ public class Admin {
             // check if account exist
             for (Admin everyAdmin : DataBase.admin_list) {
                 if (everyAdmin.adminUserName.compareTo(usrName) == 0) { //check if username exist
+                    String aim_Name = everyAdmin.adminUserName;
                     if (everyAdmin.adminPassWord.compareTo(psWord) == 0) { // check if it's the corresponding password
                         System.out.printf("Login Success! ");
                         boolean new_is_true = true;
@@ -89,11 +90,12 @@ public class Admin {
                             uName = input.nextLine();
                             //检查是否存在重名
                             for (Admin newEveryAdmin : DataBase.admin_list) {
-                                if (uName.compareTo(newEveryAdmin.adminUserName) == 0) {
+                                if (uName.compareTo(newEveryAdmin.adminUserName) == 0 && uName.compareTo(aim_Name) !=0 ) {
                                     System.out.printf("The name is already taken; please try a new one !\n");
                                     break;
-                                }//如果存在重名，继续输入，如果不存在重名
-                                new_is_true = false;//检查结束
+                                }//如果存在重名，继续输入，如果不存在，则继续输入密码；用户名和密码在密码验证成功之后会统一更新
+
+                                new_is_true = false;//检查并更改信息结束
                             }
                             //输入用户名结束
                         }
@@ -109,8 +111,13 @@ public class Admin {
                                 System.out.printf("Please input again to confirm:\nPassword:>>");
                                 String pWord2 = input.nextLine();
                                 if (pWord.compareTo(pWord2) == 0) {//如果验证成功
-                                    everyAdmin.adminUserName = uName;
-                                    everyAdmin.adminPassWord = psWord;
+                                    //修改指定用户的用户名和密码
+                                    for(Admin aim_admin : DataBase.admin_list){
+                                        if(usrName.compareTo(aim_admin.adminUserName) ==0){
+                                            aim_admin.adminUserName = uName;
+                                            aim_admin.adminPassWord = pWord;
+                                        }
+                                    }
                                     new_is_true = false;
                                 }
                                 //如果密码验证失败：
