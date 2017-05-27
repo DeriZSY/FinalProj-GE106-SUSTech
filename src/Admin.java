@@ -581,25 +581,33 @@ public class Admin {
             Scanner input = new Scanner(System.in);
             int aim_index = 0;
             boolean can_be_deleted = false;
+            Flight.flightStatusENU aim = Flight.flightStatusENU.UNPUBLISHED;
             for (Flight everyflight : DataBase.flight_list) {
+
                 if (everyflight.flightID.compareTo(deleting_ID) == 0) {
                     aim_index = DataBase.flight_list.indexOf(everyflight);
+                    System.out.println(everyflight.flightStatus);
+                    aim = everyflight.flightStatus;
                 }
+//                System.out.println(can_be_deleted);
 
-                if(everyflight.flightStatus.equals(Flight.flightStatusENU.TERMINATE) || everyflight.flightStatus.equals(Flight.flightStatusENU.UNPUBLISHED)){
-                    can_be_deleted = true;
-                }
+//                System.out.println(can_be_deleted);
+////                System.out.println();
+            }
+            if(aim  == Flight.flightStatusENU.TERMINATE || aim == Flight.flightStatusENU.UNPUBLISHED){
+                can_be_deleted = true;
             }
             if (can_be_deleted) {
                 System.out.printf("Are you sure to delete this flight?(input \"Y\" for yes and \"N\" for No)\n");
                 String choice = input.nextLine();
                 if (choice.compareTo("Y") == 0) {
                     DataBase.flight_list.remove(DataBase.flight_list.get(aim_index));
+                    System.out.printf("Deleting Success !\n\n");
                 } else
-                    System.out.printf("Deleting canceled.\n");
+                    System.out.printf("Deleting canceled.\n\n");
             }
             else
-                System.out.printf("The flight has been published and is not terminated, so it cannot be deleted.\n");
+                System.out.printf("The flight has been published and is not terminated, so it cannot be deleted.\n\n");
         }
     }
 
