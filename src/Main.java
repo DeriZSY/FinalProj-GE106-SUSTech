@@ -154,10 +154,10 @@ public class Main {
         	   String[] function_array = origin_function.split(";");
                     System.out.printf("#1 register\n#2 login\n");
                     Graphing.sepreate__Line_sharp_50();
-                   System.out.printf("please enter the number>>\t");
+                   System.out.printf("please enter the number>>");
                    int choice = input.nextInt();
-                   System.out.println();
-                   if( choice < 3) {
+                  System.out.println();
+                   if( choice <= 2) {
                      
                      switch(choice){
                      case 1:
@@ -171,9 +171,7 @@ public class Main {
                     	 DataBase.passengerLogIn();
                     	 Graphing.sepreate__Line_underLine_50();
                     	 System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-                     }
-                   
-                   } 
+                 
                    System.out.printf("Now, you are logging in !\n");
                    Graphing.sepreate__Line_underLine_50();
                    System.out.printf("What do you want?\n");
@@ -198,7 +196,8 @@ public class Main {
                     }//end Switch
                    }
                     	passenger_mode_on  = false;
-                   
+                       }
+                   } 
 
                
            }// end passenger mode;
