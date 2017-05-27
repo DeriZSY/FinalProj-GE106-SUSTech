@@ -297,11 +297,11 @@ public class Passenger {
    /***************退订功能*************/
    
    public  static void unsubscribedFlight (){
-       Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
 	   boolean is_true1 = true;
 	   boolean is_true2 =true;
 	   while (is_true1){
+		   Admin.flightAutoCheck();
 		   System.out.println("Enter you ID please");
 		   String id = input.nextLine();
 		   System.out.println("Enter your password please");
@@ -318,15 +318,21 @@ public class Passenger {
 	   }
 	   System.out.println("Enter the num of the order you want to unsubscribe");
 		   int decide = input.nextInt();
+		   String name = everyPassenger.orderList.get(decide-1).getFlightID();//所选订单对应的flightID
 		   int b = DataBase.order_list.indexOf(everyPassenger.orderList.get(decide-1));// 选择的这个乘客的order在数据库中的位置
 		   System.out.println("You have succeeded in unsubsribing the flight "+everyPassenger.orderList.get(decide-1).getFlightID());
 		   everyPassenger.orderList.remove(decide-1);//在Passenger的order中删除
 		    DataBase.order_list.remove(b);//在数据库中将它删除
+		    int number ;//所选订单对应flight在数据库中的位置
+		    number = Admin.flightNum(name);
+		    DataBase.flight_list.get(number).remainingSeat--;
+		    
+		    
 		    System.out.println("Your lastest order information:");
 	        for(Order order :DataBase.passengers_lilst.get(decide-1).orderList ){
 	        	order.order_disp(order);
 	        }
-		    System.out.println("Enter 1.go on subscribing 2.quit");
+		    System.out.println("\nEnter 1.go on subscribing 2.quit");
 		    decide = input.nextInt();
 		    if (decide == 2){
 		    	is_true2 = false;

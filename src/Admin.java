@@ -604,6 +604,10 @@ public class Admin {
     }
 
     /***** 管理员功能： 更新航班信息 *****/
+    public static void updateFlight(String str){// 带参数，不显示所有信息
+    	int num = flightNum(str);
+    	change(num);
+    }
        public static void updateFlight() {
    		//循环：修改多个flight的信息
    		boolean is_true0 = true;
@@ -648,9 +652,18 @@ public class Admin {
 
            } // 得到了管理员希望更改的航班 :DataBase.flight_list.get(num)
        	   flightAutoCheck();
-         //  System.out.printf("Input '1' to Check out the latest flight's information\n '2' to reset the flight status\n '3' to reset the plane type\n '4' to reset the prize\n ");
-         //  int decide = input.nextInt();
-     // unpublished
+        
+                     change(num);
+                     
+   				System.out.println("Enter 'Y' for updating another flight.Enter 'N' to quit.");
+   				String decide = input.nextLine();
+   				if(decide.compareTo("N")==0)
+   					is_true0 = false ;
+           }//end while for is_true0
+       }
+       /***********辅助功能：update中修改数据功能***********/
+       public static void change(int num){
+    	   // unpublished
            if (DataBase.flight_list.get(num).flightStatus == Flight.flightStatusENU.UNPUBLISHED)
            	reset_UNPUBLISh_Flight(DataBase.flight_list.get(num));
      // available or full
@@ -661,12 +674,29 @@ public class Admin {
            else
                    System.out.printf("Sorry, the flight you choose to reset is already terminate.\n");
            }
-   				System.out.println("Enter 'Y' for updating another flight.Enter 'N' to quit.");
-   				String decide = input.nextLine();
-   				if(decide.compareTo("N")==0)
-   					is_true0 = false ;
-           }//end while for is_true0
        }
+       /********* 辅助功能:用flightID查找其在arraylist中的位置*********/
+       public static int flightNum(String str){
+    	   int k=0;//返回k
+    	   boolean is_true = true;
+       while (is_true) {
+           int counter = 0;
+           for (Flight flight : DataBase.flight_list) {
+               if (flight.flightID.compareTo(str) == 0) {
+                   System.out.printf("Succeed in finding the flight %s\n", str);
+                   is_true = false;
+                   break;
+               }
+               counter++;
+           }
+
+          
+               k = counter;
+           }
+                    return k;
+       }
+    	   
+       
 
        /***** 管理员功能： 修改航班信息 *****/
        // 若unpublished 则用这个方法

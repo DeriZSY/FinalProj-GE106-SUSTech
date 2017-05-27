@@ -103,7 +103,7 @@ public class Order {
 //		System.out.printf("OrderID\t\tCreate Date\t\tFlight ID\t\tSeat Number\t\tSpecial Demands\t\t\n");
 //        System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t",aimOrder.orderID,aimOrder.createDate,aimOrder.flightID,aimOrder.seatNum,aimOrder.specialDemand);
     	System.out.printf("Create Date\t\tFlight ID\t\tSeat Number\t\tSpecial Demands\t\t\n");
-        System.out.printf("%s\t\t\t%s\t\t\t%s\t\t\t%s\t\t",aimOrder.createDate,aimOrder.flightID,aimOrder.seatNum,aimOrder.specialDemand);
+        System.out.printf("%s\t\t\t%s\t\t\t%s\t\t\t%s\t\t\n",aimOrder.createDate,aimOrder.flightID,aimOrder.seatNum,aimOrder.specialDemand);
 	}
 
     }
