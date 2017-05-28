@@ -14,20 +14,21 @@ public class Test {
                  "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
          a1.flightStatus = Flight.flightStatusENU.AVAILABLE;
          a2.flightStatus = Flight.flightStatusENU.AVAILABLE;
+         a3.flightStatus = Flight.flightStatusENU.AVAILABLE;
          DataBase.flight_list.add(a1);
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
         
-         
+//            Passenger.reserveFlight0("ZG001");
 //     
 ////        Order order = new Order("1","2",2,"3","2","2");
 ////        order.setSpecialDemand("hha");
 ////        order.order_disp(order);
 ////        Admin.deleteFlight();
-////        Admin.superQuery();
+//        Admin.superQuery();
 //<<<<<<< HEAD
 //////         Admin.updateFlight();
-////    Admin.createFlight();
+    Admin.createFlight();
 //         Admin.updateFlight();
 ////    Admin.createFlight();
 ////        Admin.create_newAdmin();

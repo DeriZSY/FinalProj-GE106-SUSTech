@@ -8,7 +8,7 @@ public class Order {
     private String flightID;
     private String createDate;
     private String specialDemand;
-    private String orderID;
+//    private String orderID;
     public  enum orderstates{PAID, UNPAID,};
     orderstates orderstatus;
 
@@ -40,9 +40,9 @@ public class Order {
 		this.specialDemand = specialDemand;
 	}
 
-	public void setOrderID(String orderID) {
-		this.orderID = orderID;
-	}
+//	public void setOrderID(String orderID) {
+//		this.orderID = orderID;
+//	}
 
 	public void setOrderstatus(orderstates orderstatus) {
 		this.orderstatus = orderstatus;
@@ -68,9 +68,9 @@ public class Order {
         return specialDemand;
     }
 
-    public String getOrderID() {
-        return orderID;
-    }
+//    public String getOrderID() {
+//        return orderID;
+//    }
 
     public orderstates getOrderstatus() {
         return orderstatus;
@@ -87,13 +87,14 @@ public class Order {
         flightID      =     flight_num;
         createDate    =     create_date;
         specialDemand =     special_demand;
-        orderstatus   = orderstates.UNPAID;}
+        orderstatus   = orderstates.UNPAID;
+    }
 
     /***** 传入一个Order的参数列表，并显示其中所有的Order信息*****/
     public static void orderlist_disp(ArrayList<Order> giveOrderList){
         System.out.printf("OrderID\t\tCreate Date\t\tFlight ID\t\tSeat Number\t\tSpecial Demands\t\t");
         for(Order everyOrder : giveOrderList)
-        System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t",everyOrder.orderID,everyOrder.createDate,everyOrder.flightID,everyOrder.seatNum,everyOrder.specialDemand);
+        System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t",everyOrder.createDate,everyOrder.flightID,everyOrder.seatNum,everyOrder.specialDemand);
         Graphing.sepreate__Line_sharp_50();
         Graphing.sepreate__Line_underLine_50();
     }

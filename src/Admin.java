@@ -180,6 +180,7 @@ public class Admin {
                                 is_result = true;
                         }
                         if (is_result) {
+                            String ID = everyFlight.flightID;
                             System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; \nthe Price is " + everyFlight.price + "; \nthe flight Sate is " + everyFlight.flightStatus);
                             System.out.println();
                             System.out.println();
@@ -196,7 +197,7 @@ public class Admin {
                             }
                             //输入为 U 则调用更新信息功能
                             else if (choice.compareTo("U") == 0) {
-                                Admin.updateFlight();
+                                Admin.updateFlight(ID);
                             }
                             //否则结束对该此查询结果的操作，继续查询
                             else {
@@ -207,31 +208,11 @@ public class Admin {
                     System.out.printf("\nCheck Over, all available results have been shown\n");
                     break;//case 1 break;
                 case 2:
-                    System.out.printf("Please Input the OrderID:\n>>");
-                    String OID = input.nextLine();
-                    //模糊查询：提取输入信息中的有效信息
-                    char[] input_order_for_search = new char[OID.length()];
-                    for (int i = 0; i < OID.length(); i++) {
-                        input_order_for_search[i] = OID.charAt(i);
-                    }
-                    //模糊查询
-                    for (Order everyOrder : DataBase.order_list) {
-                        int i = 0;
-                        int j = 0;
-                        boolean is_result = false;
-                        while (j < everyOrder.getOrderID().length() && i < OID.length()) {
-                            if (input_order_for_search[i] == everyOrder.getOrderID().charAt(j)) {
-                                i++;
-                            }
-                            j++;
-                            if (i == OID.length())
-                                is_result = true;
-                        }
-                        if (is_result) {
-                            System.out.printf("The order you are looking for is\n");
-                            System.out.println();
-                            break;//case 2 break;
-                        }
+                    //Show all Order
+                    System.out.print("Order List\n");
+                    System.out.print("Index\tPassenger Name\tPassenger ID\tSeat Number\t Fight ID\tCreate Date\tState\n");
+                    for(Order everyOrder : DataBase.order_list){
+                        System.out.printf("%d\t%s\t%s\t%s\t%s\t%s\t\n",DataBase.order_list.indexOf(everyOrder),everyOrder.getPass_name(),everyOrder.getPass_IDs(),everyOrder.getFlightID(),everyOrder.getCreateDate(),everyOrder.getOrderstatus());
                     }
                     break;
                 case 3:
@@ -658,12 +639,14 @@ public class Admin {
         }
     }
 
-    /***** 管理员功能： 更新航班信息 *****/
+    /***** 直接更新航班信息 *****/
     public static void updateFlight(String aim_flightID){// 带参数，不显示所有信息
     	int num = flightNum(aim_flightID);
     	change(num);
     }
-       public static void updateFlight() {
+
+    /***** 显示信息并修改 *****/
+    public static void updateFlight() {
    		//循环：修改多个flight的信息
    		boolean is_true0 = true;
    			while (is_true0) {
@@ -728,21 +711,7 @@ public class Admin {
                   }
                 }}}
 
-//<<<<<<< HEAD
-//                }//end while for is_true0
-//            }
-//=======
-//           } // 得到了管理员希望更改的航班 :DataBase.flight_list.get(num)
-//       	   flightAutoCheck();
-//        
-//                     change(num);
-//                     
-//   				System.out.println("Enter 'Y' for updating another flight.Enter 'N' to quit.");
-//   				String decide = input.nextLine();
-//   				if(decide.compareTo("N")==0)
-//   					is_true0 = false ;
-//           }//end while for is_true0
-//       }
+
        /***********辅助功能：update中修改数据功能***********/
        public static void change(int num){
     	   // unpublished
@@ -884,62 +853,7 @@ public class Admin {
            }
    //如果terminate 不能修改任何信息
        /***** 显示航班信息， 并可选择航班修改信息 *****/
-   /*    public static void showAndReset() {
-           while (true) {
-               Scanner input = new Scanner(System.in);
-               System.out.printf("The list of the planes are:\n");
-               System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
-                   /* 显示航班信息*/
-       /*        for (Flight everyflight : DataBase.flight_list) {
-                   everyflight.disp_flight_inform();
-                   Graphing.sepreate__Line_sharp_50();
-                   System.out.println();
-               }// inform displaying end
-                   /*选择所要修改的航班*/
-      /*         System.out.printf("Input the flight ID for the flight you want to modify (Input 'Q' to quit)\nFlightID:");
-               String deleting_ID = input.nextLine();
-               if (deleting_ID.compareTo("Q") != 0) {
-                   for (Flight everyflight : DataBase.flight_list) {
-                       if (everyflight.flightID.compareTo(deleting_ID) == 0) {
-                           System.out.printf("Are you sure to modify this flight?(input \"Y\" for yes and \"N\" for No)\n");
-                           String choice = input.nextLine();
-                           if (choice.compareTo("Y") == 0){
-                               //如果航班未发布，可修改所有信息
-                               if(everyflight.flightStatus == Flight.flightStatusENU.UNPUBLISHED){
-                                   Admin.reset_UNPUBLISh_Flight(everyflight);
-                               }
-                               //如果航班终结，则无法修改，会提示是否删除
-                               else if(everyflight.flightStatus == Flight.flightStatusENU.TERMINATE){
-                                   System.out.printf("Sorry, the flight you choose to reset is already terminate.\n");
-                                   System.out.printf("Do you want to delete it ?\n(Input 'Y' for delete, and 'N' for ending modify)");
-                                   String b_choice  = input.nextLine();
-                                   if(b_choice.compareTo("Y") == 0){
-                                       Admin.delete_aimFlight(everyflight.flightID);
-                                   }
-                                   //如果航班已发布，未终结，可修改部分信息
-                                   else
-                                       Admin.reset_PUBLISHED_Flight(everyflight);
-                                       break;
-                               } else{
 
-                               }
-                           }
-                           else
-                               System.out.printf("Modify Canceled.");
-                       }
-                   }
-               }//modify process end
-                   /*是否继续修改作业？*/
-     /*        System.out.printf("Do you want to continue to delete flights ?(Input \"Y\" for Yes, and \"N\" for no)\n");
-               String choice = input.nextLine();
-               if (choice.compareTo("Y") == 0)
-                   continue;
-               else
-                   Graphing.sepreate__Line_sharp_50();
-               Graphing.a_Empty_Line();
-               break;
-           }// Modify Flight End
-       }  
 
        /***** 根据时间修改所有航班的状态 *****/
        public static void flightAutoCheck() {

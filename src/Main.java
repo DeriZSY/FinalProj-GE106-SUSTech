@@ -7,28 +7,30 @@ import java.util.Scanner;
 public class Main {
     /************ Variables ********/
     public static void main(String[] args) {
-        Admin d1 = new Admin("deri","zhang");
+        Admin d1 = new Admin("admin","123");
         DataBase.admin_list.add(d1);
-        Admin.create_newAdmin();//只需要运行一次
+
         //Login
-        // Initialize Flights 
-        
+        // Initialize Flights
         Flight a1= new Flight("ZG0001", "12:00", "2017-06-02", "18.22", "NewYork",
                 "Beijing ", "Moscow", "UA", "$230", DataBase.Mig_MniJet);
+      
+        a1.flightStatus= Flight.flightStatusENU.AVAILABLE;
         Flight a2 = new Flight("ZG0002", "14:00", "2017-06-02", "22:22", "Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$300",DataBase.Airbus251);
+        a2.flightStatus= Flight.flightStatusENU.AVAILABLE;
         Flight a3 = new Flight("ZG0003", "11:00", "2017-06-02", "23:22", "HongKong",
                 "St.Petersburg ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
 
-        Flight b1 = new Flight("CA0004", "11:00", "2017-06-02", "18:22", "UA",
-                "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight b2 = new Flight("CA0010", "11:00", "2017-06-02", "22:22", "Airplot",
-                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
-        Flight b3 = new Flight("ZG0025", "11:00", "2017-06-02", "17:22", "South Airline",
-                "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
+        Flight b1 = new Flight("CA0004", "11:00", "2017-06-02", "18:22","NewYork",
+                "Moscow ", "Beijing","UA" , "$100", DataBase.Mig_MniJet);
+        Flight b2 = new Flight("CA0010", "11:00", "2017-06-02", "22:22", "Shenzhen",
+                "St.Petersburg ", "Moscow", "Airplot", "$100", DataBase.Airbus251);
+        Flight b3 = new Flight("ZG0025", "11:00", "2017-06-02", "17:22",
+                "Beijing ", "St.Petersburg", "HongKong", "South Airline","$100", DataBase.Airbus251);
 
         Flight c1 = new Flight("ZG0013", "11:00", "2017-06-03", "18:22", "NewYork",
-                "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+                "null ", "Beijing", "UA", "$100", DataBase.Mig_MniJet);
         Flight c2 = new Flight("ZG0022", "11:00", "2017-06-03", "22:22","Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
         Flight c3 = new Flight("ZG0034", "11:00", "2017-06-03", "23:22", "HongKong",
@@ -36,22 +38,22 @@ public class Main {
 
         Flight e1 = new Flight("ZG0012", "11:00", "2017-06-03", "18:22","UA",
                 "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight e2 = new Flight("ZG0021", "11:00", "2017-06-03", "22:22", "Airplot",
-                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
-        Flight e3 = new Flight("ZG0032", "11:00", "2017-06-03", "17:22", "South Airline",
-                "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
+        Flight e2 = new Flight("ZG0021", "11:00", "2017-06-03", "22:22",
+                "St.Petersburg ", "Moscow", "Shenzhen", "Airplot","$100", DataBase.Airbus251);
+        Flight e3 = new Flight("ZG0032", "11:00", "2017-06-03", "17:22",
+                "Beijing ", "St.Petersburg", "HongKong", "South Airline","$100", DataBase.Airbus251);
 
-        Flight f1 = new Flight("ZG0035", "11:00", "2017-06-04", "18:22", "NewYork",
-                "null ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
+        Flight f1 = new Flight("ZG0035", "11:00", "2017-06-04", "18:22",
+                "NewYork ", "null", "Beijing", "UA","$100", DataBase.Mig_MniJet);
         Flight f2 = new Flight("ZG0056", "11:00", "2017-06-04", "22:22","Shenzhen",
                 "Moscow ", "St.Petersburg", "Airplot", "$100", DataBase.Airbus251);
         Flight f3 = new Flight("ZG0027", "11:00", "2017-06-04", "23:22", "HongKong",
                 "null ", "Beijing", "South Airline", "$100", DataBase.Airbus251);
 
-        Flight g1 = new Flight("UA0021", "11:00", "2017-06-04", "19:22", "UA",
-                "Moscow ", "Beijing", "NewYork", "$100", DataBase.Mig_MniJet);
-        Flight g2 = new Flight("CA0836", "11:00", "2017-06-04", "22:22", "Airplot",
-                "St.Petersburg ", "Moscow", "Shenzhen", "$100", DataBase.Airbus251);
+        Flight g1 = new Flight("UA0021", "11:00", "2017-06-04", "19:22",
+                "Moscow ", "Beijing", "NewYork", "UA","$100", DataBase.Mig_MniJet);
+        Flight g2 = new Flight("CA0836", "11:00", "2017-06-04", "22:22",
+                "St.Petersburg ", "Moscow", "Shenzhen", "Airplot","$100", DataBase.Airbus251);
         Flight g3 = new Flight("MI0123", "11:00", "2017-06-04", "17:22","South Airline",
                 "Beijing ", "St.Petersburg", "HongKong", "$100", DataBase.Airbus251);
 
@@ -68,7 +70,7 @@ public class Main {
         e2.flightStatus = Flight.flightStatusENU.AVAILABLE;
         e3.flightStatus = Flight.flightStatusENU.AVAILABLE;
         f1.flightStatus = Flight.flightStatusENU.AVAILABLE;
-        f2.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        f2.flightStatus = Flight.flightStatusENU.TERMINATE;
         f3.flightStatus = Flight.flightStatusENU.AVAILABLE;
 
 
@@ -97,11 +99,10 @@ public class Main {
         DataBase.flight_list.add(g1);
         DataBase.flight_list.add(g2);
         DataBase.flight_list.add(g3);
+
         Scanner input = new Scanner(System.in);
         boolean system_On = true;  //这个没有用啊
 
-        DataBase.present_date = "2017-03-22";
-        DataBase.present_time = "10:00";
 
         while (true) {
             //系统开启
@@ -147,12 +148,11 @@ public class Main {
                                     Admin.createFlight();
                                     continue;
                                 case 4:
-                                	Admin.flightAutoCheck();
                                     Admin.deleteFlight();
                                     continue;
                                 case 5:
                                 	Admin.flightAutoCheck();
-                                  Admin.superQuery();
+                                    Admin.superQuery();
                                     continue;
                                 case 6:
                                 	Admin.flightAutoCheck();
