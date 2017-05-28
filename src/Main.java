@@ -124,6 +124,7 @@ public class Main {
                     boolean admin_moode_on = true;
                     //进入管理员功能
                     while (admin_moode_on) {
+                        DataBase.getCurrentTime();//每次开始前读取当前时间
                         String origin_function = ";create new Administer;Modify Information of a Existing Administer;Create a new flight;delete flight;SuperQuery;Renew Flight inform and display;Modify Existing Flight;Log Out;";
                         String[] function_array = origin_function.split(";");
                         System.out.printf("#1 Create A New Administer\n#2 Modify Information of a Existing Administer\n#3 Create A New Flight\n#4 Delete A Flight\n#5 SuperQuery\n"
@@ -144,18 +145,17 @@ public class Main {
                                     Admin.modifyPersonalInform();
                                     continue;
                                 case 3:
-                                	Admin.flightAutoCheck();
                                     Admin.createFlight();
                                     continue;
                                 case 4:
+                                    Admin.flightAutoCheck();
                                     Admin.deleteFlight();
                                     continue;
                                 case 5:
-                                	Admin.flightAutoCheck();
+                                    Admin.flightAutoCheck();
                                     Admin.superQuery();
                                     continue;
                                 case 6:
-                                	Admin.flightAutoCheck();
                                     Admin.updateFlight();
                                     continue;
 //                                case 7:
@@ -205,6 +205,7 @@ public class Main {
                  //循环 选择功能
             	   boolean is_true1 = true;
             	   while(is_true1){
+                       DataBase.getCurrentTime();//每次开始前读取当前时间
                    Graphing.sepreate__Line_underLine_50();
                    System.out.printf("What do you want?\n");
                    String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";

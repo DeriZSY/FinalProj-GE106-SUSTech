@@ -1,5 +1,4 @@
 import java.text.ParseException;
-import java.util.Scanner;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
