@@ -18,16 +18,16 @@ public class Test {
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
         
-         
+
 //     
 ////        Order order = new Order("1","2",2,"3","2","2");
 ////        order.setSpecialDemand("hha");
 ////        order.order_disp(order);
 ////        Admin.deleteFlight();
-////        Admin.superQuery();
+        Admin.superQuery();
 //<<<<<<< HEAD
 //////         Admin.updateFlight();
-    Admin.createFlight();
+//    Admin.createFlight();
 //         Admin.updateFlight();
 ////    Admin.createFlight();
 ////        Admin.create_newAdmin();

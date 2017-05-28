@@ -68,9 +68,9 @@ public class Order {
         return specialDemand;
     }
 
-    public String getOrderID() {
-        return orderID;
-    }
+//    public String getOrderID() {
+//        return orderID;
+//    }
 
     public orderstates getOrderstatus() {
         return orderstatus;
@@ -87,7 +87,8 @@ public class Order {
         flightID      =     flight_num;
         createDate    =     create_date;
         specialDemand =     special_demand;
-        orderstatus   = orderstates.UNPAID;}
+        orderstatus   = orderstates.UNPAID;
+    }
 
     /***** 传入一个Order的参数列表，并显示其中所有的Order信息*****/
     public static void orderlist_disp(ArrayList<Order> giveOrderList){

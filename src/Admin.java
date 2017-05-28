@@ -208,7 +208,11 @@ public class Admin {
                     break;//case 1 break;
                 case 2:
                     //Show all Order
-                    System.out.printf("Order")
+                    System.out.print("Order List\n");
+                    System.out.print("Index\tPassenger Name\tPassenger ID\tSeat Number\t Fight ID\tCreate Date\tState\n");
+                    for(Order everyOrder : DataBase.order_list){
+                        System.out.printf("%d\t%s\t%s\t%s\t%s\t%s\t\n",DataBase.order_list.indexOf(everyOrder),everyOrder.getPass_name(),everyOrder.getPass_IDs(),everyOrder.getFlightID(),everyOrder.getCreateDate(),everyOrder.getOrderstatus());
+                    }
                     break;
                 case 3:
                     boolean is_true = true;
