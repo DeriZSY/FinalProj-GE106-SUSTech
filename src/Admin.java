@@ -688,7 +688,7 @@ public class Admin {
                 //显示所有航班信息
 //           flightAutoCheck();
                 System.out.printf("The list of the planes are:\n");
-                System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrival City","Flight Date");
+                System.out.printf("%s\t\t%s\t\t\t%s%20s\t\t%s\n","FlightID","State","Departure City","Arrival City","Flight Date");
                    /* 显示航班信息*/
                 for (Flight everyflight : DataBase.flight_list) {
                     everyflight.disp_flight_inform();
