@@ -18,7 +18,29 @@ public class Test {
          DataBase.flight_list.add(a1);
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
-        
+
+
+
+        System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
+                   /* 显示航班信息*/
+       
+
+
+            DataBase.register();
+            Passenger.reserveFlight();
+            System.out.print("Index\tPassenger Name\tPassenger ID\tSeat Number\t Fight ID\tCreate Date\tState\n");
+            for(Order everyOrder : DataBase.order_list){
+                System.out.printf("%d\t%s\t%s\t%s\t%s\t%s\t\n",DataBase.order_list.indexOf(everyOrder),everyOrder.getPass_name(),everyOrder.getPass_IDs(),everyOrder.getFlightID(),everyOrder.getCreateDate(),everyOrder.getOrderstatus());
+            }
+
+
+        }// inform displaying end
+        //input a flight
+
+
+
+
+
 //            Passenger.reserveFlight0("ZG001");
 //     
 ////        Order order = new Order("1","2",2,"3","2","2");
@@ -28,7 +50,7 @@ public class Test {
 //        Admin.superQuery();
 //<<<<<<< HEAD
 //////         Admin.updateFlight();
-    Admin.createFlight();
+//    Admin.createFlight();
 //         Admin.updateFlight();
 ////    Admin.createFlight();
 ////        Admin.create_newAdmin();
