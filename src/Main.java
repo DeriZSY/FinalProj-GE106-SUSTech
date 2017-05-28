@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
     /************ Variables ********/
     public static void main(String[] args) {
-        Admin d1 = new Admin("admin","123");
+        Admin d1 = new Admin("admin","123456");
         DataBase.admin_list.add(d1);
 
         //Login

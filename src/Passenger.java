@@ -276,7 +276,7 @@ public class Passenger {
        Admin.flightAutoCheck();
        Scanner input = new Scanner(System.in);
     	// 查询各个flight的信息  显示除开unpublished的所有信息
-    	System.out.println("The flight information:\nFlightID\tFlightStatus\t\tFlightEX\tStartCity\tArrivalCity\t\t\tFlightDate");
+    	System.out.println("The flight information:\nFlightID\t\tFlightStatus\t\tStartCity\t\tArrivalCity\t\tFlightDate");
     	    	 for (Flight flight : DataBase.flight_list) {
     		 if (flight.flightStatus != Flight.flightStatusENU.UNPUBLISHED ){  //terminate full按照要求是要打印出来的
     			 flight.disp_flight_inform();}
