@@ -23,10 +23,14 @@ public class Test {
          order.setCreateDate("1234");
          order.setOrderstatus( Order.orderstates.PAID);
          DataBase.order_list.add(order);
-         System.out.printf("FlightID\tFlightStatus\t\tDeparture City\t\tArrival City\t\tFlight Date\n");
+        System.out.print("Index\tPassenger Name\tPassenger ID\tSeat Number\t Fight ID\tCreate Date\tState\n");
+         for (Order everyOrder : DataBase.order_list) {
+             System.out.printf("%d\t%s\t\t%s\t\t%s\t\t %s\t\t%s\t\t%s\n", DataBase.order_list.indexOf(everyOrder), everyOrder.getPass_name(), everyOrder.getPass_IDs(), everyOrder.getSeatNum(), everyOrder.getFlightID(), everyOrder.getCreateDate(), everyOrder.getOrderstatus());
+         }
+//         System.out.printf("FlightID\tFlightStatus\t\tDeparture City\t\tArrival City\t\tFlight Date\n");
 //         System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrial City","Flight Date");
-         a3.disp_flight_inform();
-         a3.dis_full_inform(a3.flightID);
+//         a3.disp_flight_inform();
+//         a3.dis_full_inform(a3.flightID);
 //         System.out.print("Index\tPassenger Name\tPassenger ID\tSeat Number\t Fight ID\tCreate Date\tState\n");
 //         for(Order everyOrder : DataBase.order_list){
 //             System.out.printf("%d\t%s\t\t%s\t\t%s\t\t %s\t\t%s\t\t%s\n",DataBase.order_list.indexOf(everyOrder),everyOrder.getPass_name(),everyOrder.getPass_IDs(),everyOrder.getSeatNum(),everyOrder.getFlightID(),everyOrder.getCreateDate(),everyOrder.getOrderstatus());
