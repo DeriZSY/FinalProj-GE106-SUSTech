@@ -66,8 +66,8 @@ public class Flight {
 //        	System.out.printf("please enter the FlightID which you want to check\n");
 //        	String FlightID=input.nextLine();
         	System.out.printf("Name\t\tID\t\tSeatNum\tBook Time\t\tOrder Status\n");
-        	while (Order.getFlightID()==FlightID){
-            System.out.printf("%s\t%s\t%s\t%s\t%s\t\n",Order.getPass_name(),Order.getPass_IDs(),Order.getSeatNum(),Order.getCreateDate(),Order.getOrderstatus());
+        	if(Order.getFlightID().compareTo(FlightID)==0){
+            System.out.printf("%s\t\t%s\t%s\t%s\t%s\t\n",Order.getPass_name(),Order.getPass_IDs(),Order.getSeatNum(),Order.getCreateDate(),Order.getOrderstatus());
         }}
 
     }
