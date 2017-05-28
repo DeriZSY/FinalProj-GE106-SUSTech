@@ -22,7 +22,7 @@ public class Test {
          order.setCreateDate("1234");
          order.setOrderstatus( Order.orderstates.PAID);
          DataBase.order_list.add(order);
-         System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrial City","Flight Date");
+//         System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrial City","Flight Date");
          a3.dis_full_inform();
 //         System.out.print("Index\tPassenger Name\tPassenger ID\tSeat Number\t Fight ID\tCreate Date\tState\n");
 //         for(Order everyOrder : DataBase.order_list){
