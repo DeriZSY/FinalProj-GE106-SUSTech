@@ -76,7 +76,7 @@ public class Passenger {
                         choice1 += 2;
                     if (startDate.compareTo("Q") == 0)
                         choice1 += 4;
-                    System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrial City","Flight Date");
+                    System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrival City","Flight Date");
                     switch (choice1) {
                         case 0:
                             for (Flight every_Flight : DataBase.flight_list) {

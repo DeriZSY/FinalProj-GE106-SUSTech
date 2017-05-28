@@ -111,7 +111,6 @@ public class Main {
                 //选择登录模式（乘客／管理员）
                 System.out.printf("Input \"admin\" to login as administer, and \"passenger \" to login as passenger\n\t\t");
                 String status = input.nextLine();
-                String a = input.nextLine();
 
                 //管理员模式
                 if (status.compareTo("admin") == 0) {

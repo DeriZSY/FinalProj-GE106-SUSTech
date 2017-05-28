@@ -58,13 +58,13 @@ public class Flight {
 //    }
 
     /***** 显示航班中所有乘客的信息 *****/
-    public void dis_full_inform(){
+    public void dis_full_inform(String FlightID){
     	Scanner input = new Scanner(System.in);
         System.out.printf("The list of passengers:\n");
         
         for(Order Order: DataBase.order_list){
-        	System.out.printf("please enter the FlightID which you want to check\n");
-        	String FlightID=input.nextLine();
+//        	System.out.printf("please enter the FlightID which you want to check\n");
+//        	String FlightID=input.nextLine();
         	System.out.printf("Name\t\tID\t\tSeatNum\tBook Time\t\tOrder Status\n");
         	while (Order.getFlightID()==FlightID){
             System.out.printf("%s\t%s\t%s\t%s\t%s\t\n",Order.getPass_name(),Order.getPass_IDs(),Order.getSeatNum(),Order.getCreateDate(),Order.getOrderstatus());
@@ -140,6 +140,8 @@ public class Flight {
     public  void disp_flight_inform(){
     	System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n",flightID, flightStatus,
                 startCity, arrivalCity, flightDate);
+
+
 //        System.out.printf("Passenger Name\t\tPassenger ID\t\tSeat Number\t\tBook Time\t\tOrder State");
 //        for(Order everyOrder : DataBase.order_list ){
 

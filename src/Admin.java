@@ -147,7 +147,7 @@ public class Admin {
                 /*选择查询种类： 1：通过航班ID 查询，2：通过订单ID查询 3，通过具体信息查询*/
         System.out.printf("Do you want to check flightID or OrderID or do normal query ?" +
                 "\n(Input \"1\" for check by flightID and \"2\" for check by OrderId " +
-                "  \"3\" for normal query) " + "(Input 'Q' to leave)\nInput:");
+                "  \"3\" for normal query)  '4' to check the all order informatino for a flight\n" + "(Input 'Q' to leave)\nInput:");
         System.out.println();
         String factor_str = input.nextLine();
         System.out.println();
@@ -192,7 +192,7 @@ public class Admin {
                                 System.out.printf("Input 'Y' to see  inform, and Input 'N' to continue your check\n");
                                 String choice2 = input.nextLine();
                                 if (choice2.compareTo("Y") == 0) {
-                                    everyFlight.dis_full_inform();
+//                                    everyFlight.dis_full_inform();
                                 }
                             }
                             //输入为 U 则调用更新信息功能
@@ -210,14 +210,15 @@ public class Admin {
                 case 2:
                     //Show all Order
                     System.out.print("Order List\n");
-                    System.out.print("Index Passenger Name Passenger ID Seat Number Fight ID Create Date State\n");
-                    for(Order everyOrder : DataBase.order_list){
-                        System.out.printf("%d\t%s\t\t\t%20s\t\t%s\t\t %s\t\t%s\t\t%s\n",DataBase.order_list.indexOf(everyOrder),everyOrder.getPass_name(),everyOrder.getPass_IDs(),everyOrder.getSeatNum(),everyOrder.getFlightID(),everyOrder.getCreateDate(),everyOrder.getOrderstatus());
+
+                    System.out.print("Index\tPassenger Name\t\tPassenger ID\t\tSeat Number\t\t Fight ID\tCreate Date\tState\n");
+                    for (Order everyOrder : DataBase.order_list) {
+                        System.out.printf("%d\t%s\t\t\t%20s\t\t%s\t\t %s\t\t%s\t\t%s\n", DataBase.order_list.indexOf(everyOrder), everyOrder.getPass_name(), everyOrder.getPass_IDs(), everyOrder.getSeatNum(), everyOrder.getFlightID(), everyOrder.getCreateDate(), everyOrder.getOrderstatus());
                     }
                     break;
                 case 3:
                     boolean is_true = true;
-                    while(is_true) {
+                    while (is_true) {
                         System.out.printf("What's your choice for departure city(Input 'Q' to quit for this information))\n City name:");
                         String dpCity = input.nextLine();
                         System.out.printf("What's your choice for arriving city(Input 'Q' to quit for this information))\n City name:");
@@ -232,7 +233,7 @@ public class Admin {
                             choice1 += 2;
                         if (startDate.compareTo("Q") == 0)
                             choice1 += 4;
-                        System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrial City","Flight Date");
+                        System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n", "FlightID", "State", "Departure City", "Arrival City", "Flight Date");
                         switch (choice1) {
                             case 0:
                                 for (Flight every_Flight : DataBase.flight_list) {
@@ -341,9 +342,43 @@ public class Admin {
 
                     }
                     break;//case 3 breaks;
+                case 4:
+
+                    System.out.printf("Please Input the flightID\nFlight Id:");
+                    String fID2 = input.nextLine();
+                    //模糊查询：提取输入信息中的有效信息
+                    char[] input_for_search2 = new char[fID2.length()];
+                    for (int i = 0; i < fID2.length(); i++) {
+                        input_for_search2[i] = fID2.charAt(i);
+                    }
+                    //模糊查询
+                    System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrival City","Flight Date");
+                    for (Flight everyFlight : DataBase.flight_list) {
+                        int i = 0;
+                        int j = 0;
+                        boolean is_result = false;
+                        while (j < everyFlight.flightID.length() && i < fID2.length()) {
+                            if (input_for_search2[i] == everyFlight.flightID.charAt(j)) {
+                                i++;
+                            }
+                            j++;
+                            if (i == fID2.length())
+                                is_result = true;
+                        }
+                        if (is_result) {
+                           everyFlight.disp_flight_inform();
+                        }
+                    }
+                    System.out.printf("Please Input the flight ID for the flight to check full information\nFlight ID:>>\n");
+                    String aim_ID = input.nextLine();
+                    for(Flight everyFlight : DataBase.flight_list){
+                        if(everyFlight.flightID.compareTo(aim_ID) == 0){
+                            everyFlight.dis_full_inform(aim_ID);
+                        }
                     }
             }
         }
+    }
 
     /***** 管理员功能：搜索辅助，功能3 *****/
     public static void searchThree(){
@@ -653,7 +688,7 @@ public class Admin {
                 //显示所有航班信息
 //           flightAutoCheck();
                 System.out.printf("The list of the planes are:\n");
-                System.out.printf("FlightID\tFlightStatus\tExistence\tDeparture City\t\tArrival City\t\tFlight Date\n");
+                System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrival City","Flight Date");
                    /* 显示航班信息*/
                 for (Flight everyflight : DataBase.flight_list) {
                     everyflight.disp_flight_inform();
