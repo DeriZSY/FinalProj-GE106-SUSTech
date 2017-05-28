@@ -138,7 +138,7 @@ public class Flight {
 
 
     public  void disp_flight_inform(){
-    	System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n",flightID, flightStatus,
+    	System.out.printf("%s\t\t%s\t\t%s%22s\t\t\t%s\n",flightID, flightStatus,
                 startCity, arrivalCity, flightDate);
 
 

@@ -236,7 +236,7 @@ public class Passenger {
                 for (Passenger everyPassenger : DataBase.passengers_lilst) {
                     if (everyPassenger.passengerID.compareTo(aim_name) == 0) {
                         for (Order everyOrder : everyPassenger.orderList) {
-                            System.out.printf("%d\t%s\t%s\t%s\t%s\t%s\t\n",DataBase.order_list.indexOf(everyOrder),everyOrder.getPass_name(),everyOrder.getPass_IDs(),everyOrder.getFlightID(),everyOrder.getCreateDate(),everyOrder.getOrderstatus());
+                            System.out.printf("%d\t%s\t\t%s\t\t%s\t\t %s\t\t%s\t%s\n",DataBase.order_list.indexOf(everyOrder),everyOrder.getPass_name(),everyOrder.getPass_IDs(),everyOrder.getSeatNum(),everyOrder.getFlightID(),everyOrder.getCreateDate(),everyOrder.getOrderstatus());
                         }
                     }
                 }
