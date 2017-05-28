@@ -287,8 +287,7 @@ public class Passenger {
    // 预定航班 但不显示航班信息 直接预定
    public static void reserveFlight0(){  //对与每一个object，这个方法都是一样的，跟Object本身无关，可以用static
        Admin.flightAutoCheck();
-       DataBase.confirmPasswordPassenger();
-	   Scanner input = new Scanner (System.in);
+       Scanner input = new Scanner (System.in);
 	 // 查找这个乘客
 	   int psnum = 0 ;  //乘客是psnum号
 	   boolean is_true = true;
@@ -338,6 +337,7 @@ public class Passenger {
         System.out.printf("Do you want to pay now?\nInput\"Y\"to pay now, and \"N\"to pay at airport\n");
     	 String status = input.nextLine();
     	 //付款确认
+       DataBase.confirmPasswordPassenger();
     	 if (status.compareTo("Y")==0){
         newOrder.orderstatus = Order.orderstates.PAID;}
     	 else if(status.compareTo("N")==0){
