@@ -352,7 +352,7 @@ public class Admin {
                         input_for_search2[i] = fID2.charAt(i);
                     }
                     //模糊查询
-                    System.out.printf("%s\t\t%s\t\t%s%20s\t\t\t%s\n","FlightID","State","Departure City","Arrival City","Flight Date");
+                    System.out.printf("%s\t\t%s\t\t\t%s%22s\t\t%s\n","FlightID","State","Departure City","Arrival City","Flight Date");
                     for (Flight everyFlight : DataBase.flight_list) {
                         int i = 0;
                         int j = 0;

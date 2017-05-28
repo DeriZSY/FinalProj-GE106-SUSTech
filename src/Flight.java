@@ -65,9 +65,9 @@ public class Flight {
         for(Order Order: DataBase.order_list){
 //        	System.out.printf("please enter the FlightID which you want to check\n");
 //        	String FlightID=input.nextLine();
-        	System.out.printf("Name\t\tID\t\tSeatNum\tBook Time\t\tOrder Status\n");
+        	System.out.printf("Name\t\tID\t\tSeatNum\t\tBook Time\t\tOrder Status\n");
         	if(Order.getFlightID().compareTo(FlightID)==0){
-            System.out.printf("%s\t\t%s\t%s\t%s\t%s\t\n",Order.getPass_name(),Order.getPass_IDs(),Order.getSeatNum(),Order.getCreateDate(),Order.getOrderstatus());
+            System.out.printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\n",Order.getPass_name(),Order.getPass_IDs(),Order.getSeatNum(),Order.getCreateDate(),Order.getOrderstatus());
         }}
 
     }
@@ -138,7 +138,7 @@ public class Flight {
 
 
     public  void disp_flight_inform(){
-    	System.out.printf("%s\t\t%s\t\t%s%22s\t\t\t%s\n",flightID, flightStatus,
+    	System.out.printf("%s\t\t\t%s\t\t%s%22s\t\t\t%s\n",flightID, flightStatus,
                 startCity, arrivalCity, flightDate);
 
 
