@@ -144,9 +144,9 @@ public class Admin {
     public static void superQuery() {
         Scanner input = new Scanner(System.in);
         Admin.flightAutoCheck();//开始前先更新信息
-                /*选择查询种类： 1：通过航班ID 查询，2：通过订单ID查询 3，通过具体信息查询*/
+                /*选择查询种类： 1：通过航班ID 查询，2：订单查询 3，通过具体信息查询*/
         System.out.printf("Do you want to check flightID or OrderID or do normal query ?" +
-                "\n(Input \"1\" for check by flightID and \"2\" for check by OrderId " +
+                "\n(Input \"1\" for check by flightID and \"2\" for check the whole order list" +
                 "  \"3\" for normal query)  '4' to check the all order informatino for a flight\n" + "(Input 'Q' to leave)\nInput:");
         System.out.println();
         String factor_str = input.nextLine();
