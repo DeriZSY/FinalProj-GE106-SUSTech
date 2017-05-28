@@ -295,11 +295,11 @@ public class Passenger {
 	   int psnum = 0 ;  //乘客是psnum号
 	   boolean is_true = true;
        while(is_true) {
-           System.out.printf("Please input your passengerID\n");
-           String aim_name = input.nextLine();
+//           System.out.printf("Please input your passengerID\n");
+//           String aim_name = input.nextLine();
            int counter = 0;
            for (Passenger everyPassenger : DataBase.passengers_lilst) {
-               if (everyPassenger.passengerID.compareTo(aim_name) != 0) {
+               if (everyPassenger.passengerID.compareTo(DataBase.reserved_PassName) != 0) {
                   counter ++;
                }
                else{
