@@ -70,7 +70,7 @@ public class Main {
         e2.flightStatus = Flight.flightStatusENU.AVAILABLE;
         e3.flightStatus = Flight.flightStatusENU.AVAILABLE;
         f1.flightStatus = Flight.flightStatusENU.AVAILABLE;
-        f2.flightStatus = Flight.flightStatusENU.AVAILABLE;
+        f2.flightStatus = Flight.flightStatusENU.TERMINATE;
         f3.flightStatus = Flight.flightStatusENU.AVAILABLE;
 
 

@@ -28,7 +28,7 @@ public class Test {
 //        Admin.superQuery();
 //<<<<<<< HEAD
 //////         Admin.updateFlight();
-//    Admin.createFlight();
+    Admin.createFlight();
 //         Admin.updateFlight();
 ////    Admin.createFlight();
 ////        Admin.create_newAdmin();
