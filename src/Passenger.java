@@ -319,16 +319,17 @@ public class Passenger {
     			break;
     		}
     		num++;
+    		
     	}// 用户选择的是num号flight
     	System.out.println("The following seats are not available:");
-    	for (int j : DataBase.flight_list.get(num-1).seatNumList){
+    	for (int j : DataBase.flight_list.get(num).seatNumList){
     		System.out.print(j +" ");
     	}
     	System.out.printf("\nWhich seat do you want to take?\n "
-    			+ " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num-1).plane.seatCapacity);
+    			+ " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num).plane.seatCapacity);
     	int seatNum = input.nextInt();
-    	DataBase.flight_list.get(num-1).remainingSeat--;//对应航班剩余座位减1；
-    	DataBase.flight_list.get(num-1).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
+    	DataBase.flight_list.get(num).remainingSeat--;//对应航班剩余座位减1；
+    	DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
     	System.out.println("Do you have any special demand? If any,please enter it.");
     	String demand0 = input.nextLine();
 
@@ -357,7 +358,7 @@ public class Passenger {
         
         //预订成功
     	System.out.printf("\nYou have successfully reserved the flight %s\n"
-    			,DataBase.flight_list.get(num-1).flightID);
+    			,DataBase.flight_list.get(num).flightID);
     }
    
    /***************退订功能*************/
@@ -372,6 +373,13 @@ public class Passenger {
 		   String id = input.nextLine();
 		   System.out.println("Enter your password please");
 		   String pw = input.nextLine();
+		   int passNum = 0;
+		    for (Passenger everyPassenger : DataBase.passengers_lilst){
+		    	if (everyPassenger.passengerID == id)
+		    	{
+		    		break;
+		    	}passNum ++;
+		    }
 		   for (Passenger everyPassenger : DataBase.passengers_lilst){
 			   if (everyPassenger.passengerID.compareTo(id)== 0 && everyPassenger.passengerPassword.compareTo(pw)==0) {  
 	   while (is_true2){
@@ -386,17 +394,22 @@ public class Passenger {
 		   int decide = input.nextInt();
 		   String name = everyPassenger.orderList.get(decide-1).getFlightID();//所选订单对应的flightID
 		   int b = DataBase.order_list.indexOf(everyPassenger.orderList.get(decide-1));// 选择的这个乘客的order在数据库中的位置
+		   int seatNum =  DataBase.order_list.get(b).getSeatNum();
+		   
+		   int number = Admin.flightNum(name);
+		   
 		   System.out.println("You have succeeded in unsubsribing the flight\n "+everyPassenger.orderList.get(decide-1).getFlightID());
 		   System.out.printf("Payment will be credited to your bank account\n");
 		   everyPassenger.orderList.remove(decide-1);//在Passenger的order中删除
 		    DataBase.order_list.remove(b);//在数据库中将它删除
-		    int number ;//所选订单对应flight在数据库中的位置
-		    number = Admin.flightNum(name);
 		    DataBase.flight_list.get(number).remainingSeat--;
+		    DataBase.flight_list.get(number).seatNumList.remove((Integer)seatNum);
+		    
 		    
 		    
 		    System.out.println("Your lastest order information:");
-	        for(Order order :DataBase.passengers_lilst.get(decide-1).orderList ){
+	        for(Order order :DataBase.passengers_lilst.get(passNum-2
+	        		).orderList ){
 	        	order.order_disp(order);
 	        }
 		    System.out.println("\nEnter 1.go on subscribing 2.quit");
