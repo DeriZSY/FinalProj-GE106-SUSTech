@@ -213,6 +213,7 @@ public class Main {
                     Graphing.sepreate__Line_sharp_50();
                     System.out.printf("Please input the number for function\n");
                     int chocieNum = input.nextInt();
+                       input.nextLine();
                     System.out.println();
                    if (chocieNum <= 3){
                     switch (chocieNum) {
