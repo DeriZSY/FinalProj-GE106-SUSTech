@@ -180,6 +180,7 @@ public class Admin {
                                 is_result = true;
                         }
                         if (is_result) {
+                            String ID = everyFlight.flightID;
                             System.out.printf("The flight you are looking for is " + everyFlight.flightID + "; \nthe Price is " + everyFlight.price + "; \nthe flight Sate is " + everyFlight.flightStatus);
                             System.out.println();
                             System.out.println();
@@ -196,7 +197,7 @@ public class Admin {
                             }
                             //输入为 U 则调用更新信息功能
                             else if (choice.compareTo("U") == 0) {
-                                Admin.updateFlight();
+                                Admin.updateFlight(ID);
                             }
                             //否则结束对该此查询结果的操作，继续查询
                             else {
@@ -638,12 +639,14 @@ public class Admin {
         }
     }
 
-    /***** 管理员功能： 更新航班信息 *****/
+    /***** 直接更新航班信息 *****/
     public static void updateFlight(String aim_flightID){// 带参数，不显示所有信息
     	int num = flightNum(aim_flightID);
     	change(num);
     }
-       public static void updateFlight() {
+
+    /***** 显示信息并修改 *****/
+    public static void updateFlight() {
    		//循环：修改多个flight的信息
    		boolean is_true0 = true;
    			while (is_true0) {
