@@ -167,7 +167,7 @@ public class DataBase {
             }//end for : admin.list
         }//end while loop
    }
-   /***** 确认用户名密码 *****/
+   /***** 确认用户密码 *****/
    public static void confirmPasswordPassenger(){
        boolean is_true = true;
        while(is_true) {
@@ -175,7 +175,7 @@ public class DataBase {
            System.out.printf("Please Input your password again to confirm:\nPassword>>>");
            String pWord = input.nextLine();
            for(Passenger everyPassenger: DataBase.passengers_lilst){
-               if(everyPassenger.passengerID.compareTo(reserved_Admin_Name) == 0 ){
+               if(everyPassenger.passengerID.compareTo(reserved_PassName) == 0 ){
                    if(everyPassenger.passengerPassword.compareTo(pWord) == 0 ){
                        System.out.print("Confirm Success!\n");
                        is_true = false;

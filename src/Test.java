@@ -19,7 +19,7 @@ public class Test {
          DataBase.flight_list.add(a2);
          DataBase.flight_list.add(a3);
         
-            Passenger.reserveFlight0("ZG001");
+//            Passenger.reserveFlight0("ZG001");
 //     
 ////        Order order = new Order("1","2",2,"3","2","2");
 ////        order.setSpecialDemand("hha");

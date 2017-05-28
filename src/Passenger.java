@@ -172,7 +172,7 @@ public class Passenger {
                             Graphing.standard_sepreation();
                             break;
                     }
-
+                    reserveFlight0();
                     System.out.printf("Input 'Y' to continue check and 'N' to finish checking process.\n");
                     String choice = input.nextLine();
                     Graphing.standard_sepreation();
@@ -228,12 +228,15 @@ public class Passenger {
                 break;//case 1 break;
             //显示整个订单列表
             case 3:
-                System.out.printf("Please input your username:\n>>");
-                String aim_name = input.nextLine();
+//                System.out.printf("Please input your username:\n>>");
+//                String aim_name = input.nextLine();
+                  String aim_name = DataBase.reserved_PassName;
+                System.out.print("Order List\n");
+                System.out.print("Index\tPassenger Name\tPassenger ID\tSeat Number\t Fight ID\tCreate Date\tState\n");
                 for (Passenger everyPassenger : DataBase.passengers_lilst) {
                     if (everyPassenger.passengerID.compareTo(aim_name) == 0) {
                         for (Order everyOrder : everyPassenger.orderList) {
-                            Order.order_disp(everyOrder);
+                            System.out.printf("%d\t%s\t%s\t%s\t%s\t%s\t\n",DataBase.order_list.indexOf(everyOrder),everyOrder.getPass_name(),everyOrder.getPass_IDs(),everyOrder.getFlightID(),everyOrder.getCreateDate(),everyOrder.getOrderstatus());
                         }
                     }
                 }
@@ -284,6 +287,7 @@ public class Passenger {
    // 预定航班 但不显示航班信息 直接预定
    public static void reserveFlight0(){  //对与每一个object，这个方法都是一样的，跟Object本身无关，可以用static
        Admin.flightAutoCheck();
+       DataBase.confirmPasswordPassenger();
 	   Scanner input = new Scanner (System.in);
 	 // 查找这个乘客
 	   int psnum = 0 ;  //乘客是psnum号
@@ -300,7 +304,7 @@ public class Passenger {
             	   psnum = counter;
             	   is_true = false;
 //            	   confirmPasword();
-                   DataBase.confirmPasswordPassenger();
+
             	   break;
                }
            }
@@ -308,8 +312,8 @@ public class Passenger {
 	   
 	   int num=0;//用于调用user输入ID对应的航班
   //预定航班
-//        System.out.println("Please enter the flight ID that you want to reserve.You can only reserve the available ones");
-//    	String ID = input.nextLine();
+        System.out.println("Please enter the flight ID that you want to reserve.You can only reserve the available ones");
+    	String ID = input.nextLine();
     	for (Flight flight : DataBase.flight_list){
     		if (flight.flightID.compareTo(ID)==0){
     			break;
@@ -317,14 +321,14 @@ public class Passenger {
     		num++;
     	}// 用户选择的是num号flight
     	System.out.println("The following seats are not available:");
-    	for (int j : DataBase.flight_list.get(num).seatNumList){
+    	for (int j : DataBase.flight_list.get(num-1).seatNumList){
     		System.out.print(j +" ");
     	}
     	System.out.printf("\nWhich seat do you want to take?\n "
-    			+ " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num).plane.seatCapacity);
+    			+ " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num-1).plane.seatCapacity);
     	int seatNum = input.nextInt();
-    	DataBase.flight_list.get(num).remainingSeat--;//对应航班剩余座位减1；
-    	DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
+    	DataBase.flight_list.get(num-1).remainingSeat--;//对应航班剩余座位减1；
+    	DataBase.flight_list.get(num-1).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
     	System.out.println("Do you have any special demand? If any,please enter it.");
     	String demand0 = input.nextLine();
 
@@ -353,7 +357,7 @@ public class Passenger {
         
         //预订成功
     	System.out.printf("\nYou have successfully reserved the flight %s\n"
-    			,DataBase.flight_list.get(num).flightID);
+    			,DataBase.flight_list.get(num-1).flightID);
     }
    
    /***************退订功能*************/
@@ -411,80 +415,5 @@ public class Passenger {
    }
 
 
-    public static void reserveFlight0(String ID){  //对与每一个object，这个方法都是一样的，跟Object本身无关，可以用static
-        Admin.flightAutoCheck();
-        Scanner input = new Scanner (System.in);
-        // 查找这个乘客
-        int psnum = 0 ;  //乘客是psnum号
-        boolean is_true = true;
-        while(is_true) {
-//           System.out.printf("Please input your passengerID\n");
-//           String aim_name = input.nextLine();
-            int counter = 0;
-            for (Passenger everyPassenger : DataBase.passengers_lilst) {
-                if (everyPassenger.passengerID.compareTo(DataBase.reserved_PassName) != 0) {
-                    counter ++;
-                }
-                else{
-                    psnum = counter;
-                    is_true = false;
-//            	   confirmPasword();
-                    DataBase.confirmPasswordPassenger();
-                    break;
-                }
-            }
-        }
 
-        int num=0;//用于调用user输入ID对应的航班
-        //预定航班
-//        System.out.println("Please enter the flight ID that you want to reserve.You can only reserve the available ones");
-//    	String ID = input.nextLine();
-        for (Flight flight : DataBase.flight_list){
-            if (flight.flightID.compareTo(ID)==0){
-                break;
-            }
-            num++;
-        }// 用户选择的是num号flight
-        System.out.println("The following seats are not available:");
-        for (int j : DataBase.flight_list.get(num).seatNumList){
-            System.out.print(j +" ");
-        }
-        System.out.printf("\nWhich seat do you want to take?\n "
-                + " Enter an integer from 1 to %d.  ",DataBase.flight_list.get(num).plane.seatCapacity);
-        int seatNum = input.nextInt();
-        DataBase.flight_list.get(num).remainingSeat--;//对应航班剩余座位减1；
-        DataBase.flight_list.get(num).seatNumList.add(seatNum);//座位列表中加入对应乘客的座位
-        System.out.println("Do you have any special demand? If any,please enter it.");
-        String demand0 = input.nextLine();
-
-        demand0 = input.nextLine();
-        Order newOrder = new Order (DataBase.passengers_lilst.get(psnum).realName,DataBase.passengers_lilst.get(psnum).passengerID,seatNum,ID,DataBase.present_date,demand0);
-        System.out.printf("Do you want to pay now?\nInput\"Y\"to pay now, and \"N\"to pay at airport\n");
-        String status = input.nextLine();
-        //付款确认
-        if (status.compareTo("Y")==0){
-            newOrder.orderstatus = Order.orderstates.PAID;}
-        else if(status.compareTo("N")==0){
-            newOrder.orderstatus = Order.orderstates.UNPAID;
-            System.out.printf("remember to pay at airport");
-        }
-
-
-        DataBase.order_list.add(newOrder);
-        DataBase.passengers_lilst.get(psnum).orderList.add(newOrder);
-        //输入乘客ID，并将订单添加到对应乘客的订单列表  进入付款界面
-        // print passenger's order info
-        System.out.println("Your lastest order information:");
-        for(Order order :DataBase.passengers_lilst.get(psnum).orderList ){
-            order.order_disp(order);
-        }
-
-
-        //预订成功
-        System.out.printf("\nYou have successfully reserved the flight %s\n"
-                ,DataBase.flight_list.get(num).flightID);
-   
-   
-   
-   
 }
