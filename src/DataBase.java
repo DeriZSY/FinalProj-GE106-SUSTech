@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.text.ParseException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  * Created by DeriZsy on 4/23/17.
  */
@@ -18,6 +21,21 @@ public class DataBase {
     public static String present_date = "2017-01-01";
     public static String reserved_PassName = "Default";
     public static String reserved_Admin_Name = "Default";
+
+/***** 读取系统时间 *****/
+public static void getCurrentTime(){
+    {
+        Date date = new Date();
+        Date time = new Date();
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm");
+        String dateStr = dateFormat1.format(date);
+        String timeStr = dateFormat2.format(time);
+        present_date = dateStr;
+        present_time = timeStr;
+
+    }
+}
 /************  Administer 登陆 *************/
     //Method
     public static void adminLogin() {
