@@ -208,9 +208,9 @@ public class Main {
                        DataBase.getCurrentTime();//每次开始前读取当前时间
                    Graphing.sepreate__Line_underLine_50();
                    System.out.printf("What do you want?\n");
-                   String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
+                   String origin_function1 = ";reserve a flight;unsubscribe a flight;PassengerQuery;";
                     String[] function_array1 = origin_function1.split(";");
-                    System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 flight's information\n#4 Log Out\n");
+                    System.out.printf("#1 reserve a flight\n#2 unsubscribe a flight\n#3 PassengerQuery\n#4 Log Out\n");
                     Graphing.sepreate__Line_sharp_50();
                     System.out.printf("Please input the number for function\n");
                     int chocieNum = input.nextInt();
