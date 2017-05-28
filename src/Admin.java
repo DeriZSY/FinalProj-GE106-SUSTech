@@ -373,7 +373,7 @@ public class Admin {
                     String aim_ID = input.nextLine();
                     for(Flight everyFlight : DataBase.flight_list){
                         if(everyFlight.flightID.compareTo(aim_ID) == 0){
-                            everyFlight.dis_full_inform(aim_ID);
+                            everyFlight.dis_full_inform(everyFlight.flightID);
                         }
                     }
             }

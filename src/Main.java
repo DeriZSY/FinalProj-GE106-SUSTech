@@ -184,6 +184,7 @@ public class Main {
                     Graphing.sepreate__Line_sharp_50();
                    System.out.printf("please enter the number>>");
                    int choice = input.nextInt();
+                   input.nextLine();
                   System.out.println();
                    if( choice <= 2) {
 
