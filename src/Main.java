@@ -152,7 +152,7 @@ public class Main {
 
                 // 乘客模式
                 else if (status.compareTo("passenger") == 0) {
-                    boolean passenger_mode_on = true;
+                	 boolean passenger_mode_on = true;
                 while (passenger_mode_on) {
                 	 Graphing.sepreate__Line_underLine_50();
         	   System.out.printf("\nWelcome to the passenger System\n");
@@ -182,6 +182,8 @@ public class Main {
 
                    System.out.printf("Now, you are logging in !\n");
                    Graphing.sepreate__Line_underLine_50();
+                   boolean passenger_funcrion_on = true;
+                   while(passenger_funcrion_on){
                    System.out.printf("What do you want?\n");
                    String origin_function1 = ";reserve a flight;unsubscribe a flight;check out the flight's information;";
                     String[] function_array1 = origin_function1.split(";");
@@ -205,10 +207,10 @@ public class Main {
                             Passenger.queryFlight();
                             continue;
                     }//end Switch
-                   }
-                    	passenger_mode_on  = false;
+                   }passenger_funcrion_on=false;
+                   }	
                        }
-                   } 
+                   } passenger_mode_on  = false;
 
                
            }// end passenger mode;
