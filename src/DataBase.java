@@ -44,7 +44,7 @@ public static void getCurrentTime(){
         while (is_ture) {
             //input username
             System.out.printf("\nPlease input your user name:\nuserName: ");
-            String usrName = input.next();
+            String usrName = input.nextLine();
             //input password
             System.out.printf("Please input your password:\npassword: ");
             String psWord = input.next();
